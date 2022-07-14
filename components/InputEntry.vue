@@ -9,26 +9,29 @@ const go = () => {
 </script>
 
 <template>
-  <div>
+  <div relative w="400px" m="t-5" flex>
     <input
       id="input"
       v-model="name"
-      placeholder="What's your name?"
+      placeholder="查找 API 接口?"
       type="text" autocomplete="off"
-      p="x-4 y-2" m="t-5" w="250px"
+      p="x-8 y-2"
+      w-full
       text="center" bg="transparent"
-      border="~ rounded gray-200 dark:gray-700"
+      placeholder-light
+      border="~ rounded gray-300"
       outline="none active:none"
       @keydown.enter="go"
     >
-    <div>
-      <button
-        m-3 text-sm btn
-        :disabled="!name"
-        @click="go"
-      >
-        GO
-      </button>
-    </div>
+    <button
+      absolute
+      right-2
+      top="1/2"
+      class="-translate-y-1/2"
+      i-carbon-search
+      w-6 h-6
+      bg-gray-300
+      @click="go"
+    />
   </div>
 </template>
