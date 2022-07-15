@@ -5,7 +5,7 @@ const callCount = ref(1)
 
 <template>
   <div py-10 px-8 text-white h-full flex="~ col" justify-center items-center text-center>
-    <h1 text-4xl font-mono font-semibold animate-zoom-in>
+    <h1 text-4xl font-mono font-semibold animate-bounce-in>
       KZ API
     </h1>
     <p mt-3 text-base>
