@@ -19,6 +19,10 @@ const apiList = ref([{
   href: '/apidoc/3',
   status: false,
 }])
+
+definePageMeta({
+  layout: 'home',
+})
 </script>
 
 <template>
