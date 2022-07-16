@@ -57,10 +57,6 @@ const params = [
   },
 ]
 const response = ref('https://img.yzcdn.cn/vant/cat.jpeg')
-
-definePageMeta({
-  layout: 'home',
-})
 </script>
 
 <template>
@@ -87,8 +83,8 @@ definePageMeta({
         {{ desc }}
       </p>
     </div>
-    <hr mt-2 text-gray-2>
-    <div mt-4>
+    <hr m-2 text-gray-2>
+    <div>
       <h3 pl-2 text-base border="l-5 emerald">
         基本信息
       </h3>

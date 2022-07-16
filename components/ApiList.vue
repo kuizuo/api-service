@@ -8,8 +8,8 @@ const { data } = toRefs(props)
 
 <template>
   <ul grid="~ cols-1 gap-4" md:grid="~ cols-2" lg:grid="~ cols-3">
-    <li v-for="item in data" :key="item.id">
-      <ApiItem v-bind="item" />
+    <li v-for="(item, i) in data" :key="item.id">
+      <ApiItem v-bind="item" :index="i" />
     </li>
   </ul>
 </template>
