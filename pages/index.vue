@@ -18,6 +18,12 @@ const apiList = ref([{
   desc: '根据QQ号获取头像',
   href: '/apidoc/3',
   status: false,
+}, {
+  id: '4',
+  name: '获取QQ头像',
+  desc: '根据QQ号获取头像',
+  href: '/apidoc/3',
+  status: false,
 }])
 
 definePageMeta({

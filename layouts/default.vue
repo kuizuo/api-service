@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <header bg-gray-9>
+  <div class="h-full">
+    <header class="background">
       <Nav />
     </header>
 
