@@ -7,78 +7,58 @@ hljs.registerLanguage('json', json)
 
 interface IApiDoc {
   id: string
-  title: string
+  name: string
   desc: string
-  status: boolean
-  url: string
+  path: string
   method: 'GET' | 'POST' | 'PUT' | 'DELETE'
+  params: {}[]
   returnType: string
   example: string
 }
 
 const router = useRoute()
-const { id } = router.params
 
+const { id } = router.params
 const codeRef = ref<HTMLElement>()
 
 onMounted(() => {
   if (codeRef.value)
     hljs.highlightBlock(codeRef.value)
 })
-// SSR ?
-
-// const data = useFetch(`/api/doc/${id}`)
 
 const { copy, copied } = useClipboard({ })
 
-const name = '每日一言'
-const desc = '每日一言'
-const status = true
-const total = '100'
-const lastTime = '2020-01-01 00:00:00'
-const url = `https://img.yzcdn.cn/api/doc/${id}`
-const method = 'GET'
-const returnType = 'IMG'
-const example = 'https://img.yzcdn.cn/vant/cat.jpeg'
-const params = [
-  {
-    name: 'id',
-    value: '123',
-    type: 'string',
-    desc: '图片id',
-    required: true,
-  },
-  {
-    name: 'id',
-    value: '123',
-    type: 'string',
-    desc: '图片id',
-    required: true,
-  },
-]
-const response = ref('https://img.yzcdn.cn/vant/cat.jpeg')
+const location = useBrowserLocation()
+const origin = location.value.origin ?? ''
+
+const { data } = await useAsyncData<IApiDoc>(id, () => queryContent(id).findOne())
+const { name, desc, params, path, method, returnType, example } = data.value
+const url = origin + path
+const urlExample = origin + example
+const { data: response } = useFetch(urlExample)
 </script>
 
 <template>
   <div mb-10>
-    <!-- <NuxtLink
-      class="btn m-3 text-sm"
-      to="/"
-    >
-      Back
-    </NuxtLink> -->
-
     <div class="top">
-      <div class="inline-flex justify-between items-baseline">
-        <h2 text-2xl font-600 mr-1>
+      <div class="flex justify-between items-center">
+        <h2 text-2xl font-600 mr-1 inline-flex items-center gap-1>
           {{ name }}
+          <i icon-btn i-carbon-checkmark-filled text-green />
+        <!-- <i v-else icon-btn i-carbon-close-filled text-red /> -->
         </h2>
-        <i v-if="status" icon-btn i-carbon-checkmark-filled text-green />
-        <i v-else icon-btn i-carbon-close-filled text-red />
+
+        <NuxtLink
+          class="btn text-sm"
+          target="_blank"
+          :to="urlExample"
+        >
+          测试一下
+        </NuxtLink>
       </div>
-      <p mt-1 text-sm text-gray-4>
+      <!-- <p mt-1 text-sm text-gray-4>
         总请求次数: {{ total }} &nbsp;&nbsp;&nbsp;&nbsp;最近一次请求 {{ lastTime }}
-      </p>
+      </p> -->
       <p mt-2 p-4 text-sm border="l-5 blue">
         {{ desc }}
       </p>
@@ -105,7 +85,7 @@ const response = ref('https://img.yzcdn.cn/vant/cat.jpeg')
         </p>
         <p inline-flex items-center>
           <span w-20 text-right font-sans>请求示例：</span>
-          <span ml-1 text-purple>{{ example }}</span>
+          <span ml-1 text-purple>{{ urlExample }}</span>
         </p>
       </div>
     </div>
@@ -147,7 +127,10 @@ const response = ref('https://img.yzcdn.cn/vant/cat.jpeg')
           <pre ref="codeRef" class="!px-4 !py-2 text-sm"><code class="language-json">{{ response }}</code></pre>
         </div>
         <div v-if="returnType === 'IMG'">
-          <img :src="response">
+          <img :src="urlExample">
+        </div>
+        <div v-else>
+          <pre ref="codeRef" class="!px-4 !py-2 text-sm"><code class="language-json">{{ response }}</code></pre>
         </div>
       </div>
     </div>

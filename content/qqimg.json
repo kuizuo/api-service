@@ -1,0 +1,18 @@
+{
+  "id": "qqimg",
+  "name": "获取QQ头像",
+  "desc": "根据QQ号获取QQ头像",
+  "path": "/api/qqimg",
+  "method": "GET",
+  "params": [
+    {
+      "name": "qq",
+      "value":"123456",
+      "type": "string",
+      "desc": "QQ号",
+      "required": true
+    }
+  ],
+  "returnType": "IMG",
+  "example": "/api/qqimg?qq=123456"
+}

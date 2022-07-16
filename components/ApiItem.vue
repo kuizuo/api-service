@@ -3,11 +3,12 @@ const props = defineProps<{
   id: string | number
   name: string
   desc: string
-  href: string
-  status: boolean
   index: number
 }>()
-const { id, name, desc, href, status, index } = toRefs(props)
+
+const docPath = 'apidoc'
+const { id, name, desc, index } = toRefs(props)
+const href = ref(`/${docPath}/${id.value}`)
 
 const textColor = computed(() => (i: number) => (
   [
