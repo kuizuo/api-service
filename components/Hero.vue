@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const apiCount = ref(1)
-const callCount = ref(1)
+// const apiList = useAsyncData('api-list', () => queryContent().count())
 </script>
 
 <template>
@@ -12,7 +12,7 @@ const callCount = ref(1)
       一个 稳定、快速、好用的 API 接口服务
     </p>
     <p text-sm>
-      共收录了 <span class="text-pink">{{ apiCount }}</span> 个 API 接口，共被调用 <span class="text-pink">{{ callCount }}</span> 次
+      共收录了 <span class="text-pink">{{ apiCount }}</span> 个 API 接口
     </p>
     <InputEntry />
   </div>

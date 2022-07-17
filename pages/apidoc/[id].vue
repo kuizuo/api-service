@@ -1,37 +1,15 @@
 <script setup lang="ts">
-import hljs from 'highlight.js'
-import json from 'highlight.js/lib/languages/json'
-import 'highlight.js/styles/github-dark.css'
-
-hljs.registerLanguage('json', json)
-
-interface IApiDoc {
-  id: string
-  name: string
-  desc: string
-  path: string
-  method: 'GET' | 'POST' | 'PUT' | 'DELETE'
-  params: {}[]
-  returnType: string
-  example: string
-}
+import type { IApiDoc } from '~~/types/data'
 
 const router = useRoute()
-
-const { id } = router.params
-const codeRef = ref<HTMLElement>()
-
-onMounted(() => {
-  if (codeRef.value)
-    hljs.highlightBlock(codeRef.value)
-})
+const id = router.params.id as string
 
 const { copy, copied } = useClipboard({ })
 
 const location = useBrowserLocation()
 const origin = location.value.origin ?? ''
 
-const { data } = await useAsyncData<IApiDoc>(id, () => queryContent(id).findOne())
+const { data } = await useAsyncData<IApiDoc>(id, () => queryContent<IApiDoc>(id).findOne())
 const { name, desc, params, path, method, returnType, example } = data.value
 const url = origin + path
 const urlExample = origin + example
@@ -40,12 +18,11 @@ const { data: response } = useFetch(urlExample)
 
 <template>
   <div mb-10>
-    <div class="top">
+    <div pb1 mb2 border="b-1 gray-1">
       <div class="flex justify-between items-center">
         <h2 text-2xl font-600 mr-1 inline-flex items-center gap-1>
           {{ name }}
           <i icon-btn i-carbon-checkmark-filled text-green />
-        <!-- <i v-else icon-btn i-carbon-close-filled text-red /> -->
         </h2>
 
         <NuxtLink
@@ -56,14 +33,10 @@ const { data: response } = useFetch(urlExample)
           测试一下
         </NuxtLink>
       </div>
-      <!-- <p mt-1 text-sm text-gray-4>
-        总请求次数: {{ total }} &nbsp;&nbsp;&nbsp;&nbsp;最近一次请求 {{ lastTime }}
-      </p> -->
       <p mt-2 p-4 text-sm border="l-5 blue">
         {{ desc }}
       </p>
     </div>
-    <hr m-2 text-gray-2>
     <div>
       <h3 pl-2 text-base border="l-5 emerald">
         基本信息
@@ -124,13 +97,15 @@ const { data: response } = useFetch(urlExample)
       </h3>
       <div mt-2 h-auto>
         <div v-if="returnType === 'JSON'">
-          <pre ref="codeRef" class="!px-4 !py-2 text-sm"><code class="language-json">{{ response }}</code></pre>
+          <JsonView :code="response" />
         </div>
-        <div v-if="returnType === 'IMG'">
+        <div v-else-if="returnType === 'IMG'">
           <img :src="urlExample">
         </div>
         <div v-else>
-          <pre ref="codeRef" class="!px-4 !py-2 text-sm"><code class="language-json">{{ response }}</code></pre>
+          <div bg-zinc-1 p-2 font-sans text-base>
+            {{ response }}
+          </div>
         </div>
       </div>
     </div>

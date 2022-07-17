@@ -1,0 +1,18 @@
+{
+  "id": "one",
+  "name": "一言",
+  "desc": "一言指的就是一句话，可以是动漫中的台词，也可以是网络上的各种小段子",
+  "path": "/api/one",
+  "method": "GET",
+  "params": [
+    {
+      "name": "json",
+      "value":"true",
+      "type": "boolean",
+      "desc": "json格式返回 默认为true",
+      "required": false
+    }
+  ],
+  "returnType": "string",
+  "example": "/api/one"
+}

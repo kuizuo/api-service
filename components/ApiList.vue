@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { IApi } from '~~/types/data'
+import type { IApiInfo } from '~~/types/data'
 
-const props = defineProps<{ data: IApi[] }>()
+const props = defineProps<{ data: IApiInfo[] }>()
 
 const { data } = toRefs(props)
 </script>

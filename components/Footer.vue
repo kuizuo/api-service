@@ -9,7 +9,7 @@
           KZ API 是 <a href="https://kuizuo.cn" underline underline-dashed underline-lightBlue>kuizuo</a> 整理稳定、快速、好用的 API 接口，供各大开发者使用。
         </p>
         <p text-sm mt-2>
-          KZ API 接口服务平台接口进行封装维护，提供接口文档，接口状态等相关信息。并有一套监控系统，可以监控接口的调用情况，接口状态等。
+          KZ API 接口服务平台对接口进行封装维护，提供接口文档等相关信息。
         </p>
         <p text-sm mt-2>
           API 接口均来自网络，如有侵权，请联系作者删除！

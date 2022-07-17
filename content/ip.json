@@ -1,0 +1,25 @@
+{
+  "id": "ip",
+  "name": "获取IP归属地",
+  "desc": "根据IP获取归属地与城市信息邮编",
+  "path": "/api/ip",
+  "method": "GET",
+  "params": [
+    {
+      "name": "ip",
+      "value":"123.123.123",
+      "type": "string",
+      "desc": "IP地址",
+      "required": true
+    },
+    {
+      "name": "json",
+      "value":"true",
+      "type": "boolean",
+      "desc": "json格式返回 默认为true",
+      "required": false
+    }
+  ],
+  "returnType": "JSON",
+  "example": "/api/ip?ip=123.123.123.123"
+}
