@@ -1,3 +1,4 @@
+export type ReturnType = 'IMG' | 'JSON' | 'TEXT' | 'HTML' | 'SCRIPT' | 'ALL';
 
 export interface IApiParam {
   name: string
@@ -14,7 +15,7 @@ export interface IApiDoc {
   path: string
   method: 'GET' | 'POST' | 'PUT' | 'DELETE'
   params: IApiParam[]
-  returnType: string
+  returnType: ReturnType
   example: string
 }
 

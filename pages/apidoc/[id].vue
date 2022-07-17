@@ -4,8 +4,6 @@ import type { IApiDoc } from '~~/types/data'
 const router = useRoute()
 const id = router.params.id as string
 
-const { copy, copied } = useClipboard({ })
-
 const location = useBrowserLocation()
 const origin = location.value.origin ?? ''
 
@@ -13,7 +11,8 @@ const { data } = await useAsyncData<IApiDoc>(id, () => queryContent<IApiDoc>(id)
 const { name, desc, params, path, method, returnType, example } = data.value
 const url = origin + path
 const urlExample = origin + example
-const { data: response } = useFetch(urlExample)
+
+const { data: response } = returnType !== 'IMG' ? useFetch<string>(urlExample) : { data: null }
 </script>
 
 <template>
@@ -44,10 +43,10 @@ const { data: response } = useFetch(urlExample)
       <div mt-2 bg-zinc-1 dark:bg-gray-8 p-4 flex="~ col" gap-3 text-sm>
         <p inline-flex items-center>
           <span w-20 text-right font-sans>接口地址：</span>
-          <span ml-1 text-purple>{{ url }}</span>
-          <span v-if="!copied" ml-2 icon-btn i-carbon-copy @click="copy(url)" />
-          <span v-if="copied" ml-2 icon-btn i-carbon-checkmark text-green />
+          <span ml-1 mr-2 text-purple hover:underline>{{ url }}</span>
+          <Copy :result="url" />
         </p>
+
         <p inline-flex items-center>
           <span w-20 text-right font-sans>请求方式：</span>
           <span ml-1 text-purple>{{ method }}</span>
@@ -58,7 +57,7 @@ const { data: response } = useFetch(urlExample)
         </p>
         <p inline-flex items-center>
           <span w-20 text-right font-sans>请求示例：</span>
-          <span ml-1 text-purple>{{ urlExample }}</span>
+          <span ml-1 text-purple hover:underline>{{ urlExample }}</span>
         </p>
       </div>
     </div>
@@ -95,7 +94,7 @@ const { data: response } = useFetch(urlExample)
       <h3 pl-2 text-base border="l-5 emerald">
         响应示例
       </h3>
-      <div mt-2 h-auto>
+      <div mt-2 h-auto relative bg-zinc-1 dark:bg-gray-8>
         <div v-if="returnType === 'JSON'">
           <JsonView :code="response" />
         </div>
@@ -103,9 +102,12 @@ const { data: response } = useFetch(urlExample)
           <img :src="urlExample">
         </div>
         <div v-else>
-          <div bg-zinc-1 p-2 font-sans text-base>
+          <div p-2 font-sans text-base>
             {{ response }}
           </div>
+        </div>
+        <div v-if="response && returnType !== 'IMG' " absolute top-2 right-2>
+          <Copy :result="response" />
         </div>
       </div>
     </div>

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import hljs from 'highlight.js'
 import json from 'highlight.js/lib/languages/json'
-import 'highlight.js/styles/github.css'
 
 const props = defineProps<{
   code: string
