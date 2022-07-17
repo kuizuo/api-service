@@ -15,15 +15,18 @@ function getIP(req: IncomingMessage) {
 export default defineEventHandler(async (event) => {
   const { req, res } = event
 
-  const ip = getIP(req)
-  try {
-    await rateLimiter.consume(ip)
+  if (/^\/api\/[A-Za-z0-9].*/.test(req.url || '')) {
+    const ip = getIP(req)
 
-    // TODO: 接口计次
-  }
-  catch (error) {
-    res.statusCode = 429
-    return { statusCode: 429, statusMessage: '请求太快了,请稍后再试' }
+    try {
+      await rateLimiter.consume(ip)
+
+      // TODO: 接口计次
+    }
+    catch (error) {
+      res.statusCode = 429
+      return { statusCode: 429, statusMessage: '请求太快了,请稍后再试' }
+    }
   }
 })
 

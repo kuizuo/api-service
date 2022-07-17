@@ -1,6 +1,18 @@
 <script setup lang="ts">
 const apiStore = await useApiStore()
 const count = apiStore.count
+
+const desc = '一个 稳定、快速、好用的 API 接口服务'
+
+useHead({
+  meta: [
+    {
+      hid: 'description',
+      name: 'description',
+      content: desc,
+    },
+  ],
+})
 </script>
 
 <template>
@@ -9,7 +21,7 @@ const count = apiStore.count
       KZ API
     </h1>
     <p mt-3 text-base>
-      一个 稳定、快速、好用的 API 接口服务
+      {{ desc }}
     </p>
     <p text-sm>
       共收录了 <span class="text-pink">{{ count }}</span> 个 API 接口

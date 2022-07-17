@@ -13,6 +13,18 @@ const url = origin + path
 const urlExample = origin + example
 
 const { data: response } = returnType !== 'IMG' ? useFetch<string>(urlExample, { server: false }) : { data: null }
+
+useHead({
+  title: `${name} - KZ API`,
+  meta: [
+    { name: 'generator', content: 'Nuxt3' },
+    {
+      hid: 'description',
+      name: 'description',
+      content: desc,
+    },
+  ],
+})
 </script>
 
 <template>

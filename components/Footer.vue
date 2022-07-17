@@ -27,7 +27,7 @@
       </div>
     </div>
     <div mt-8 text-center font-sans>
-      Copyright © {{ new Date().getFullYear() }} 愧怍 Built with Nuxt.js
+      Copyright © {{ new Date().getFullYear() }} 愧怍 Built with Nuxt3
     </div>
   </footer>
 </template>
