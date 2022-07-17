@@ -2,16 +2,15 @@
 import { storeToRefs } from 'pinia'
 import type { IApiInfo } from '~~/types/data'
 
-const { data: list } = useAsyncData<IApiInfo[]>('api-list', () => queryContent<IApiInfo>().find())
+const apiStore = useApiStore()
 
-const searchStore = useSearchStore()
-const { name } = storeToRefs(searchStore)
-
-watch(name, (val) => {
-  list.value = unref(list)?.filter(data => data.name.match(new RegExp(val, 'i'))) ?? []
-}, {
-  immediate: true,
+const { data } = await useAsyncData<IApiInfo[]>('api-list', async () => {
+  const result = await queryContent<IApiInfo>().find()
+  apiStore.apiList = result
+  return result
 })
+
+const { list } = storeToRefs(apiStore)
 </script>
 
 <template>

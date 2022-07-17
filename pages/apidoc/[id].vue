@@ -7,12 +7,12 @@ const id = router.params.id as string
 const location = useBrowserLocation()
 const origin = location.value.origin ?? ''
 
-const { data } = await useAsyncData<IApiDoc>(id, () => queryContent<IApiDoc>(id).findOne())
+const { data } = await useAsyncData<IApiDoc>(id, async () => await queryContent<IApiDoc>(id).findOne(), { server: true })
 const { name, desc, params, path, method, returnType, example } = data.value
 const url = origin + path
 const urlExample = origin + example
 
-const { data: response } = returnType !== 'IMG' ? useFetch<string>(urlExample) : { data: null }
+const { data: response } = returnType !== 'IMG' ? useFetch<string>(urlExample, { server: false }) : { data: null }
 </script>
 
 <template>
