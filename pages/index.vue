@@ -1,6 +1,4 @@
 <script setup lang="ts">
-const { data } = useAsyncData('api-list', () => queryContent().find())
-
 definePageMeta({
   layout: 'home',
 })
@@ -8,6 +6,6 @@ definePageMeta({
 
 <template>
   <div>
-    <ApiList :data="data" />
+    <ApiList />
   </div>
 </template>

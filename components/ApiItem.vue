@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const props = defineProps<{
+const { id, name, desc, index } = defineProps<{
   id: string | number
   name: string
   desc: string
@@ -7,8 +7,7 @@ const props = defineProps<{
 }>()
 
 const docPath = 'apidoc'
-const { id, name, desc, index } = toRefs(props)
-const href = ref(`/${docPath}/${id.value}`)
+const href = ref(`/${docPath}/${id}`)
 
 const textColor = computed(() => (i: number) => (
   [

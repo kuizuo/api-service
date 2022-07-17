@@ -1,6 +1,6 @@
 <template>
   <header class="background">
     <Nav />
-    <Hero />
+    <slot />
   </header>
 </template>

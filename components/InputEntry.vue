@@ -1,11 +1,11 @@
 <script setup lang="ts">
-const name = ref('')
+import { storeToRefs } from 'pinia'
 
-const router = useRouter()
-const go = () => {
-  if (name.value)
-    router.push(`/hi/${encodeURIComponent(name.value)}`)
-}
+const searchStore = useSearchStore()
+const { name } = storeToRefs(searchStore)
+watch(name, (val) => {
+  searchStore.setName(val)
+})
 </script>
 
 <template>
@@ -21,7 +21,6 @@ const go = () => {
       placeholder-light
       border="~ rounded gray-300"
       outline="none active:none"
-      @keydown.enter="go"
     >
     <button
       absolute
@@ -31,7 +30,6 @@ const go = () => {
       i-carbon-search
       w-6 h-6
       bg-gray-300
-      @click="go"
     />
   </div>
 </template>
