@@ -6,13 +6,9 @@ export default defineEventHandler(async (event) => {
 
   try {
     const img = await (await fetch(`https://q4.qlogo.cn/g?b=qq&nk=${qq}&s=100`)).arrayBuffer()
-
-    // TODO: 增加计数
     return Buffer.from(img)
   }
   catch (error) {
-    // TODO: 接口出错 则上报错误信息
-    console.error(error)
     return error
   }
 })

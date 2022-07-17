@@ -14,8 +14,6 @@ export default defineEventHandler(async (event) => {
     return nick
   }
   catch (error) {
-    // TODO: 接口出错 则上报错误信息
-    console.error(error)
     return error
   }
 })

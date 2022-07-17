@@ -13,10 +13,12 @@ specifiers:
   highlight.js: ^11.6.0
   nuxt: ^3.0.0-rc.4
   pinia: ^2.0.14
+  rate-limiter-flexible: ^2.3.7
   typescript: ^4.7.4
 
 dependencies:
   highlight.js: 11.6.0
+  rate-limiter-flexible: 2.3.7
 
 devDependencies:
   '@antfu/eslint-config': 0.25.2_eslint@8.19.0+typescript@4.7.4
@@ -6145,6 +6147,10 @@ packages:
     resolution: {integrity: sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==}
     engines: {node: '>= 0.6'}
     dev: true
+
+  /rate-limiter-flexible/2.3.7:
+    resolution: {integrity: sha512-dmc+J/IffVBvHlqq5/XClsdLdkOdQV/tjrz00cwneHUbEDYVrf4aUDAyR4Jybcf2+Vpn4NwoVrnnAyt/D0ciWw==}
+    dev: false
 
   /rc/1.2.8:
     resolution: {integrity: sha512-y3bGgqKj3QBdxLbLkomlohkvsA8gdAiUQlSBJnBhfn+BPxg4bc62d8TcBW15wavDfgexCgccckhcZvywyQYPOw==}

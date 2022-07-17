@@ -5,10 +5,7 @@ export const useApiStore = defineStore('api', () => {
   const apiList = ref<IApiInfo[]>([])
   const searchName = ref('')
   const list = computed(() => { return apiList.value?.filter(data => data.name.match(new RegExp(searchName.value, 'i'))) ?? [] })
-
-  function count() {
-    return apiList.value.length
-  }
+  const count = computed(() => { return apiList.value.length })
 
   return {
     searchName,
