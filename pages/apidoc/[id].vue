@@ -1,5 +1,9 @@
 <script setup lang="ts">
 import type { IApiDoc } from '~~/types/data'
+interface IApiDocData extends IApiDoc {
+  title: string
+  _path: string
+}
 
 const router = useRoute()
 const id = router.params.id as string
@@ -7,17 +11,21 @@ const id = router.params.id as string
 const location = useBrowserLocation()
 const origin = location.value.origin ?? ''
 
-const { data } = await useAsyncData<IApiDoc>(id, async () => await queryContent<IApiDoc>(id).findOne(), { server: true })
-const { name, desc, params, path, method, returnType, example } = data.value
+const { data } = await useAsyncData<IApiDocData>(id, () => queryContent<IApiDocData>('apidoc').where({ id }).findOne(), { server: true })
+const { name, desc, params, path, method, returnType, example, _path } = data.value
 const url = origin + path
 const urlExample = origin + example
 
-const { data: response } = returnType !== 'IMG' ? useFetch<string>(urlExample, { server: false }) : { data: null }
+const { data: response } = returnType !== 'IMG' ? useFetch<string>(urlExample, { server: false }) : { data: { value: '' } }
+
+const { data: { value: [prev, next] } } = await useAsyncData<IApiDocData[]>(
+  `${id}-findSurround`,
+  () => queryContent<IApiDocData>().findSurround(_path),
+  { server: true })
 
 useHead({
   title: `${name} - KZ API`,
   meta: [
-    { name: 'generator', content: 'Nuxt3' },
     {
       hid: 'description',
       name: 'description',
@@ -28,101 +36,125 @@ useHead({
 </script>
 
 <template>
-  <div mb-10>
-    <div pb1 mb2 border="b-1 gray-1">
-      <div class="flex justify-between items-center">
-        <h2 text-2xl font-600 mr-1 inline-flex items-center gap-1>
-          {{ name }}
-          <i icon-btn i-carbon-checkmark-filled text-green />
-        </h2>
+  <div mb-8>
+    <div class="doc-info" mb-8>
+      <div pb1 mb2 border="b-1 gray-1">
+        <div class="flex justify-between items-center">
+          <h2 text-2xl font-600 mr-1 inline-flex items-center gap-1>
+            {{ name }}
+            <i icon-btn i-carbon-checkmark-filled text-green />
+          </h2>
 
-        <NuxtLink
-          class="btn text-sm"
-          target="_blank"
-          :to="urlExample"
-        >
-          测试一下
-        </NuxtLink>
-      </div>
-      <p mt-2 p-4 text-sm border="l-5 blue">
-        {{ desc }}
-      </p>
-    </div>
-    <div>
-      <h3 pl-2 text-base border="l-5 emerald">
-        基本信息
-      </h3>
-      <div mt-2 bg-zinc-1 dark:bg-gray-8 p-4 flex="~ col" gap-3 text-sm>
-        <p inline-flex items-center>
-          <span w-20 text-right font-sans>接口地址：</span>
-          <span ml-1 mr-2 text-purple hover:underline>{{ url }}</span>
-          <Copy :result="url" />
+          <NuxtLink
+            class="btn text-sm"
+            target="_blank"
+            :to="urlExample"
+          >
+            测试一下
+          </NuxtLink>
+        </div>
+        <p mt-2 p-4 text-sm border="l-5 blue">
+          {{ desc }}
         </p>
+      </div>
+      <div>
+        <h3 pl-2 text-base border="l-5 emerald">
+          基本信息
+        </h3>
+        <div mt-2 bg-zinc-1 dark:bg-gray-8 p-4 flex="~ col" gap-3 text-sm>
+          <p inline-flex items-center>
+            <span w-20 text-right font-sans>接口地址：</span>
+            <span ml-1 mr-2 text-purple hover:underline>{{ url }}</span>
+            <Copy :result="url" />
+          </p>
 
-        <p inline-flex items-center>
-          <span w-20 text-right font-sans>请求方式：</span>
-          <span ml-1 text-purple>{{ method }}</span>
-        </p>
-        <p inline-flex items-center>
-          <span w-20 text-right font-sans>返回格式：</span>
-          <span ml-1 text-purple>{{ returnType }}</span>
-        </p>
-        <p inline-flex items-center>
-          <span w-20 text-right font-sans>请求示例：</span>
-          <span ml-1 text-purple hover:underline>{{ urlExample }}</span>
-        </p>
-      </div>
-    </div>
-    <div mt-4>
-      <h3 pl-2 text-base border="l-5 emerald">
-        请求参数
-      </h3>
-      <div mt-2 w-full>
-        <table class="table table-auto w-full border border-collapse">
-          <thead>
-            <tr>
-              <th>参数名</th>
-              <th>示例值</th>
-              <th>类型</th>
-              <th>描述</th>
-              <th>是否必须</th>
-            </tr>
-            <tr
-              v-for="param in params" :key="param.name"
-              transition
-              hover="bg-gray-1 dark:hover:bg-gray-8"
-            >
-              <td>{{ param.name }}</td>
-              <td>{{ param.value }}</td>
-              <td>{{ param.type }}</td>
-              <td>{{ param.desc }}</td>
-              <td>{{ param.required ? '是' : '否' }}</td>
-            </tr>
-          </thead>
-        </table>
-      </div>
-    </div>
-    <div mt-4>
-      <h3 pl-2 text-base border="l-5 emerald">
-        响应示例
-      </h3>
-      <div mt-2 h-auto relative bg-zinc-1 dark:bg-gray-8>
-        <div v-if="returnType === 'JSON'">
-          <JsonView :code="response" />
+          <p inline-flex items-center>
+            <span w-20 text-right font-sans>请求方式：</span>
+            <span ml-1 text-purple>{{ method }}</span>
+          </p>
+          <p inline-flex items-center>
+            <span w-20 text-right font-sans>返回格式：</span>
+            <span ml-1 text-purple>{{ returnType }}</span>
+          </p>
+          <p inline-flex items-center>
+            <span w-20 text-right font-sans>请求示例：</span>
+            <span ml-1 text-purple hover:underline>{{ urlExample }}</span>
+          </p>
         </div>
-        <div v-else-if="returnType === 'IMG'">
-          <img :src="urlExample">
+      </div>
+      <div mt-4>
+        <h3 pl-2 text-base border="l-5 emerald">
+          请求参数
+        </h3>
+        <div mt-2 w-full>
+          <table class="table table-auto w-full border border-collapse">
+            <thead>
+              <tr>
+                <th>参数名</th>
+                <th>示例值</th>
+                <th>类型</th>
+                <th>描述</th>
+                <th>是否必须</th>
+              </tr>
+              <tr
+                v-for="param in params" :key="param.name"
+                transition
+                hover="bg-gray-1 dark:hover:bg-gray-8"
+              >
+                <td>{{ param.name }}</td>
+                <td>{{ param.value }}</td>
+                <td>{{ param.type }}</td>
+                <td>{{ param.desc }}</td>
+                <td>{{ param.required ? '是' : '否' }}</td>
+              </tr>
+            </thead>
+          </table>
         </div>
-        <div v-else>
-          <div p-2 font-sans text-base>
-            {{ response }}
+      </div>
+      <div mt-4>
+        <h3 pl-2 text-base border="l-5 emerald">
+          响应示例
+        </h3>
+        <div mt-2 h-auto min-h-10 w="100%" relative bg-zinc-1 dark:bg-gray-8>
+          <div v-if="returnType === 'JSON'">
+            <JsonView :code="response" />
+          </div>
+          <div v-else-if="returnType === 'IMG'">
+            <img :src="urlExample">
+          </div>
+          <div v-else>
+            <div p-2 font-sans text-base>
+              {{ response }}
+            </div>
+          </div>
+          <div v-if="response && returnType !== 'IMG' " absolute top-2 right-2>
+            <Copy :result="response" />
           </div>
         </div>
-        <div v-if="response && returnType !== 'IMG' " absolute top-2 right-2>
-          <Copy :result="response" />
-        </div>
       </div>
     </div>
+    <nav class="pagination-nav" grid gap-4 justify-between>
+      <NuxtLink
+        v-if="prev"
+        class="nav-btn justify-start self-start prev"
+        :to="prev._path"
+      >
+        <i i-carbon-arrow-left icon-btn />
+        <div>
+          {{ prev.name }}
+        </div>
+      </NuxtLink>
+      <NuxtLink
+        v-if="next"
+        class="nav-btn justify-end self-end next"
+        :to="next._path"
+      >
+        <div>
+          {{ next.name }}
+        </div>
+        <i i-carbon-arrow-right icon-btn />
+      </NuxtLink>
+    </nav>
   </div>
 </template>
 
@@ -148,5 +180,13 @@ table tr th{
 
 table tr td {
   font-size: small;
+}
+
+.pagination-nav {
+  grid-template-columns: repeat(2, auto)
+}
+
+.next {
+  grid-column: 2/3;
 }
 </style>

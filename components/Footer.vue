@@ -1,7 +1,7 @@
 <template>
-  <footer bg-gray-7 text-white px-12 py-8 font-sans>
-    <div flex="~ col" md:flex="~ row" gap-5>
-      <div w="full" md:w="3/4">
+  <footer bg-gray-7 text-white font-sans>
+    <div container px-12 py-8 flex="~ col" md:flex="~ row" gap-5>
+      <div>
         <h4 font-bold text-xl>
           关于本项目
         </h4>
@@ -15,7 +15,7 @@
           API 接口均来自网络，如有侵权，请联系作者删除！
         </p>
       </div>
-      <div w="full" md:w="1/4">
+      <div w-20>
         <h4 font-bold text-xl>
           相关链接
         </h4>
