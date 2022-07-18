@@ -16,7 +16,22 @@ const { name, desc, params, path, method, returnType, example, _path } = data.va
 const url = origin + path
 const urlExample = origin + example
 
-const { data: response } = returnType !== 'IMG' ? useFetch<string>(urlExample, { server: false }) : { data: { value: '' } }
+const response = ref('')
+async function fetchExample() {
+  if (returnType === 'IMG')
+    return
+
+  if (returnType === 'JSON') {
+    const { data } = await useFetch(urlExample, { server: false, transform: data => JSON.stringify(data, null, 2) })
+    response.value = data.value
+  }
+  else {
+    const { data } = await useFetch<string>(urlExample, { server: false })
+    response.value = data.value
+  }
+  // console.log('response', response.value)
+}
+await fetchExample()
 
 const { data: { value: [prev, next] } } = await useAsyncData<IApiDocData[]>(
   `${id}-findSurround`,
@@ -37,7 +52,7 @@ useHead({
 
 <template>
   <div mb-8>
-    <div class="doc-info" mb-8>
+    <div class="doc-info" mb-6>
       <div pb1 mb2 border="b-1 gray-1">
         <div class="flex justify-between items-center">
           <h2 text-2xl font-600 mr-1 inline-flex items-center gap-1>
@@ -83,10 +98,10 @@ useHead({
         </div>
       </div>
       <div mt-4>
-        <h3 pl-2 text-base border="l-5 emerald">
+        <h3 pl-2 mb-2 text-base border="l-5 emerald">
           请求参数
         </h3>
-        <div mt-2 w-full>
+        <div v-if="params.length > 0" w-full>
           <table class="table table-auto w-full border border-collapse">
             <thead>
               <tr>
@@ -115,16 +130,18 @@ useHead({
         <h3 pl-2 text-base border="l-5 emerald">
           响应示例
         </h3>
-        <div mt-2 h-auto min-h-10 w="100%" relative bg-zinc-1 dark:bg-gray-8>
-          <div v-if="returnType === 'JSON'">
-            <JsonView :code="response" />
-          </div>
-          <div v-else-if="returnType === 'IMG'">
-            <img :src="urlExample">
-          </div>
-          <div v-else>
-            <div p-2 font-sans text-base>
-              {{ response }}
+        <div mt-2 h-auto min-h-10 w-full relative bg-zinc-1 dark:bg-gray-8>
+          <div class="response thin-scrollbar" overflow-x-auto>
+            <div v-if="returnType === 'JSON'">
+              <JsonView :code="response" />
+            </div>
+            <div v-else-if="returnType === 'IMG'">
+              <img :src="urlExample">
+            </div>
+            <div v-else>
+              <div p-2 font-sans text-base>
+                {{ response }}
+              </div>
             </div>
           </div>
           <div v-if="response && returnType !== 'IMG' " absolute top-2 right-2>
@@ -188,5 +205,14 @@ table tr td {
 
 .next {
   grid-column: 2/3;
+}
+
+.thin-scrollbar::-webkit-scrollbar {
+    height: 5px;
+    width: 5px;
+}
+
+.thin-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(156, 163, 175);
 }
 </style>

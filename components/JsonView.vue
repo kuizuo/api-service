@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import hljs from 'highlight.js'
 import json from 'highlight.js/lib/languages/json'
+import 'highlight.js/styles/atom-one-light.css'
 
 const props = defineProps<{
   code: string
@@ -17,5 +18,5 @@ onMounted(() => {
 </script>
 
 <template>
-  <pre ref="codeRef" class="!px-4 !py-2 text-sm"><code class="language-json">{{ props.code }}</code></pre>
+  <pre ref="codeRef" class="!px-4 !py-2 text-sm h-full min-w-max language-json"><code>{{ props.code }}</code></pre>
 </template>

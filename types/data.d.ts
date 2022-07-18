@@ -1,4 +1,4 @@
-export type ReturnType = 'IMG' | 'JSON' | 'TEXT' | 'HTML' | 'SCRIPT' | 'ALL';
+export type ReturnType = 'IMG' | 'JSON' | 'TEXT' | 'LOCATION' | 'HTML' | 'SCRIPT' | 'ALL';
 
 export interface IApiParam {
   name: string
