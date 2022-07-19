@@ -15,7 +15,7 @@ KZ API
 
 ## Preview
 
-![KZ API](https://img.kuizuo.cn/KZ API.png)
+![KZ API](https://img.kuizuo.cn/KZ%20API.png)
 
 ## Template
 
