@@ -1,4 +1,4 @@
-import { load } from 'cheerio'
+import cheerio from 'cheerio'
 import { isExternal } from '~~/utils/is'
 import { TimeUnitMap } from '~~/utils/time'
 
@@ -14,7 +14,7 @@ export default defineEventHandler(async (event) => {
 
   const { origin } = new URL(website)
   const html = await (await fetch(origin)).text()
-  const $ = load(html)
+  const $ = cheerio.load(html)
   let href = $('link[rel*="icon"]').attr('href')
 
   if (href)

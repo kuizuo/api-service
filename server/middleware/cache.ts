@@ -31,15 +31,14 @@ export default defineEventHandler(async (event) => {
 
       const data = args?.[0]
       if (data) {
-        if (!context.cache.disable) {
-          if (context.cache) {
+        if (context.cache) {
+          if (!context.cache.disable) {
             const options = context.cache
-
             cache.set(key, data, options)
           }
-          else {
-            cache.set(key, data)
-          }
+        }
+        else {
+          cache.set(key, data)
         }
       }
 
