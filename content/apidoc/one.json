@@ -6,13 +6,13 @@
   "method": "GET",
   "params": [
     {
-      "name": "json",
-      "value":"true",
-      "type": "boolean",
-      "desc": "json格式返回 默认为true",
+      "name": "type",
+      "value":"json",
+      "type": "string",
+      "desc": "数据格式(text,json,img)",
       "required": false
     }
   ],
-  "returnType": "string",
+  "dataType": "text",
   "example": "/api/one"
 }

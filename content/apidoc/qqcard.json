@@ -1,0 +1,18 @@
+{
+  "id": "qqcard",
+  "name": "QQ名片跳转",
+  "desc": "根据QQ号获取QQ名片跳转链接, 可以直接跳转到QQ名片",
+  "path": "/api/qqcard",
+  "method": "GET",
+  "params": [
+    {
+      "name": "qq",
+      "value":"911993023",
+      "type": "string",
+      "desc": "QQ号",
+      "required": true
+    }
+  ],
+  "dataType": "text",
+  "example": "/api/qqcard?qq=911993023"
+}

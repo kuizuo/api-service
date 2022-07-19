@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import type { IApiDoc } from '~~/types/data'
-interface IApiDocData extends IApiDoc {
+interface Doc extends IApi.Doc {
   title: string
   _path: string
 }
@@ -8,20 +7,26 @@ interface IApiDocData extends IApiDoc {
 const router = useRoute()
 const id = router.params.id as string
 
+const dataTypeMap = {
+  img: '图片',
+  text: '文本',
+  json: 'JSON',
+}
+
 const location = useBrowserLocation()
 const origin = location.value.origin ?? ''
 
-const { data } = await useAsyncData<IApiDocData>(id, () => queryContent<IApiDocData>('apidoc').where({ id }).findOne(), { server: true })
-const { name, desc, params, path, method, returnType, example, _path } = data.value
+const { data } = await useAsyncData<Doc>(id, () => queryContent<Doc>('apidoc').where({ id }).findOne(), { server: true })
+const { name, desc, params, path, method, dataType, example, _path } = data.value
 const url = origin + path
 const urlExample = origin + example
 
 const response = ref('')
 async function fetchExample() {
-  if (returnType === 'IMG')
+  if (dataType === 'img')
     return
 
-  if (returnType === 'JSON') {
+  if (dataType === 'json') {
     const { data } = await useFetch(urlExample, { server: false, transform: data => JSON.stringify(data, null, 2) })
     response.value = data.value
   }
@@ -33,9 +38,9 @@ async function fetchExample() {
 }
 await fetchExample()
 
-const { data: { value: [prev, next] } } = await useAsyncData<IApiDocData[]>(
+const { data: { value: [prev, next] } } = await useAsyncData<Doc[]>(
   `${id}-findSurround`,
-  () => queryContent<IApiDocData>().findSurround(_path),
+  () => queryContent<Doc>().findSurround(_path),
   { server: true })
 
 useHead({
@@ -89,7 +94,7 @@ useHead({
           </p>
           <p inline-flex items-center>
             <span w-20 text-right font-sans>返回格式：</span>
-            <span ml-1 text-purple>{{ returnType }}</span>
+            <span ml-1 text-purple>{{ dataTypeMap[dataType] }}</span>
           </p>
           <p inline-flex items-center>
             <span w-20 text-right font-sans>请求示例：</span>
@@ -132,10 +137,10 @@ useHead({
         </h3>
         <div mt-2 h-auto min-h-10 w-full relative bg-zinc-1 dark:bg-gray-8>
           <div class="response thin-scrollbar" overflow-x-auto>
-            <div v-if="returnType === 'JSON'">
+            <div v-if="dataType === 'json'">
               <JsonView :code="response" />
             </div>
-            <div v-else-if="returnType === 'IMG'">
+            <div v-else-if="dataType === 'img'">
               <img :src="urlExample">
             </div>
             <div v-else>
@@ -144,7 +149,7 @@ useHead({
               </div>
             </div>
           </div>
-          <div v-if="response && returnType !== 'IMG' " absolute top-2 right-2>
+          <div v-if="response && dataType !== 'img' " absolute top-2 right-2>
             <Copy :result="response" />
           </div>
         </div>

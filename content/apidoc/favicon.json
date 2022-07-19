@@ -1,0 +1,25 @@
+{
+  "id": "favicon",
+  "name": "网站icon图标",
+  "desc": "获取网站icon图标地址",
+  "path": "/api/favicon",
+  "method": "GET",
+  "params": [
+    {
+      "name": "website",
+      "value":"https://kuizuo.cn",
+      "type": "string",
+      "desc": "网址完整地址",
+      "required": true
+    },
+    {
+      "name": "type",
+      "value":"img",
+      "type": "string",
+      "desc": "数据格式(text,json,img)",
+      "required": false
+    }
+  ],
+  "dataType": "text",
+  "example": "/api/favicon?website=https://kuizuo.cn"
+}

@@ -1,0 +1,10 @@
+{
+  "id": "bing_img",
+  "name": "Bing壁纸",
+  "desc": "获取Bing每日壁纸",
+  "path": "/api/bing_img",
+  "method": "GET",
+  "params": [],
+  "dataType": "img",
+  "example": "/api/bing_img"
+}

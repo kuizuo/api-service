@@ -12,10 +12,10 @@ body::-webkit-scrollbar {
   width: 5px;
   background: linear-gradient(
     to bottom,
-    hsl(200deg, 80%, 70%) 0%,
-    hsl(190deg, 80%, 70%),
+    hsl(320deg, 80%, 70%) 0%,
     hsl(250deg, 80%, 70%),
-    hsl(320deg, 80%, 70%) 100%
+    hsl(190deg, 80%, 70%),
+    hsl(200deg, 80%, 70%)  100%
   );
   border-radius: 4px;
 }
@@ -28,7 +28,6 @@ body::-webkit-scrollbar-thumb {
     hsl(0deg, 100%, 100%, 0.9) 80%,
     hsl(0deg, 100%, 50%, 0) 100%
   );
-  border-radius: 100%;
 }
 
 .background{

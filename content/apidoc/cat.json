@@ -1,0 +1,18 @@
+{
+  "id": "cat",
+  "name": "猫图",
+  "desc": "随机返回一张猫的图片",
+  "path": "/api/cat",
+  "method": "GET",
+  "params": [
+    {
+      "name": "type",
+      "value":"json",
+      "type": "string",
+      "desc": "数据格式(text,json,img) 默认img",
+      "required": false
+    }
+  ],
+  "dataType": "img",
+  "example": "/api/cat"
+}

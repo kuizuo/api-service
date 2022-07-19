@@ -1,18 +1,18 @@
 {
   "id": "qqnick",
-  "name": "获取QQ昵称",
+  "name": "QQ昵称",
   "desc": "根据QQ号获取QQ昵称",
   "path": "/api/qqnick",
   "method": "GET",
   "params": [
     {
       "name": "qq",
-      "value":"123456",
+      "value":"911993023",
       "type": "string",
       "desc": "QQ号",
       "required": true
     }
   ],
-  "returnType": "string",
-  "example": "/api/qqnick?qq=123456"
+  "dataType": "text",
+  "example": "/api/qqnick?qq=911993023"
 }

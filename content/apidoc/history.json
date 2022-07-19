@@ -1,0 +1,25 @@
+{
+  "id": "history",
+  "name": "历史上的今天",
+  "desc": "获取历史上今天所发生过的事情",
+  "path": "/api/history",
+  "method": "GET",
+  "params": [
+    {
+      "name": "month",
+      "value":"1",
+      "type": "number",
+      "desc": "月份,数字1-12 不填则当前月",
+      "required": false
+    },
+    {
+      "name": "day",
+      "value":"1",
+      "type": "number",
+      "desc": "日期,数字1-31 不填则当前日",
+      "required": false
+    }
+  ],
+  "dataType": "json",
+  "example": "/api/history"
+}

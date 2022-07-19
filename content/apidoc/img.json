@@ -1,0 +1,25 @@
+{
+  "id": "img",
+  "name": "随机图片",
+  "desc": "随机返回一张图片",
+  "path": "/api/img",
+  "method": "GET",
+  "params": [
+    {
+      "name": "width",
+      "value":"200",
+      "type": "number",
+      "desc": "图片宽度",
+      "required": false
+    },
+    {
+      "name": "height",
+      "value":"200",
+      "type": "number",
+      "desc": "图片高度",
+      "required": false
+    }
+  ],
+  "dataType": "img",
+  "example": "/api/img"
+}

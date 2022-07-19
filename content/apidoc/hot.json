@@ -1,0 +1,10 @@
+{
+  "id": "hot",
+  "name": "今日热点",
+  "desc": "获取实时全网热点",
+  "path": "/api/hot",
+  "method": "GET",
+  "params": [],
+  "dataType": "json",
+  "example": "/api/hot"
+}

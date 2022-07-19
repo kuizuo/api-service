@@ -1,0 +1,24 @@
+{
+  "id": "phone",
+  "name": "手机号归属地",
+  "desc": "获取手机号归属地",
+  "path": "/api/phone",
+  "method": "GET",
+  "params": [    
+  {
+    "name": "phone",
+    "value":"13088888888",
+    "type": "string",
+    "desc": "IP地址",
+    "required": true
+  },
+  {
+    "name": "type",
+    "value":"json",
+    "type": "string",
+    "desc": "数据格式(text,json,img)",
+    "required": false
+  }],
+  "dataType": "text",
+  "example": "/api/phone?phone=13088888888"
+}
