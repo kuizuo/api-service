@@ -1,7 +1,9 @@
 import { load } from 'cheerio'
 import { isExternal } from '~~/utils/is'
+import { TimeUnitMap } from '~~/utils/time'
 
 export default defineEventHandler(async (event) => {
+  event.context.cache = { ttl: TimeUnitMap.hour }
   const { website, type = 'text' } = useQuery(event)
 
   if (!website)

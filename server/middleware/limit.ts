@@ -20,8 +20,6 @@ export default defineEventHandler(async (event) => {
 
     try {
       await rateLimiter.consume(ip)
-
-      // TODO: 接口计次
     }
     catch (error) {
       res.statusCode = 429

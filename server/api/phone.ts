@@ -1,6 +1,9 @@
 import { isPhone } from '~~/utils/is'
+import { TimeUnitMap } from '~~/utils/time'
 
 export default defineEventHandler(async (event) => {
+  event.context.cache = { ttl: TimeUnitMap.hour }
+
   const { phone, type = 'text' } = useQuery(event)
 
   if (!phone)

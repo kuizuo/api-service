@@ -12,6 +12,7 @@ specifiers:
   '@unocss/nuxt': ^0.43.2
   '@vueuse/nuxt': ^8.8.0
   cheerio: ^1.0.0-rc.12
+  dayjs: ^1.11.3
   eslint: ^8.19.0
   highlight.js: ^11.6.0
   lru-cache: ^7.13.1
@@ -24,6 +25,7 @@ specifiers:
 dependencies:
   '@types/lodash': 4.14.182
   cheerio: 1.0.0-rc.12
+  dayjs: 1.11.3
   highlight.js: 11.6.0
   lru-cache: 7.13.1
   qrcode: 1.5.1
@@ -2406,6 +2408,10 @@ packages:
     resolution: {integrity: sha512-Vr3mLBA8qWmcuschSLAOogKgQ/Jwxulv3RNE4FXnYWRGujzrRWQI4m12fQqRkwX06C0KanhLr4hK+GydchZsaA==}
     engines: {node: '>= 12'}
     dev: true
+
+  /dayjs/1.11.3:
+    resolution: {integrity: sha512-xxwlswWOlGhzgQ4TKzASQkUhqERI3egRNqgV4ScR8wlANA/A9tZ7miXa44vTTKEq5l7vWoL5G57bG3zA+Kow0A==}
+    dev: false
 
   /debug/2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}

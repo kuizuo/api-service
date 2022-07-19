@@ -1,6 +1,9 @@
 import * as QRcode from 'qrcode'
+import { TimeUnitMap } from '~~/utils/time'
 
 export default defineEventHandler(async (event) => {
+  event.context.cache = { ttl: TimeUnitMap.hour }
+
   const { text, type = 'img' } = useQuery(event)
 
   if (!text)

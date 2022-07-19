@@ -27,7 +27,7 @@ async function fetchExample() {
     return
 
   if (dataType === 'json') {
-    const { data } = await useFetch(urlExample, { server: false, transform: data => JSON.stringify(data, null, 2) })
+    const { data } = await useFetch<string>(urlExample, { server: false })
     response.value = data.value
   }
   else {
