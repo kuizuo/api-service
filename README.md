@@ -13,7 +13,9 @@ KZ API
 <a href="https://stackblitz.com/github/kuizuo/api-service"><img src="https://developer.stackblitz.com/img/open_in_stackblitz.svg" alt=""></a>
 </p>
 
+## Preview
 
+![KZ API](https://img.kuizuo.cn/KZ API.png)
 
 ## Template
 
