@@ -27,11 +27,11 @@ async function fetchExample() {
     return
 
   if (dataType === 'json') {
-    const { data } = await useFetch<string>(urlExample, { server: false })
+    const { data } = await useFetch<string>(urlExample, { server: false, initialCache: false })
     response.value = data.value
   }
   else {
-    const { data } = await useFetch<string>(urlExample, { server: false })
+    const { data } = await useFetch<string>(urlExample, { server: false, initialCache: false })
     response.value = data.value
   }
   // console.log('response', response.value)
