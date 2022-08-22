@@ -5,13 +5,7 @@ interface Doc extends IApi.Doc {
 }
 
 const router = useRoute()
-const id = router.params.id as string
-
-const dataTypeMap = {
-  img: '图片',
-  text: '文本',
-  json: 'JSON',
-}
+const id = $computed(() => router.params.id as string)
 
 const location = useBrowserLocation()
 const origin = location.value.origin ?? ''
@@ -43,6 +37,42 @@ const { data: { value: [prev, next] } } = await useAsyncData<Doc[]>(
   () => queryContent<Doc>().findSurround(_path),
   { server: true })
 
+const tabs = [
+  {
+    title: '接口信息',
+    name: 'info',
+    component: defineAsyncComponent(() => import('~/components/ApiPage/ApiInfo.vue')),
+  },
+  {
+    title: '接口测试',
+    name: 'test',
+    component: defineAsyncComponent(() => import('~/components/ApiPage/ApiTest.vue')),
+
+  },
+  {
+    title: '示例代码',
+    name: 'code',
+    component: defineAsyncComponent(() => import('~/components/ApiPage/ApiExample.vue')),
+  },
+]
+
+let active = $ref(0)
+let underlineWidth = $ref(0)
+let underlineOffsetLeft = $ref(0)
+
+onMounted(() => {
+  underlineWidth = document.querySelector('.tabs-item')?.clientWidth ?? 0
+  underlineOffsetLeft = document.querySelector('.tabs-item')?.offsetLeft ?? 0
+})
+
+function setActive(i, ev: Event) {
+  active = i
+  underlineWidth = (ev.target as HTMLElement).clientWidth
+  underlineOffsetLeft = (ev.target as HTMLElement).offsetLeft
+}
+
+const component = computed(() => tabs[active].component)
+
 useHead({
   title: `${name} - KZ API`,
   meta: [
@@ -58,166 +88,92 @@ useHead({
 <template>
   <div mb-8>
     <div class="doc-info" mb-6>
-      <div pb1 mb2 border="b-1 gray-1">
-        <div class="flex justify-between items-center">
-          <h2 text-2xl font-600 mr-1 inline-flex items-center gap-1>
-            {{ name }}
-            <i icon-btn i-carbon-checkmark-filled text-green />
-          </h2>
-
-          <NuxtLink
-            class="btn text-sm"
-            target="_blank"
-            :to="urlExample"
-          >
-            测试一下
-          </NuxtLink>
-        </div>
-        <p mt-2 p-4 text-sm border="l-5 blue">
-          {{ desc }}
-        </p>
-      </div>
+      <ApiHeader v-bind="{ name, desc, urlExample }" />
       <div>
-        <h3 pl-2 text-base border="l-5 emerald">
-          基本信息
-        </h3>
-        <div mt-2 bg-zinc-1 dark:bg-gray-8 p-4 flex="~ col" gap-3 text-sm>
-          <p inline-flex items-center>
-            <span w-20 text-right font-sans>接口地址：</span>
-            <span ml-1 mr-2 text-purple hover:underline>{{ url }}</span>
-            <Copy :result="url" />
-          </p>
+        <ul class="tabs">
+          <div
+            class="tabs-items__underline" :style="{
+              width: `${underlineWidth}px`,
+              transform: `translateX(${underlineOffsetLeft}px)`,
+            }"
+          />
+          <li v-for="(item, i) in tabs" :key="i" :name="item.name" class="tabs-item" @click="setActive(i, $event)">
+            {{ item.title }}
+          </li>
+        </ul>
 
-          <p inline-flex items-center>
-            <span w-20 text-right font-sans>请求方式：</span>
-            <span ml-1 text-purple>{{ method }}</span>
-          </p>
-          <p inline-flex items-center>
-            <span w-20 text-right font-sans>返回格式：</span>
-            <span ml-1 text-purple>{{ dataTypeMap[dataType] }}</span>
-          </p>
-          <p inline-flex items-center>
-            <span w-20 text-right font-sans>请求示例：</span>
-            <span ml-1 text-purple hover:underline>{{ urlExample }}</span>
-          </p>
-        </div>
-      </div>
-      <div mt-4>
-        <h3 pl-2 mb-2 text-base border="l-5 emerald">
-          请求参数
-        </h3>
-        <div v-if="params.length > 0" w-full>
-          <table class="table table-auto w-full border border-collapse">
-            <thead>
-              <tr>
-                <th>参数名</th>
-                <th>示例值</th>
-                <th>类型</th>
-                <th>描述</th>
-                <th>是否必须</th>
-              </tr>
-              <tr
-                v-for="param in params" :key="param.name"
-                transition
-                hover="bg-gray-1 dark:hover:bg-gray-8"
-              >
-                <td>{{ param.name }}</td>
-                <td>{{ param.value }}</td>
-                <td>{{ param.type }}</td>
-                <td>{{ param.desc }}</td>
-                <td>{{ param.required ? '是' : '否' }}</td>
-              </tr>
-            </thead>
-          </table>
-        </div>
-      </div>
-      <div mt-4>
-        <h3 pl-2 text-base border="l-5 emerald">
-          响应示例
-        </h3>
-        <div mt-2 h-auto min-h-10 w-full relative bg-zinc-1 dark:bg-gray-8>
-          <div class="response thin-scrollbar" overflow-x-auto>
-            <div v-if="dataType === 'json'">
-              <JsonView :code="response" />
-            </div>
-            <div v-else-if="dataType === 'img'">
-              <img :src="urlExample">
-            </div>
-            <div v-else>
-              <div p-2 font-sans text-base>
-                {{ response }}
-              </div>
-            </div>
-          </div>
-          <div v-if="response && dataType !== 'img' " absolute top-2 right-2>
-            <Copy :result="response" />
-          </div>
+        <div class="panel" mt-4>
+          <keep-alive>
+            <component :is="component" v-bind="{ url, method, dataType, urlExample, params, response }" />
+          </keep-alive>
         </div>
       </div>
     </div>
-    <nav class="pagination-nav" grid gap-4 justify-between>
-      <NuxtLink
-        v-if="prev"
-        class="nav-btn justify-start self-start prev"
-        :to="prev._path"
-      >
-        <i i-carbon-arrow-left icon-btn />
-        <div>
-          {{ prev.name }}
-        </div>
-      </NuxtLink>
-      <NuxtLink
-        v-if="next"
-        class="nav-btn justify-end self-end next"
-        :to="next._path"
-      >
-        <div>
-          {{ next.name }}
-        </div>
-        <i i-carbon-arrow-right icon-btn />
-      </NuxtLink>
-    </nav>
+    <ApiPagination v-bind="{ prev, next }" />
   </div>
 </template>
 
-<style>
-table tr {
-  text-align:left;
-  @apply border-collapse border-1 border-gray-2;
-}
-
-table tr th {
-  font-weight: 500;
-}
-
-table tr td, table tr th {
-  padding: 0.25rem 0.75rem;
-  @apply  border-1 border-gray-2;
-}
-
-table tr th{
-  font-size:0.9rem;
-  @apply bg-coolGray-1 dark:bg-gray-8;
-}
-
-table tr td {
-  font-size: small;
-}
-
-.pagination-nav {
-  grid-template-columns: repeat(2, auto)
-}
-
-.next {
-  grid-column: 2/3;
-}
-
+<style scoped>
 .thin-scrollbar::-webkit-scrollbar {
-    height: 5px;
-    width: 5px;
+  height: 5px;
+  width: 5px;
 }
 
 .thin-scrollbar::-webkit-scrollbar-thumb {
   background-color: rgba(156, 163, 175);
+}
+
+.tabs {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.dark .tabs {
+  border-bottom: 1px solid #444;
+}
+
+.tabs-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0.2rem 0.8rem;
+  cursor: pointer;
+  border: 0;
+  border-radius: 6px;
+  background-color: transparent;
+  transition: background .12s ease-out;
+}
+
+.tabs-item:hover {
+  background-color: #eaeaea;
+}
+
+html.dark .tabs-item:hover {
+  background-color: #333;
+}
+
+.tabs-content {
+  display: none;
+  text-align: left;
+}
+
+.tabs-content.active {
+  display: block;
+  opacity: 1;
+}
+
+.tabs-items__underline {
+  contain: '';
+  background: #ccc;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  height: 2px;
+  transition: all .3s ease;
 }
 </style>

@@ -11,34 +11,18 @@ const href = ref(`/${docPath}/${id}`)
 
 const textColor = computed(() => (i: number) => (
   [
-    'text-red-5',
-    'text-blue-5',
-    'text-purple-5',
-    'text-green-5',
-    'text-yellow-5',
-    'text-pink-5',
+    'text-red-5', 'text-blue-5', 'text-purple-5', 'text-green-5', 'text-yellow-5', 'text-pink-5',
   ][i % 6]
 ))
 
 const ringColor = computed(() => (i: number) => (
   [
-    'ring-red-5',
-    'ring-blue-5',
-    'ring-purple-5',
-    'ring-green-5',
-    'ring-yellow-5',
-    'ring-pink-5',
+    'ring-red-5', 'ring-blue-5', 'ring-purple-5', 'ring-green-5', 'ring-yellow-5', 'ring-pink-5',
   ][i % 6]
 ))
 
 const shadowColor = computed(() => (i: number) => (
-  [
-    'shadow-red-5/20',
-    'shadow-blue-5/20',
-    'shadow-purple-5/20',
-    'shadow-green-5/20',
-    'shadow-yellow-5/20',
-    'shadow-pink-5/20',
+  ['shadow-red-5/20', 'shadow-blue-5/20', 'shadow-purple-5/20', 'shadow-green-5/20', 'shadow-yellow-5/20', 'shadow-pink-5/20',
   ][i % 6]
 ))
 </script>
