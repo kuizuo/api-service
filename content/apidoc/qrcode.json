@@ -7,14 +7,14 @@
   "params": [
     {
       "name": "text",
-      "value":"https://kuizuo.cn",
+      "value": "https://kuizuo.cn",
       "type": "string",
       "desc": "要生成二维码的字符串",
       "required": true
     },
     {
       "name": "type",
-      "value":"text",
+      "value": "text",
       "type": "string",
       "desc": "数据格式(text,json,img)",
       "required": false

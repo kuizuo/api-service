@@ -7,7 +7,7 @@
   "params": [
     {
       "name": "qq",
-      "value":"911993023",
+      "value": "911993023",
       "type": "string",
       "desc": "QQ号",
       "required": true

@@ -7,7 +7,7 @@
   "params": [
     {
       "name": "type",
-      "value":"json",
+      "value": "json",
       "type": "string",
       "desc": "数据格式(text,json,img)",
       "required": false

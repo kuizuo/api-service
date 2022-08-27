@@ -7,14 +7,14 @@
   "params": [
     {
       "name": "width",
-      "value":"200",
+      "value": "200",
       "type": "number",
       "desc": "图片宽度",
       "required": false
     },
     {
       "name": "height",
-      "value":"200",
+      "value": "200",
       "type": "number",
       "desc": "图片高度",
       "required": false

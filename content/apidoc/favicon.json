@@ -7,14 +7,14 @@
   "params": [
     {
       "name": "website",
-      "value":"https://kuizuo.cn",
+      "value": "https://kuizuo.cn",
       "type": "string",
       "desc": "网址完整地址",
       "required": true
     },
     {
       "name": "type",
-      "value":"img",
+      "value": "img",
       "type": "string",
       "desc": "数据格式(text,json,img)",
       "required": false
