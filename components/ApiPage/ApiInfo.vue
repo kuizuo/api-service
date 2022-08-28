@@ -70,7 +70,7 @@ const dataTypeMap = {
     <div mt-2 h-auto min-h-10 w-full relative bg-zinc-1 dark:bg-gray-8>
       <div class="response thin-scrollbar" overflow-x-auto>
         <div v-if="dataType === 'json'">
-          <JsonView :code="response" />
+          <CodeView :code="response" language="json" />
         </div>
         <div v-else-if="dataType === 'img'">
           <img :src="urlExample">

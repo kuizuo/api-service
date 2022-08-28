@@ -47,12 +47,6 @@ const tabs = [
     title: '接口测试',
     name: 'test',
     component: defineAsyncComponent(() => import('~/components/ApiPage/ApiTest.vue')),
-
-  },
-  {
-    title: '示例代码',
-    name: 'code',
-    component: defineAsyncComponent(() => import('~/components/ApiPage/ApiExample.vue')),
   },
 ]
 
