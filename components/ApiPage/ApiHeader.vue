@@ -13,9 +13,6 @@ const { name, desc, urlExample } = defineProps<{
         {{ name }}
         <i icon-btn i-carbon-checkmark-filled text-green />
       </h2>
-      <NuxtLink class="btn text-sm" target="_blank" :to="urlExample">
-        测试一下
-      </NuxtLink>
     </div>
     <p mt-2 p-4 text-sm border="l-5 blue">
       {{ desc }}

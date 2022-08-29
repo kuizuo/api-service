@@ -18,24 +18,27 @@ const dataTypeMap = {
 </script>
 
 <template>
-  <div mt-2 bg-zinc-1 dark:bg-gray-8 p-4 flex="~ col" gap-3 text-sm>
-    <p inline-flex items-center>
-      <span w-20 text-right font-sans>接口地址：</span>
-      <span ml-1 mr-2 text-purple hover:underline>{{ url }}</span>
+  <div py-1 flex="~ col" gap-3 text-sm font-sans>
+    <div inline-flex gap-2 items-center>
+      <span text-base>接口地址：</span>
+      <span
+        px-3 py-1 text-sm rounded hover:cursor-pointer
+        :class="method === 'GET' ? 'text-lightBlue-4 bg-lightBlue-1' : 'text-green-4 bg-green-1'"
+      >{{
+        method
+      }}</span>
+      <span px-3 py-1 rounded bg-zinc-1 text-zinc-4 hover:cursor-pointer>{{ url }}</span>
       <Copy :result="url" />
-    </p>
+    </div>
 
-    <p inline-flex items-center>
-      <span w-20 text-right font-sans>请求方式：</span>
-      <span ml-1 text-purple>{{ method }}</span>
+    <p inline-flex gap-2 items-center>
+      <span text-base>返回格式：</span>
+      <span px-3 py-1 text-sm bg-indigo-1 text-indigo-4 rounded hover:cursor-pointer>{{ dataTypeMap[dataType]
+      }}</span>
     </p>
-    <p inline-flex items-center>
-      <span w-20 text-right font-sans>返回格式：</span>
-      <span ml-1 text-purple>{{ dataTypeMap[dataType] }}</span>
-    </p>
-    <p inline-flex items-center>
-      <span w-20 text-right font-sans>请求示例：</span>
-      <span ml-1 text-purple hover:underline>{{ urlExample }}</span>
+    <p inline-flex gap-2 items-center>
+      <span text-base>请求示例：</span>
+      <span px-3 py-1 text-sm bg-zinc-1 text-zinc-4 rounded hover:cursor-pointer>{{ urlExample }}</span>
     </p>
   </div>
   <div mt-4>
@@ -52,7 +55,7 @@ const dataTypeMap = {
             <th>描述</th>
             <th>是否必须</th>
           </tr>
-          <tr v-for="param in params" :key="param.name" transition hover="bg-gray-1 dark:hover:bg-gray-8">
+          <tr v-for="param in params" :key="param.name" transition hover="bg-zinc-1 dark:hover:bg-gray-8">
             <td>{{ param.name }}</td>
             <td>{{ param.value }}</td>
             <td>{{ param.type }}</td>

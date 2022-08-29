@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@antfu/eslint-config': ^0.25.2
+  '@highlightjs/vue-plugin': ^2.1.0
   '@iconify-json/carbon': ^1.1.7
   '@iconify-json/twemoji': ^1.1.5
   '@nuxt/content': ^2.0.1
@@ -24,6 +25,7 @@ specifiers:
   typescript: ^4.7.4
 
 dependencies:
+  '@highlightjs/vue-plugin': 2.1.0_highlight.js@11.6.0
   '@types/lodash': 4.14.184
   cheerio: 0.22.0
   dayjs: 1.11.5
@@ -508,6 +510,15 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /@highlightjs/vue-plugin/2.1.0_highlight.js@11.6.0:
+    resolution: {integrity: sha512-E+bmk4ncca+hBEYRV2a+1aIzIV0VSY/e5ArjpuSN9IO7wBJrzUE2u4ESCwrbQD7sAy+jWQjkV5qCCWgc+pu7CQ==}
+    peerDependencies:
+      highlight.js: ^11.0.1
+      vue: ^3
+    dependencies:
+      highlight.js: 11.6.0
+    dev: false
 
   /@humanwhocodes/config-array/0.10.4:
     resolution: {integrity: sha512-mXAIHxZT3Vcpg83opl1wGlVZ9xydbfZO3r5YfRSH6Gpp2J/PfdBP0wbDa2sO6/qRbcalpoevVyW6A/fI6LfeMw==}

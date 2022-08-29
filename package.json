@@ -7,6 +7,15 @@
     "start": "node .output/server/index.mjs",
     "lint": "eslint ."
   },
+  "dependencies": {
+    "@types/lodash": "^4.14.184",
+    "cheerio": "^0.22.0",
+    "dayjs": "^1.11.5",
+    "highlight.js": "^11.6.0",
+    "lru-cache": "^7.14.0",
+    "qrcode": "^1.5.1",
+    "rate-limiter-flexible": "^2.3.8"
+  },
   "devDependencies": {
     "@antfu/eslint-config": "^0.25.2",
     "@iconify-json/carbon": "^1.1.7",
@@ -22,14 +31,5 @@
     "nuxt": "^3.0.0-rc.8",
     "pinia": "^2.0.20",
     "typescript": "^4.7.4"
-  },
-  "dependencies": {
-    "@types/lodash": "^4.14.184",
-    "cheerio": "^0.22.0",
-    "dayjs": "^1.11.5",
-    "highlight.js": "^11.6.0",
-    "lru-cache": "^7.14.0",
-    "qrcode": "^1.5.1",
-    "rate-limiter-flexible": "^2.3.8"
   }
 }

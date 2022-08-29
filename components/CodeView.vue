@@ -13,17 +13,24 @@ const props = defineProps<{
 hljs.registerLanguage('json', json)
 hljs.registerLanguage('python', python)
 
-const codeRef = ref<HTMLElement>()
-
 onMounted(() => {
-  if (codeRef.value)
-    hljs.highlightBlock(codeRef.value)
+  document.querySelectorAll('pre code').forEach((el) => {
+    hljs.highlightElement(el)
+  })
+})
+
+onUpdated(() => {
+  document.querySelectorAll('pre code').forEach((el) => {
+    hljs.highlightElement(el)
+  })
 })
 </script>
 
 <template>
-  <pre
-    ref="codeRef" :class="`language-${props.language}`"
-    class="!px-4 !py-2 text-sm h-full min-w-max"
-  ><code>{{ props.code }}</code></pre>
+  <div>
+    <pre
+      :class="`language-${props.language ?? 'json'}`"
+      class="min-h-10 text-sm h-full min-w-max"
+    ><code>{{ props.code }}</code></pre>
+  </div>
 </template>

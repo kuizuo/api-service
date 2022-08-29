@@ -80,7 +80,7 @@ useHead({
 </script>
 
 <template>
-  <div mb-8>
+  <div>
     <div class="doc-info" mb-6>
       <ApiHeader v-bind="{ name, desc, urlExample }" />
       <div>
