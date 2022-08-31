@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 const { prev, next } = defineProps<{
   prev: any
   next: any

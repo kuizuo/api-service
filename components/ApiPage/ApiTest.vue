@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 const props = defineProps<{
   url: string
   method: string
@@ -26,7 +26,7 @@ async function sendApi() {
   else
     response = await (await fetch(urlExample, { method })).text()
 
-  console.log(urlExample, method, params, dataType, response)
+  // console.log(urlExample, method, params, dataType, response)
 }
 </script>
 
