@@ -1,0 +1,10 @@
+{
+  "id": "fake",
+  "name": "假数据",
+  "desc": "假数据，来源于 jsonplaceholder.typicode.com",
+  "path": "/api/fake",
+  "method": "GET",
+  "params": [],
+  "dataType": "json",
+  "example": "/api/fake/todos/1"
+}
