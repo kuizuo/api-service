@@ -5,6 +5,5 @@
   "path": "/api/hot",
   "method": "GET",
   "params": [],
-  "dataType": "json",
-  "example": "/api/hot"
+  "dataType": "json"
 }

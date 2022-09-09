@@ -5,6 +5,5 @@
   "path": "/api/bing_img",
   "method": "GET",
   "params": [],
-  "dataType": "img",
-  "example": "/api/bing_img"
+  "dataType": "img"
 }

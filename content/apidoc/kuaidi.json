@@ -6,20 +6,19 @@
   "method": "GET",
   "params": [
     {
-      "name": "name",
+      "key": "name",
       "value": "shunfeng",
       "type": "string",
       "desc": "快递公司编号 申通：shentong EMS：ems 顺丰：shunfeng 圆通：yuantong 中通：zhongtong 韵达：yunda 天天：tiantian 汇通：huitongkuaidi 全峰：quanfengkuaidi 德邦：debangwuliu 宅急送：zhaijisong",
       "required": true
     },
     {
-      "name": "postid",
+      "key": "postid",
       "value": "12345678901234",
       "type": "string",
       "desc": "快递单号",
       "required": true
     }
   ],
-  "dataType": "json",
-  "example": "/api/kuaidi?name=shunfeng&postid=12345678901234"
+  "dataType": "json"
 }

@@ -6,20 +6,19 @@
   "method": "GET",
   "params": [
     {
-      "name": "ip",
+      "key": "ip",
       "value": "123.123.123",
       "type": "string",
       "desc": "IP地址 不填则默认获取本地IP",
       "required": false
     },
     {
-      "name": "type",
+      "key": "type",
       "value": "json",
       "type": "text",
       "desc": "数据格式(text,json,img)",
       "required": false
     }
   ],
-  "dataType": "text",
-  "example": "/api/ip_location"
+  "dataType": "text"
 }

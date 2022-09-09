@@ -6,20 +6,19 @@
   "method": "GET",
   "params": [
     {
-      "name": "website",
+      "key": "website",
       "value": "https://kuizuo.cn",
       "type": "string",
       "desc": "网址完整地址",
       "required": true
     },
     {
-      "name": "type",
+      "key": "type",
       "value": "img",
       "type": "string",
       "desc": "数据格式(text,json,img)",
       "required": false
     }
   ],
-  "dataType": "text",
-  "example": "/api/favicon?website=https://kuizuo.cn"
+  "dataType": "text"
 }

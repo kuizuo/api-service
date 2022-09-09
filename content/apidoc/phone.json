@@ -6,20 +6,19 @@
   "method": "GET",
   "params": [
     {
-      "name": "phone",
+      "key": "phone",
       "value": "13088888888",
       "type": "string",
       "desc": "IP地址",
       "required": true
     },
     {
-      "name": "type",
+      "key": "type",
       "value": "json",
       "type": "string",
       "desc": "数据格式(text,json,img)",
       "required": false
     }
   ],
-  "dataType": "text",
-  "example": "/api/phone?phone=13088888888"
+  "dataType": "text"
 }

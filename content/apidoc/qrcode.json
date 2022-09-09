@@ -6,20 +6,19 @@
   "method": "GET",
   "params": [
     {
-      "name": "text",
+      "key": "text",
       "value": "https://kuizuo.cn",
       "type": "string",
       "desc": "要生成二维码的字符串",
       "required": true
     },
     {
-      "name": "type",
+      "key": "type",
       "value": "text",
       "type": "string",
       "desc": "数据格式(text,json,img)",
       "required": false
     }
   ],
-  "dataType": "img",
-  "example": "/api/qrcode?text=https://kuizuo.cn"
+  "dataType": "img"
 }

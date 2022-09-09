@@ -5,6 +5,5 @@
   "path": "/api/ip",
   "method": "GET",
   "params": [],
-  "dataType": "text",
-  "example": "/api/ip"
+  "dataType": "text"
 }

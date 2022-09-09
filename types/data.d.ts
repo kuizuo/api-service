@@ -3,11 +3,13 @@ declare namespace IApi {
   type Method = 'GET' | 'POST' | 'PUT' | 'DELETE'
 
   interface Param {
-    name: string
+    id?: number;
+    key: string
     value: string
-    type: string
-    desc: string
-    required: boolean
+    type?: string
+    desc?: string
+    required?: boolean
+    active?: boolean
   }
 
   interface Doc {

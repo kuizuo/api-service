@@ -1,15 +1,14 @@
 <script lang='ts' setup>
 const props = defineProps<{
   url: string
+  path: string
   method: string
   dataType: string
-  urlExample: string
   params: IApi.Param[]
   response: any
 }>()
 
-const { url, method, dataType, urlExample } = toRefs(props)
-
+const urlExample = $ref(`${props.url}${props.path}?${props.params.map(param => `${param.key}=${param.value}`).join('&')}`)
 const dataTypeMap = {
   img: '图片',
   text: '文本',
@@ -55,8 +54,8 @@ const dataTypeMap = {
             <th>描述</th>
             <th>是否必须</th>
           </tr>
-          <tr v-for="param in params" :key="param.name" transition hover="bg-zinc-1 dark:hover:bg-gray-8">
-            <td>{{ param.name }}</td>
+          <tr v-for="param in params" :key="param.key" transition hover="bg-zinc-1 dark:hover:bg-gray-8">
+            <td>{{ param.key }}</td>
             <td>{{ param.value }}</td>
             <td>{{ param.type }}</td>
             <td>{{ param.desc }}</td>

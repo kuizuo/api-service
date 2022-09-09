@@ -5,6 +5,5 @@
   "path": "/api/fake",
   "method": "GET",
   "params": [],
-  "dataType": "json",
-  "example": "/api/fake/todos/1"
+  "dataType": "json"
 }

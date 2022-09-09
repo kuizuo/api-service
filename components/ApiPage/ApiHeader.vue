@@ -1,8 +1,7 @@
 <script setup lang="ts">
-const { name, desc, urlExample } = defineProps<{
+const { name, desc } = defineProps<{
   name: string
   desc: string
-  urlExample: string
 }>()
 </script>
 

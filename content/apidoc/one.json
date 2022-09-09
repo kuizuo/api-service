@@ -6,13 +6,12 @@
   "method": "GET",
   "params": [
     {
-      "name": "type",
+      "key": "type",
       "value": "json",
       "type": "string",
       "desc": "数据格式(text,json,img)",
       "required": false
     }
   ],
-  "dataType": "text",
-  "example": "/api/one"
+  "dataType": "text"
 }

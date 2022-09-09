@@ -11,9 +11,9 @@ const location = useBrowserLocation()
 const origin = location.value.origin ?? ''
 
 const { data } = await useAsyncData<Doc>(id, () => queryContent<Doc>('apidoc').where({ id }).findOne(), { server: true })
-const { name, desc, params, path, method, dataType, example, _path } = data.value
+const { name, desc, params, path, method, dataType, _path } = data.value
 const url = origin + path
-const urlExample = origin + example
+const urlExample = $ref(`${origin}${path}?${params.map(param => `${param.key}=${param.value}`).join('&')}`)
 
 const response = ref('')
 async function fetchExample() {
@@ -30,7 +30,7 @@ async function fetchExample() {
   }
   // console.log('response', response.value)
 }
-await fetchExample()
+fetchExample()
 
 const { data: { value: [prev, next] } } = await useAsyncData<Doc[]>(
   `${id}-findSurround`,
@@ -82,7 +82,7 @@ useHead({
 <template>
   <div>
     <div class="doc-info" mb-6>
-      <ApiHeader v-bind="{ name, desc, urlExample }" />
+      <ApiHeader v-bind="{ name, desc }" />
       <div>
         <ul class="tabs">
           <div
@@ -98,7 +98,7 @@ useHead({
 
         <div class="panel" mt-4>
           <keep-alive>
-            <component :is="component" v-bind="{ url, method, dataType, urlExample, params, response }" />
+            <component :is="component" v-bind="{ url, path, method, dataType, params, response }" />
           </keep-alive>
         </div>
       </div>

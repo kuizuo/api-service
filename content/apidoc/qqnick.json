@@ -6,13 +6,12 @@
   "method": "GET",
   "params": [
     {
-      "name": "qq",
+      "key": "qq",
       "value": "911993023",
       "type": "string",
       "desc": "QQ号",
       "required": true
     }
   ],
-  "dataType": "text",
-  "example": "/api/qqnick?qq=911993023"
+  "dataType": "text"
 }

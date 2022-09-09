@@ -6,20 +6,19 @@
   "method": "GET",
   "params": [
     {
-      "name": "width",
+      "key": "width",
       "value": "200",
       "type": "number",
       "desc": "图片宽度",
       "required": false
     },
     {
-      "name": "height",
+      "key": "height",
       "value": "200",
       "type": "number",
       "desc": "图片高度",
       "required": false
     }
   ],
-  "dataType": "img",
-  "example": "/api/img"
+  "dataType": "img"
 }
