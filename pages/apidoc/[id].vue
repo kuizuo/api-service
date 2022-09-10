@@ -17,6 +17,7 @@ const urlExample = $ref(`${origin}${path}?${params.map(param => `${param.key}=${
 
 const response = ref('')
 async function fetchExample() {
+  response.value = 'Loading...'
   if (dataType === 'img')
     return
 

@@ -82,7 +82,7 @@ const handleReqUrl = (newUrl: string) => {
 }
 
 async function sendApi() {
-  response = 'Loadding...'
+  response = 'Loading...'
   if (dataType === 'img')
     response = await (await fetch(reqUrl, { method })).text()
 
