@@ -1,5 +1,5 @@
-<script setup lang="ts">
-import cloneDeep from 'lodash/cloneDeep'
+<script lang="ts" setup>
+import cloneDeep from '~/utils/cloneDeep'
 
 const props = defineProps<{
   url: string

@@ -16,6 +16,7 @@ specifiers:
   dayjs: ^1.11.5
   eslint: ^8.22.0
   highlight.js: ^11.6.0
+  lodash: ^4.17.21
   lru-cache: ^7.14.0
   nuxt: ^3.0.0-rc.8
   pinia: ^2.0.20
@@ -28,6 +29,7 @@ dependencies:
   cheerio: 0.22.0
   dayjs: 1.11.5
   highlight.js: 11.6.0
+  lodash: 4.17.21
   lru-cache: 7.14.0
   qrcode: 1.5.1
   rate-limiter-flexible: 2.3.8
@@ -4873,7 +4875,6 @@ packages:
 
   /lodash/4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
-    dev: true
 
   /log-symbols/5.1.0:
     resolution: {integrity: sha512-l0x2DvrW294C9uDCoQe1VSU4gf529FkSZ6leBl4TiqZH/e+0R7hSfHQBNut2mNygDgHwvYHfFLn6Oxb3VWj2rA==}

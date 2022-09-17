@@ -1,6 +1,6 @@
 <template>
   <header class="background">
-    <Nav />
+    <BaseNav />
     <slot />
   </header>
 </template>

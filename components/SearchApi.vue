@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { storeToRefs } from 'pinia'
 const apiStore = useApiStore()
 const { searchName } = storeToRefs(apiStore)

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const { id, name, desc, index } = defineProps<{
   id: string | number
   name: string

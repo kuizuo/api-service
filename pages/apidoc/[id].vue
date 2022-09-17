@@ -1,4 +1,7 @@
-<script setup lang="ts">
+<script lang="ts" setup>
+import DocInfo from '~/components/doc/Info.vue'
+import DocTest from '~/components/doc/Test.vue'
+
 interface Doc extends IApi.Doc {
   title: string
   _path: string
@@ -13,7 +16,7 @@ const origin = location.value.origin ?? ''
 const { data } = await useAsyncData<Doc>(id, () => queryContent<Doc>('apidoc').where({ id }).findOne(), { server: true })
 const { name, desc, params, path, method, dataType, _path } = data.value
 const url = origin + path
-const urlExample = $ref(`${origin}${path}?${params.map(param => `${param.key}=${param.value}`).join('&')}`)
+const urlExample = $ref(`${origin}${path}?${params.filter(p => p.required).map(param => `${param.key}=${param.value}`).join('&')}`)
 
 const response = ref('')
 async function fetchExample() {
@@ -42,12 +45,12 @@ const tabs = [
   {
     title: '接口信息',
     name: 'info',
-    component: defineAsyncComponent(() => import('~/components/ApiPage/ApiInfo.vue')),
+    component: DocInfo,
   },
   {
     title: '接口测试',
     name: 'test',
-    component: defineAsyncComponent(() => import('~/components/ApiPage/ApiTest.vue')),
+    component: DocTest,
   },
 ]
 
@@ -66,6 +69,13 @@ function setActive(i, ev: Event) {
   underlineOffsetLeft = (ev.target as HTMLElement).offsetLeft
 }
 
+const style = computed(() => {
+  return {
+    width: `${underlineWidth}px`,
+    transform: `translateX(${underlineOffsetLeft}px)`,
+  }
+})
+
 const component = computed(() => tabs[active].component)
 
 useHead({
@@ -83,15 +93,10 @@ useHead({
 <template>
   <div>
     <div class="doc-info" mb-6>
-      <ApiHeader v-bind="{ name, desc }" />
+      <DocHeader v-bind="{ name, desc }" />
       <div>
         <ul class="tabs">
-          <div
-            class="tabs-items__underline" :style="{
-              width: `${underlineWidth}px`,
-              transform: `translateX(${underlineOffsetLeft}px)`,
-            }"
-          />
+          <div class="tabs-items__underline" :style="style" />
           <li v-for="(item, i) in tabs" :key="i" :name="item.name" class="tabs-item" @click="setActive(i, $event)">
             {{ item.title }}
           </li>
@@ -104,7 +109,7 @@ useHead({
         </div>
       </div>
     </div>
-    <ApiPagination v-bind="{ prev, next }" />
+    <DocPagination v-bind="{ prev, next }" />
   </div>
 </template>
 

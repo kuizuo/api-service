@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const { name, desc } = defineProps<{
   name: string
   desc: string

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import hljs from 'highlight.js'
 import json from 'highlight.js/lib/languages/json'
 import python from 'highlight.js/lib/languages/python'

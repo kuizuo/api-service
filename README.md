@@ -3,7 +3,7 @@ KZ API
 </h2><br>
 
 <pre align="center">
-🧪 基于Nuxt3 + Vite3 + Vue3 + UnoCSS搭建的API接口服务网站
+🧪 基于 Nuxt3 + Vite3 + Vue3 + UnoCSS 搭建的 API 接口服务网站
 </pre>
 
 <p align="center">
@@ -23,12 +23,13 @@ KZ API
 
 ## Features
 
+整理稳定、快速、好用的 API 接口
+
 - [x] 接口文档
 - [x] 接口限流
 - [x] 接口缓存
-- [ ] 接口计次
-- [ ] 接口分类
-- [ ] 代码示例
+- [x] 接口测试
+- [ ] 接口监控
 
 ## Installation
 

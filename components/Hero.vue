@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const apiStore = await useApiStore()
 const count = apiStore.count
 
@@ -26,7 +26,7 @@ useHead({
     <p text-sm>
       共收录了 <span class="text-pink">{{ count }}</span> 个 API 接口
     </p>
-    <InputEntry />
+    <SearchApi />
   </div>
 </template>
 
