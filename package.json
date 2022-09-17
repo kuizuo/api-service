@@ -1,6 +1,19 @@
 {
+  "name": "api-service",
+  "version": "0.1.0",
   "private": true,
-  "packageManager": "pnpm@7.5.0",
+  "packageManager": "pnpm@7.11.0",
+  "description": "基于Nuxt3 + Vite3 + Vue3 + UnoCSS搭建的API接口服务网站",
+  "author": {
+    "url": "https://kuizuo.cn",
+    "email": "hi@kuizuo.cn",
+    "name": "Kuizuo"
+  },
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/kuizuo/api-service",
+    "type": "git"
+  },
   "scripts": {
     "build": "nuxi build",
     "dev": "nuxi dev",
