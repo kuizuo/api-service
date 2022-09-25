@@ -31,13 +31,33 @@ KZ API
 - [x] 接口测试
 - [ ] 接口监控
 
-## Installation
+## Usage
 
 ```
 git clone https://github.com/kuizuo/api-service
 cd api-service
 pnpm i
 ```
+
+### Development
+
+```
+pnpm dev
+```
+
+### Build
+
+```
+pnpm build
+```
+
+### Deploy on Vercel
+
+转到 [Vercel](https://vercel.com) 并选择您的项目，选择“Develop”，您的应用程序将在一分钟内上线。
+
+## Why
+
+我个人经常与 API 接口打交道，因而收集了些常用的 api。但这些 api 接口调用方式各不相同，所以编写这个项目为了将这些接口整合到一起，进行易用性的封装，使其更易调用。
 
 ## License
 
