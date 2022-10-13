@@ -102,7 +102,7 @@ addParam()
 <template>
   <div>
     <div class="api-url-panel" flex font-sans>
-      <div class="api-url-ground" flex flex-1 gap-2 bg-zinc-1 rounded>
+      <div class="api-url-ground" flex flex-1 gap-2 bg-zinc-1 dark:bg-gray-8 rounded>
         <select v-model="method" name="method" p-2 bg-transparent outline-none cursor-pointer>
           <option value="GET">
             GET
@@ -128,7 +128,7 @@ addParam()
         发送
       </button>
     </div>
-    <hr class="my-4 border-none bg-[#e6e6e6] h-1px">
+    <hr class="my-4 border-none bg-[#e6e6e6] dark:bg-[#1f2937] h-1px">
     <div class="api-param">
       <div class="api-table-container rounded">
         <table class="api-table api-table-border">
@@ -215,7 +215,7 @@ addParam()
         </table>
       </div>
     </div>
-    <hr class="my-4 border-none bg-[#e6e6e6] h-1px">
+    <hr class="my-4 border-none bg-gray-2 dark:bg-gray-6 h-1px">
     <div class="api-response">
       <CodeView :code="response" language="json" />
     </div>
@@ -231,14 +231,13 @@ addParam()
   border-radius: 4px;
   overflow-y: hidden;
   border-width: 0;
-  color: #666;
   font-size: 12px;
   font-family: PingFang SC;
   resize: none;
-  caret-color: var(--fn1);
   top: 0;
   left: 0;
   overflow: auto;
+  --at-apply: bg-gray-1 dark:bg-gray-8;
 }
 
 .api-textarea-wrapper {
@@ -321,15 +320,10 @@ addParam()
 
 .api-table .api-table-th td {
   font-weight: 400;
-  color: #909399;
-  background-color: #f2f3f5;
   position: relative;
   text-align: center;
   padding: 4px 0;
-}
-
-.api-table .api-table-tr {
-  border-bottom: 1px solid #ebeef5;
+  --at-apply: text-gray-8 bg-gray-1 dark:text-gray-2 dark:bg-gray-8;
 }
 
 .api-table .api-table-td {
@@ -337,8 +331,8 @@ addParam()
   vertical-align: middle;
   position: relative;
   word-break: break-all;
-  color: #606266;
   font-size: 14px;
+  --at-apply: text-gray-5 dark:text-gray-2;
 }
 
 tbody td .api-table-cell {
@@ -374,6 +368,6 @@ tbody td .api-table-cell {
 
 .api-table.api-table-border,
 .api-table.api-table-border td {
-  border: 1px solid #ebeef5;
+  --at-apply: b-1 b-gray-2 dark:b-gray-6;
 }
 </style>

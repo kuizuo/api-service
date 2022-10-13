@@ -3,11 +3,10 @@ import pkg from '~/package.json'
 </script>
 
 <template>
-  <nav px-4 text-white flex="~ gap-2">
+  <nav px-4 flex="~ gap-2">
     <NuxtLink to="/" flex gap-2 items-center>
-      <img src="/logo.png" h-8>
-      <div font-mono font-bold>
-        KZ API
+      <div>
+        <i i-mdi:api class="text-[#007CF0] text-xl inline-block cursor-pointer select-none transition duration-200 ease-in-out hover:animate-swing" />
       </div>
     </NuxtLink>
 

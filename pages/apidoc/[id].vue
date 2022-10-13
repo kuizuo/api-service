@@ -96,7 +96,7 @@ useHead({
       <DocHeader v-bind="{ name, desc }" />
       <div>
         <ul class="tabs">
-          <div class="tabs-items__underline" :style="style" />
+          <div class="tabs-items__underline content-none" :style="style" />
           <li v-for="(item, i) in tabs" :key="i" :name="item.name" class="tabs-item" @click="setActive(i, $event)">
             {{ item.title }}
           </li>
@@ -167,12 +167,10 @@ html.dark .tabs-item:hover {
 }
 
 .tabs-items__underline {
-  contain: '';
   background: #ccc;
   position: absolute;
   bottom: 0;
   left: 0;
-  z-index: -1;
   height: 2px;
   transition: all .3s ease;
 }

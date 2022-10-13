@@ -1,5 +1,5 @@
 <template>
-  <header class="background">
+  <header>
     <BaseNav />
     <slot />
   </header>

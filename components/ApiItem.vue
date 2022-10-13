@@ -27,7 +27,7 @@ const color = computed(() => colors[index % colors.length])
 <template>
   <div
     py-3 px-4 h-26 border="~ rounded-lg 2 transparent" flex="~ col" transition duration-200 shadow="~ lg"
-    :class="`group shadow-${color}-500/20 ring-${color}-500 `" hover="~ ring-2"
+    :class="`group shadow-${color}-500/20 ring-${color}-500 hover:ring-2 hover:bg-${color}-500/10`"
   >
     <div flex="~ row" justify-between items-center>
       <h3 text="xl left" font-sans font-extrabold transition duration-150 :class="`text-${color}-500`">
@@ -37,7 +37,7 @@ const color = computed(() => colors[index % colors.length])
       </h3>
       <NuxtLink :to="href">
         <div class="transition-opacity duration-200 ease-in-out rounded-full opacity-0 group-hover:opacity-100">
-          <i i-carbon-arrow-right icon-btn />
+          <i i-carbon-arrow-right inline-block cursor-pointer select-none opacity-75 transition duration-200 ease-in-out hover:opacity-100 :class="`text-${color}-500`" />
         </div>
       </NuxtLink>
     </div>

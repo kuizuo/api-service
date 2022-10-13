@@ -30,7 +30,7 @@ onUpdated(() => {
   <div>
     <pre
       :class="`language-${props.language ?? 'json'}`"
-      class="min-h-10 text-sm h-full min-w-max"
-    ><code>{{ props.code }}</code></pre>
+      class="min-h-10 text-sm h-full min-w-max "
+    ><code dark:text-gray-1 dark:bg-gray-8>{{ props.code }}</code></pre>
   </div>
 </template>
