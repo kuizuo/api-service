@@ -10,15 +10,15 @@ import {
 } from 'unocss'
 
 const colors = [
-  'red',
   'cyan',
   'green',
-  'purple',
-  'yellow',
   'blue',
+  'purple',
+  'red',
   'pink',
-  'indigo',
   'orange',
+  'indigo',
+  'yellow',
 ]
 
 const safelist = [

@@ -13,8 +13,8 @@ const id = $computed(() => router.params.id as string)
 const location = useBrowserLocation()
 const origin = location.value.origin ?? ''
 
-const { data } = await useAsyncData<Doc>(id, () => queryContent<Doc>('apidoc').where({ id }).findOne(), { server: true })
-const { name, desc, params, path, method, dataType, _path } = data.value
+const { data } = await useAsyncData<Doc>(`content-${id}`, () => queryContent<Doc>('apidoc').where({ id: { $eq: id } }).findOne(), { server: true })
+const { name, desc, params, path, method, dataType, _path } = data.value!
 const url = origin + path
 const urlExample = $ref(`${origin}${path}?${params.filter(p => p.required).map(param => `${param.key}=${param.value}`).join('&')}`)
 

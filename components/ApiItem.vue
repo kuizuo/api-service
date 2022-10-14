@@ -10,15 +10,15 @@ const docPath = 'apidoc'
 const href = ref(`/${docPath}/${id}`)
 
 const colors = [
-  'red',
   'cyan',
   'green',
-  'purple',
-  'yellow',
   'blue',
+  'purple',
+  'red',
   'pink',
-  'indigo',
   'orange',
+  'indigo',
+  'yellow',
 ]
 
 const color = computed(() => colors[index % colors.length])
