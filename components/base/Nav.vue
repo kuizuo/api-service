@@ -13,8 +13,11 @@ import pkg from '~/package.json'
     <div flex-auto />
 
     <div text="xl" my-4 flex justify-center gap-3>
-      <DarkToggle />
-      <a i-carbon-logo-github :href="pkg.repository.url" target="_blank" />
+      <NuxtLink to="/about" flex gap-2 items-center>
+        <span text-base font-sans icon-btn>关于</span>
+      </NuxtLink>
+      <DarkToggle icon-btn />
+      <a i-carbon-logo-github icon-btn :href="pkg.repository.url" target="_blank" />
     </div>
   </nav>
 </template>

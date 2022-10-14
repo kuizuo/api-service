@@ -1,34 +1,26 @@
+<script setup lang="ts">
+definePageMeta({
+  layout: 'markdown',
+})
+</script>
+
 <template>
-  <footer bg-gray-7 text-white font-sans>
-    <div container px-12 py-8 flex="~ col" md:flex="~ row" gap-5>
-      <div>
-        <h4 font-bold text-xl>
-          关于本项目
-        </h4>
-        <p text-sm mt-3>
-          KZ API 是 <a href="https://kuizuo.cn" underline underline-dashed underline-lightBlue>kuizuo</a> 整理稳定、快速、好用的 API 接口，供各大开发者使用。
-        </p>
-        <p text-sm mt-2>
-          KZ API 接口服务平台对接口进行封装维护，提供接口文档等相关信息。
-        </p>
-        <p text-sm mt-2>
-          API 接口均来自网络，如有侵权，请联系作者删除！
-        </p>
+  <div class="markdown" font-sans>
+    <ContentDoc v-slot="{ doc }" path="/about">
+      <div class="text-center">
+        <h1 text-2xl>
+          {{ doc.title }}
+        </h1>
       </div>
-      <div w-20>
-        <h4 font-bold text-xl>
-          相关链接
-        </h4>
-        <ul mt-3>
-          <li>
-            <a href="https://kuizuo.cn" hover="underline underline-lightBlue">愧怍的小站</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div mt-8 text-center font-sans>
-      Copyright © {{ new Date().getFullYear() }} 愧怍 Built with Nuxt3
-    </div>
-  </footer>
+      <ContentRenderer :value="doc" />
+    </ContentDoc>
+  </div>
 </template>
 
+<style>
+.markdown h2>a,
+.markdown h3>a {
+  text-decoration-line: none;
+  --at-apply: "relative font-sans text-2xl no-underline hover:(underline underline-dashed)";
+}
+</style>

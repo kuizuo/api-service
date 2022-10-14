@@ -5,7 +5,7 @@ import type { IApiInfo } from '~~/types/data'
 const apiStore = useApiStore()
 
 const { data } = await useAsyncData<IApiInfo[]>('api-list', async () => {
-  const result = await queryContent<IApiInfo>().find()
+  const result = await queryContent<IApiInfo>('apidoc').find()
   apiStore.apiList = result
   return result
 })

@@ -237,7 +237,7 @@ addParam()
   top: 0;
   left: 0;
   overflow: auto;
-  --at-apply: bg-gray-1 dark:bg-gray-8;
+  --at-apply: "bg-gray-1 dark:bg-gray-8";
 }
 
 .api-textarea-wrapper {
@@ -323,7 +323,7 @@ addParam()
   position: relative;
   text-align: center;
   padding: 4px 0;
-  --at-apply: text-gray-8 bg-gray-1 dark:text-gray-2 dark:bg-gray-8;
+  --at-apply: "text-gray-8 bg-gray-1 dark:text-gray-2 dark:bg-gray-8";
 }
 
 .api-table .api-table-td {
@@ -332,7 +332,7 @@ addParam()
   position: relative;
   word-break: break-all;
   font-size: 14px;
-  --at-apply: text-gray-5 dark:text-gray-2;
+  --at-apply: "text-gray-5 dark:text-gray-2";
 }
 
 tbody td .api-table-cell {
@@ -368,6 +368,6 @@ tbody td .api-table-cell {
 
 .api-table.api-table-border,
 .api-table.api-table-border td {
-  --at-apply: b-1 b-gray-2 dark:b-gray-6;
+  --at-apply: "b-1 b-gray-2 dark:b-gray-6";
 }
 </style>
