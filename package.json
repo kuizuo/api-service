@@ -18,6 +18,8 @@
     "build": "nuxi build",
     "dev": "nuxi dev",
     "start": "node .output/server/index.mjs",
+    "start:pm2": "pm2 start ecosystem.config.js --env production",
+    "preview": "nuxi preview",
     "lint": "eslint ."
   },
   "devDependencies": {
