@@ -5,6 +5,7 @@ import { TimeUnitMap } from '~~/utils/time'
 export default defineEventHandler(async (event) => {
   event.context.cache = { ttl: TimeUnitMap.hour }
   const { website, type = 'text' } = useQuery(event)
+  const { res } = event
 
   if (!website)
     throw createError({ statusCode: 400, message: '网站不能为空' })
@@ -23,8 +24,8 @@ export default defineEventHandler(async (event) => {
   else href = new URL('favicon.ico', origin).href
 
   if (type === 'img') {
-    event.res.setHeader('Content-Type', 'image/x-icon')
-    return Buffer.from(await (await fetch(href)).arrayBuffer())
+    res.setHeader('Content-Type', 'image/x-icon')
+    res.end(Buffer.from(await (await fetch(href)).arrayBuffer()))
   }
   else {
     return href

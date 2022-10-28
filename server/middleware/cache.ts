@@ -22,8 +22,12 @@ export default defineEventHandler(async (event) => {
   if (/^\/api\/[A-Za-z0-9].*/.test(req.url || '')) {
     const key = req.url
     const cached = cache.get(key)
-    if (cached)
+    if (cached) {
+      if (typeof cached !== 'string')
+        res.setHeader('Content-Type', 'image/svg+xml;charset=utf-8')
+
       return res.end(cached)
+    }
 
     const original_res_end = res.end
     res.end = function (...args: any): ServerResponse {

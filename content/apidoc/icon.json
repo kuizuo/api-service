@@ -1,0 +1,9 @@
+{
+  "id": "icon",
+  "name": "icon图标",
+  "desc": "来源于 api.iconify.design",
+  "path": "/api/icon",
+  "method": "GET",
+  "params": [],
+  "dataType": "json"
+}

@@ -30,7 +30,7 @@ function genUrl(params: IApi.Param[]) {
     .map(p => `${p.key ?? ''}=${p.value ?? ''}`)
     .join('&')
 
-  return `${url}?${querys}`
+  return `${url}${querys ? '?' : ''}${querys}`
 }
 
 const addParam = () => {

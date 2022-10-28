@@ -8,7 +8,7 @@ const props = defineProps<{
   response: any
 }>()
 
-const urlExample = $ref(`${props.url}?${props.params.filter(p => p.required).map(param => `${param.key}=${param.value}`).join('&')}`)
+const urlExample = $ref(`${props.url}${props.params.length ? '?' : ''}${props.params.filter(p => p.required).map(param => `${param.key}=${param.value}`).join('&')}`)
 const dataTypeMap = {
   img: '图片',
   text: '文本',
