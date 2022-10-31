@@ -14,6 +14,7 @@ const location = useBrowserLocation()
 const origin = location.value.origin ?? ''
 
 const { data } = await useAsyncData<Doc>(`content-${id}`, () => queryContent<Doc>('apidoc').where({ id: { $eq: id } }).findOne(), { server: true })
+const { data: count } = await useFetch(`/api/count?id=${id}`)
 const { name, desc, params, path, method, dataType, _path } = data.value!
 const url = origin + path
 const urlExample = $ref(`${origin}${path}?${params.filter(p => p.required).map(param => `${param.key}=${param.value}`).join('&')}`)
@@ -93,7 +94,7 @@ useHead({
 <template>
   <div>
     <div class="doc-info" mb-6>
-      <DocHeader v-bind="{ name, desc }" />
+      <DocHeader v-bind="{ name, desc, count }" />
       <div>
         <ul class="tabs">
           <div class="tabs-items__underline content-none" :style="style" />

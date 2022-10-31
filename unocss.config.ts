@@ -26,6 +26,7 @@ const safelist = [
   ...colors.map(v => `ring-${v}-500`),
   ...colors.map(v => `shadow-${v}-500/20`),
   ...colors.map(v => `hover:bg-${v}-500/10`),
+  ...colors.map(v => `hover:text-${v}-500`),
 ]
 
 export default defineConfig({

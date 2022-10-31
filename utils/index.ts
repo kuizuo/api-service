@@ -20,3 +20,7 @@ export async function getImgContentType(buffer: Buffer | Uint8Array) {
 export function getIP(req: IncomingMessage) {
   return ((req.headers['x-forwarded-for'] as string) || req.socket?.remoteAddress as string).replace('::ffff:', '')
 }
+
+export function getUrlId(url: string) {
+  return url?.match(/^\/api\/(.*?)[/?\s]/)?.[1] ?? ''
+}

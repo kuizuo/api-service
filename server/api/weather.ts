@@ -1,4 +1,4 @@
-import { getCityCode } from '~~/utils/contant'
+import { getCityCode } from '~~/utils/city'
 import { TimeUnitMap } from '~~/utils/time'
 
 interface Query {

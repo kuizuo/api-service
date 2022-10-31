@@ -21,9 +21,10 @@ declare namespace IApi {
     params: Param[]
     dataType: DataType
     example: string
+    count: number 
   }
 
-  interface Info extends Pick<Doc, 'id' | 'name' | 'desc'> { }
+  interface Info extends Pick<Doc, 'id' | 'name' | 'desc'| 'count'> { }
 }
 
 

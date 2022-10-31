@@ -3,7 +3,7 @@ KZ API
 </h2><br>
 
 <pre align="center">
-🧪 基于 Nuxt3 + Vite3 + Vue3 + UnoCSS 搭建的 API 接口服务网站
+🧪 基于 Nuxt3 搭建的 API 接口服务网站
 </pre>
 
 <p align="center">
@@ -17,10 +17,6 @@ KZ API
 
 ![KZ API](https://img.kuizuo.cn/KZ%20API.png)
 
-## Template
-
-[Vitesse for Nuxt 3 🏔💚⚡️](https://github.com/antfu/vitesse-nuxt3)
-
 ## Features
 
 整理稳定、快速、好用的 API 接口
@@ -29,6 +25,7 @@ KZ API
 - [x] 接口限流
 - [x] 接口缓存
 - [x] 接口测试
+- [x] 接口计次
 - [ ] 接口监控
 
 ## Usage

@@ -1,7 +1,8 @@
 <script lang="ts" setup>
-const { name, desc } = defineProps<{
+const { name, desc, count } = defineProps<{
   name: string
   desc: string
+  count: number
 }>()
 </script>
 
@@ -10,8 +11,10 @@ const { name, desc } = defineProps<{
     <div class="flex justify-between items-center">
       <h2 text-2xl font-600 mr-1 inline-flex items-center gap-1>
         {{ name }}
-        <i icon-btn i-carbon-checkmark-filled text-green />
       </h2>
+      <p mt-2 text-sm icon-btn inline-flex items-center>
+        <i i-carbon-star /> 共被调用 {{ count ?? 0 }} 次
+      </p>
     </div>
     <p mt-2 p-4 text-sm border="l-5 blue">
       {{ desc }}

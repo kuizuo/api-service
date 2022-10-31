@@ -3,7 +3,14 @@ const apiStore = useApiStore()
 
 const { data } = await useAsyncData<IApi.Info[]>('api-list', async () => {
   const result = await queryContent<IApi.Info>('apidoc').find()
-  apiStore.apiList = result
+
+  const apiCount = JSON.parse(await $fetch('/api/count'))
+
+  apiStore.apiList = result.map((r) => {
+    const count = apiCount.find(c => c.id === r.id)?.count ?? 0
+    return { ...r, count }
+  })
+
   return result
 })
 </script>
