@@ -39,6 +39,7 @@
     "dayjs": "^1.11.5",
     "eslint": "^8.22.0",
     "highlight.js": "^11.6.0",
+    "image-type": "^5.1.0",
     "lru-cache": "^7.14.0",
     "nuxt": "^3.0.0-rc.8",
     "pinia": "^2.0.20",

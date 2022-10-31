@@ -1,10 +1,14 @@
 import { gbkDecode } from '~~/utils/encoding'
 import { TimeUnitMap } from '~~/utils/time'
 
+interface Query {
+  qq: string
+}
+
 export default defineEventHandler(async (event) => {
   event.context.cache = { ttl: TimeUnitMap.hour }
 
-  const { qq } = useQuery(event)
+  const { qq } = useQuery<Query>(event)
 
   if (!qq)
     throw createError({ statusCode: 400, message: 'QQ不能为空' })

@@ -1,8 +1,7 @@
-import { TimeUnitMap } from '~~/utils/time'
+import { getIP } from '~~/utils'
 
 export default defineEventHandler(async (event) => {
-  event.context.cache = { ttl: TimeUnitMap.hour }
+  const ip = getIP(event.req)
 
-  const data = await (await fetch('http://whois.pconline.com.cn/ipJson.jsp?ip=&json=true')).json()
-  return data.ip
+  return ip
 })

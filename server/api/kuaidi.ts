@@ -1,7 +1,7 @@
 import { TimeUnitMap } from '~~/utils/time'
 
 export default defineEventHandler(async (event) => {
-  event.context.cache = { ttl: TimeUnitMap.second * 10 }
+  event.context.cache = { ttl: TimeUnitMap.second * 5 }
   const { name, postid } = useQuery(event)
 
   if (!name)

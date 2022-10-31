@@ -1,7 +1,7 @@
 {
   "id": "favicon",
-  "name": "网站icon图标",
-  "desc": "获取网站icon图标地址",
+  "name": "网站favicon图标",
+  "desc": "获取网站favicon图标地址",
   "path": "/api/favicon",
   "method": "GET",
   "params": [

@@ -1,6 +1,7 @@
 import type { ServerResponse } from 'h3'
 import { defaultContentType } from 'h3'
 import LRU from 'lru-cache'
+import { getImgMine } from '~~/utils'
 import { TimeUnitMap } from '~~/utils/time'
 
 const options = {
@@ -23,10 +24,14 @@ export default defineEventHandler(async (event) => {
     const key = req.url
     const cached = cache.get(key)
     if (cached) {
-      if (typeof cached !== 'string')
-        res.setHeader('Content-Type', 'image/svg+xml;charset=utf-8')
+      if (Buffer.isBuffer(cached)) {
+        const contentType = `${await getImgMine(cached)};charset=utf-8`
+        res.setHeader('Content-Type', contentType)
 
-      return res.end(cached)
+        return Buffer.from(cached)
+      }
+
+      return cached
     }
 
     const original_res_end = res.end
@@ -34,16 +39,9 @@ export default defineEventHandler(async (event) => {
       // 这里的args就是 res.end 调用的参数
 
       const data = args?.[0]
-      if (data) {
-        if (context.cache) {
-          if (!context.cache.disable) {
-            const options = context.cache
-            cache.set(key, data, options)
-          }
-        }
-        else {
-          cache.set(key, data)
-        }
+      if (data && context.cache) {
+        const options = context.cache
+        cache.set(key, data, options)
       }
 
       // 最后可别忘了调用原始的 res.end，不然客户端一直处于等待状态

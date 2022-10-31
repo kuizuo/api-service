@@ -4,6 +4,7 @@ import { TimeUnitMap } from '~~/utils/time'
 
 export default defineEventHandler(async (event) => {
   event.context.cache = { ttl: TimeUnitMap.hour }
+
   const { website, type = 'text' } = useQuery(event)
   const { res } = event
 
@@ -25,7 +26,7 @@ export default defineEventHandler(async (event) => {
 
   if (type === 'img') {
     res.setHeader('Content-Type', 'image/x-icon')
-    res.end(Buffer.from(await (await fetch(href)).arrayBuffer()))
+    return Buffer.from(await (await fetch(href)).arrayBuffer())
   }
   else {
     return href

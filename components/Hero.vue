@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 const apiStore = await useApiStore()
-const count = apiStore.count
 
 const desc = '一个 稳定、快速、好用的 API 接口服务'
 
@@ -26,7 +25,7 @@ useHead({
       {{ desc }}
     </p>
     <p class="text-sm text-transparent bg-clip-text bg-gradient-to-r from-[#FF4D4D] to-[#F9CB28]">
-      共收录了 <span class="text-pink">{{ count }}</span> 个 API 接口
+      共收录了 <span class="text-pink">{{ apiStore.count }}</span> 个 API 接口
     </p>
     <!-- <SearchApi /> -->
   </div>

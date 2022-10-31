@@ -1,14 +1,12 @@
 <script lang="ts" setup>
-import { storeToRefs } from 'pinia'
 const apiStore = useApiStore()
-const { searchName } = storeToRefs(apiStore)
 </script>
 
 <template>
   <div relative w="400px" m="t-5" flex>
     <input
       id="input"
-      v-model="searchName"
+      v-model="apiStore.searchName"
       placeholder="查找 API 接口?"
       type="text" autocomplete="off"
       p="x-8 y-2"

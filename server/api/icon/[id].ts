@@ -2,7 +2,6 @@ import { TimeUnitMap } from '~~/utils/time'
 
 export default defineEventHandler(async (event) => {
   event.context.cache = { ttl: TimeUnitMap.day }
-  const { res } = event
   let { id } = event.context.params
 
   if (!id.includes('.'))
@@ -14,6 +13,6 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 404, message: 'Icon Not Found' })
 
   const arrayBuffer = await response.arrayBuffer()
-  res.setHeader('Content-Type', 'image/svg+xml;charset=utf-8')
-  res.end(Buffer.from(arrayBuffer))
+  event.res.setHeader('Content-Type', 'image/svg+xml;charset=utf-8')
+  return Buffer.from(arrayBuffer)
 })

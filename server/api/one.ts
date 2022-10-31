@@ -1,7 +1,7 @@
 import { TimeUnitMap } from '~~/utils/time'
 
 export default defineEventHandler(async (event) => {
-  event.context.cache = { ttl: TimeUnitMap.second * 5 }
+  event.context.cache = { ttl: TimeUnitMap.second * 3 }
 
   const { type = 'text' } = useQuery(event)
   const data = await (await fetch('https://v1.hitokoto.cn/')).json()

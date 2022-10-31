@@ -1,0 +1,22 @@
+{
+  "id": "bing-wallpaper",
+  "name": "Bing壁纸",
+  "desc": "获取Bing每日壁纸",
+  "path": "/api/bing-wallpaper",
+  "method": "GET",
+  "params": [{
+    "key": "type",
+    "value": "img",
+    "type": "string",
+    "desc": "数据格式(text,json,img)",
+    "required": false
+  },
+  {
+    "key": "region",
+    "value": "zh-CN",
+    "type": "string",
+    "desc": "地区",
+    "required": false
+  }],
+  "dataType": "img"
+}

@@ -27,4 +27,4 @@ declare namespace IApi {
 }
 
 
-declare function useQuery<T extends Record<string, string>>(event: CompatibilityEvent): T & { type: IApi.DataType }
+declare function useQuery<T extends Record<string, any>>(event: CompatibilityEvent): T & { type: IApi.DataType }

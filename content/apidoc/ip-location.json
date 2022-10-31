@@ -1,8 +1,8 @@
 {
-  "id": "ip_location",
+  "id": "ip-location",
   "name": "IP归属地",
   "desc": "根据IP获取归属地与城市信息邮编",
-  "path": "/api/ip_location",
+  "path": "/api/ip-location",
   "method": "GET",
   "params": [
     {

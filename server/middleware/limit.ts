@@ -1,5 +1,5 @@
-import type{ IncomingMessage } from 'h3'
 import { RLWrapperBlackAndWhite, RateLimiterMemory } from 'rate-limiter-flexible'
+import { getIP } from '~~/utils'
 
 const rateLimiter = new RLWrapperBlackAndWhite({
   limiter: new RateLimiterMemory({
@@ -7,10 +7,6 @@ const rateLimiter = new RLWrapperBlackAndWhite({
     duration: 2,
   }),
 })
-
-function getIP(req: IncomingMessage) {
-  return ((req.headers['x-forwarded-for'] as string) || req.socket?.remoteAddress as string).replace('::ffff:', '')
-}
 
 export default defineEventHandler(async (event) => {
   const { req, res } = event
