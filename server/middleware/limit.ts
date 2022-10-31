@@ -3,8 +3,8 @@ import { RLWrapperBlackAndWhite, RateLimiterMemory } from 'rate-limiter-flexible
 
 const rateLimiter = new RLWrapperBlackAndWhite({
   limiter: new RateLimiterMemory({
-    points: 1,
-    duration: 1,
+    points: 5,
+    duration: 2,
   }),
 })
 
