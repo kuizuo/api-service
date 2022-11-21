@@ -1,5 +1,3 @@
-import { defineNuxtConfig } from 'nuxt'
-
 export default defineNuxtConfig({
   modules: [
     '@vueuse/nuxt',
@@ -8,9 +6,22 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@nuxt/content',
   ],
+  content: {
+    documentDriven: false,
+    markdown: {
+      mdc: true,
+    },
+    highlight: {
+      theme: {
+        default: 'github-light',
+        dark: 'github-dark',
+        sepia: 'monokai',
+      },
+    },
+  },
   experimental: {
     reactivityTransform: true,
-    viteNode: false,
+    viteNode: true,
   },
   unocss: {
     preflight: true,

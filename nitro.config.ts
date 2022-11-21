@@ -4,7 +4,6 @@ export default defineNitroConfig({
   storage: {
     redis: {
       driver: 'redis',
-
     },
   },
 })

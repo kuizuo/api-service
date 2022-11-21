@@ -5,7 +5,7 @@ import { TimeUnitMap } from '~~/utils/time'
 export default defineEventHandler(async (event) => {
   event.context.cache = { ttl: TimeUnitMap.hour }
 
-  const { website, type = 'text' } = useQuery(event)
+  const { website, type = 'text' } = getQuery(event)
   const { res } = event
 
   if (!website)

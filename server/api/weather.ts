@@ -8,7 +8,7 @@ interface Query {
 export default defineEventHandler(async (event) => {
   event.context.cache = { ttl: TimeUnitMap.hour }
 
-  const { city = '' } = useQuery<Query>(event)
+  const { city = '' } = getQuery<Query>(event)
 
   const id = getCityCode(city)
 

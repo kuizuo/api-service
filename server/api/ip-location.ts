@@ -10,7 +10,7 @@ export default defineEventHandler(async (event) => {
   event.context.cache = { ttl: TimeUnitMap.hour }
 
   // eslint-disable-next-line prefer-const
-  let { ip, type = 'text' } = useQuery<Query>(event)
+  let { ip, type = 'text' } = getQuery<Query>(event)
 
   if (!ip)
     ip = getIP(event.req)

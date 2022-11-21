@@ -8,7 +8,7 @@ interface Query {
 export default defineEventHandler(async (event) => {
   event.context.cache = { ttl: TimeUnitMap.hour }
 
-  const { qq } = useQuery<Query>(event)
+  const { qq } = getQuery<Query>(event)
 
   if (!qq)
     throw createError({ statusCode: 400, message: 'QQ不能为空' })

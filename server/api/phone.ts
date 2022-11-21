@@ -8,7 +8,7 @@ interface Query {
 export default defineEventHandler(async (event) => {
   event.context.cache = { ttl: TimeUnitMap.hour }
 
-  const { phone, type = 'text' } = useQuery<Query>(event)
+  const { phone, type = 'text' } = getQuery<Query>(event)
 
   if (!phone)
     throw createError({ statusCode: 400, message: '手机号不能为空' })

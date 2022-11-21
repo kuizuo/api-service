@@ -8,7 +8,7 @@ interface Query {
 export default defineEventHandler(async (event) => {
   event.context.cache = { ttl: TimeUnitMap.hour }
 
-  const { text, type = 'img' } = useQuery<Query>(event)
+  const { text, type = 'img' } = getQuery<Query>(event)
 
   if (!text)
     throw createError({ statusCode: 400, message: '文本不能为空' })

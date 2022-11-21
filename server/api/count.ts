@@ -3,7 +3,7 @@ import { TimeUnitMap } from '~~/utils/time'
 export default defineEventHandler(async (event) => {
   event.context.cache = { ttl: TimeUnitMap.minute }
 
-  const { id } = useQuery<{ id: string }>(event)
+  const { id } = getQuery<{ id: string }>(event)
 
   if (id)
     return await useStorage().getItem(`redis:log:${id}`)

@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
   const tMonth = String(new Date().getMonth() + 1)
   const tDay = String(new Date().getDate())
 
-  let { month = tMonth, day = tDay } = useQuery(event)
+  let { month = tMonth, day = tDay } = getQuery(event)
 
   if (!(_.inRange(Number(month), 1, 13) && _.inRange(Number(day), 1, 32)))
     throw createError({ statusCode: 400, message: '日期或月份不正确' })

@@ -5,7 +5,7 @@ interface Query {
 }
 
 export default defineEventHandler(async (event) => {
-  const { type = 'img', region = 'zh-CN' } = useQuery<Query>(event)
+  const { type = 'img', region = 'zh-CN' } = getQuery<Query>(event)
 
   if (type === 'img') {
     const cache = await useStorage().getItem('cache:bing-wallpaper')
