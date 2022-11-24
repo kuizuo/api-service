@@ -3,14 +3,13 @@ import cloneDeep from '~/utils/cloneDeep'
 
 const props = defineProps<{
   url: string
+  urlExample: string
   method: string
   dataType: string
   params: IApi.Param[]
-  response: string
 }>()
 
 const { url, method, params, dataType } = props
-let response = $ref(props.response)
 
 let idTicker = $ref(0)
 
@@ -138,7 +137,7 @@ addParam()
                 <span class="api-table-cell" />
               </td>
               <td class="api-table-td" style="width: auto">
-                <span class="api-table-cell ">参数名</span>
+                <span class="api-table-cell">参数名</span>
               </td>
               <td class="api-table-td" style="width: auto">
                 <span class="api-table-cell">参数值</span>
@@ -217,7 +216,7 @@ addParam()
     </div>
     <hr class="my-4 border-none bg-gray-2 dark:bg-gray-6 h-1px">
     <div class="api-response">
-      <CodeView :code="response" language="json" />
+      <Result v-bind="{ dataType, urlExample }" />
     </div>
   </div>
 </template>
@@ -237,7 +236,7 @@ addParam()
   top: 0;
   left: 0;
   overflow: auto;
-  --at-apply: "bg-gray-1 dark:bg-gray-8";
+  background-color: transparent;
 }
 
 .api-textarea-wrapper {

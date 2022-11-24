@@ -38,7 +38,7 @@ const color = computed(() => colors[index % colors.length])
       </h3>
 
       <p class="text-[0.75rem] text-gray-4 ml-2 flex items-center">
-        <i i-carbon-star />
+        <i i-carbon-attachment />
         <span mt-2px>{{ count }}</span>
       </p>
 

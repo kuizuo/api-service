@@ -7,13 +7,13 @@ const { prev, next } = defineProps<{
 
 <template>
   <nav class="pagination-nav" grid gap-4 justify-between>
-    <NuxtLink v-if="prev" class="nav-btn justify-start self-start prev" :to="prev._path">
+    <NuxtLink v-if="prev.name" class="nav-btn justify-start self-start prev" :to="prev._path">
       <i i-carbon-arrow-left icon-btn />
       <div>
         {{ prev.name }}
       </div>
     </NuxtLink>
-    <NuxtLink v-if="next" class="nav-btn justify-end self-end next" :to="next._path">
+    <NuxtLink v-if="next.name" class="nav-btn justify-end self-end next" :to="next._path">
       <div>
         {{ next.name }}
       </div>

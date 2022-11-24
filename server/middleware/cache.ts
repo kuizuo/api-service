@@ -1,5 +1,6 @@
-import type { ServerResponse } from 'h3'
 import { defaultContentType } from 'h3'
+import type { NodeServerResponse } from 'h3'
+
 import LRU from 'lru-cache'
 import { getImgMine } from '~~/utils'
 import { TimeUnitMap } from '~~/utils/time'
@@ -35,7 +36,7 @@ export default defineEventHandler(async (event) => {
     }
 
     const original_res_end = res.end
-    res.end = function (...args: any): ServerResponse {
+    res.end = function (...args: any): NodeServerResponse {
       // 这里的args就是 res.end 调用的参数
 
       const data = args?.[0]
