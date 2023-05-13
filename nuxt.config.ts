@@ -21,7 +21,6 @@ export default defineNuxtConfig({
   },
   experimental: {
     reactivityTransform: true,
-    viteNode: true,
   },
   unocss: {
     preflight: true,
@@ -32,4 +31,11 @@ export default defineNuxtConfig({
   css: [
     '~/assets/css/main.css',
   ],
+  nitro: {
+    storage: {
+      redis: {
+        driver: 'redis',
+      },
+    },
+  },
 })

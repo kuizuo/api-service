@@ -2,7 +2,7 @@
   "name": "api-service",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "pnpm@7.11.0",
+  "packageManager": "pnpm@8.3.1",
   "description": "基于Nuxt3 + Vite3 + Vue3 + UnoCSS搭建的API接口服务网站",
   "author": {
     "url": "https://kuizuo.cn",
