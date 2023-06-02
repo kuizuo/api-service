@@ -42,7 +42,7 @@
     "highlight.js": "^11.8.0",
     "image-type": "^5.2.0",
     "lru-cache": "^7.18.3",
-    "nuxt": "^3.4.3",
+    "nuxt": "^3.5.2",
     "pinia": "^2.0.36",
     "qrcode": "^1.5.3",
     "rate-limiter-flexible": "^2.4.1",

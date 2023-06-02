@@ -4,11 +4,11 @@ const props = defineProps<{
   url: string
   path: string
   method: string
-  dataType: string
+  dataType: 'img' | 'text' | 'json'
   params: IApi.Param[]
 }>()
 
-const urlExample = $ref(`${props.url}${props.params.length ? '?' : ''}${props.params.filter(p => p.required).map(param => `${param.key}=${param.value}`).join('&')}`)
+const urlExample = ref(`${props.url}${props.params.length ? '?' : ''}${props.params.filter(p => p.required).map(param => `${param.key}=${param.value}`).join('&')}`)
 const dataTypeMap = {
   img: '图片',
   text: '文本',

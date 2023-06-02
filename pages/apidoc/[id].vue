@@ -8,19 +8,19 @@ interface Doc extends IApi.Doc {
 }
 
 const router = useRoute()
-const id = $computed(() => router.params.id as string)
+const id = computed(() => router.params.id as string)
 
 const location = useBrowserLocation()
 const origin = location.value.origin ?? ''
 
-const { data } = await useAsyncData<Doc>(`content-${id}`, () => queryContent<Doc>('apidoc').where({ id: { $eq: id } }).findOne(), { server: true })
-const { data: count } = await useFetch(`/api/count?id=${id}`)
+const { data } = await useAsyncData<Doc>(`content-${id.value}`, () => queryContent<Doc>('apidoc').where({ id: { $eq: id.value } }).findOne(), { server: true })
+const { data: count } = await useFetch(`/api/count?id=${id.value}`)
 const { name, desc, params, path, method, dataType, _path } = data.value!
 const url = origin + path
-const urlExample = $ref(`${origin}${path}?${params.filter(p => p.required).map(param => `${param.key}=${param.value}`).join('&')}`)
+const urlExample = ref(`${origin}${path}?${params.filter(p => p.required).map(param => `${param.key}=${param.value}`).join('&')}`)
 
 const { data: pageInfo } = await useAsyncData<Doc[]>(
-  `${id}-findSurround`,
+  `${id.value}-findSurround`,
   async () => {
     const [prev, next] = await queryContent<Doc>().findSurround(_path)
     return [prev, next]
@@ -42,9 +42,9 @@ const tabs = [
   },
 ]
 
-const active = $ref(0)
+const active = ref(0)
 
-const component = computed(() => tabs[active].component)
+const component = computed(() => tabs[active.value].component)
 
 useHead({
   title: `${name} - KZ API`,

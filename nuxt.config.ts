@@ -19,9 +19,6 @@ export default defineNuxtConfig({
       },
     },
   },
-  experimental: {
-    reactivityTransform: true,
-  },
   unocss: {
     preflight: true,
   },

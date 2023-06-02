@@ -1,6 +1,6 @@
 <script setup>
 useHead({
-  title: 'KZ API',
+  title: 'API Service',
   link: [
     {
       rel: 'icon', type: 'image/png', href: '/logo.svg',
