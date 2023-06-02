@@ -20,7 +20,7 @@ const cache = new LRU(options)
 export default defineEventHandler(async (event) => {
   defaultContentType(event, 'text/plain; charset=utf-8')
 
-  const { req, res, context } = event
+  const { node: { req, res }, context } = event
   if (/^\/api\/[A-Za-z0-9].*/.test(req.url || '')) {
     const key = req.url
     const cached = cache.get(key)

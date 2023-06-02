@@ -15,7 +15,7 @@ export default defineEventHandler(async (event) => {
 
   if (type === 'img') {
     const buffer = await QRcode.toBuffer(text)
-    event.res.setHeader('Content-Type', 'image;charset=utf-8')
+    event.node.res.setHeader('Content-Type', 'image;charset=utf-8')
     return buffer
   }
   else {

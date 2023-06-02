@@ -13,7 +13,7 @@ export default defineEventHandler(async (event) => {
   let { ip, type = 'text' } = getQuery<Query>(event)
 
   if (!ip)
-    ip = getIP(event.req)
+    ip = getIP(event.node.req)
 
   const arrayBuffer = await (await fetch(`http://whois.pconline.com.cn/ipJson.jsp?ip=${ip}&json=true`)).arrayBuffer()
   const data = JSON.parse(gbkDecode(arrayBuffer))

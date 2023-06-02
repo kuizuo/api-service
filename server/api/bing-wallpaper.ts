@@ -22,7 +22,7 @@ export default defineEventHandler(async (event) => {
 
     return await sendRedirect(event, url, 302)
 
-    // event.res.setHeader('Content-Type', 'image/png;charset=utf-8')
+    // event.node.res.setHeader('Content-Type', 'image/png;charset=utf-8')
     // return Buffer.from(await (await fetch(url)).arrayBuffer())
   }
   else {

@@ -13,6 +13,6 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 404, message: 'Icon Not Found' })
 
   const arrayBuffer = await response.arrayBuffer()
-  event.res.setHeader('Content-Type', 'image/svg+xml;charset=utf-8')
+  event.node.res.setHeader('Content-Type', 'image/svg+xml;charset=utf-8')
   return Buffer.from(arrayBuffer)
 })

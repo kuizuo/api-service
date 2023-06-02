@@ -14,6 +14,6 @@ export default defineEventHandler(async (event) => {
 
   const arrayBuffer = await (await fetch(`https://q4.qlogo.cn/g?b=qq&nk=${qq}&s=100`)).arrayBuffer()
 
-  event.res.setHeader('Content-Type', 'image;charset=utf-8')
+  event.node.res.setHeader('Content-Type', 'image;charset=utf-8')
   return Buffer.from(arrayBuffer)
 })
