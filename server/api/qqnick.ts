@@ -1,13 +1,10 @@
 import { gbkDecode } from '~~/utils/encoding'
-import { TimeUnitMap } from '~~/utils/time'
 
 interface Query {
   qq: string
 }
 
-export default defineEventHandler(async (event) => {
-  event.context.cache = { ttl: TimeUnitMap.hour }
-
+export default defineCachedEventHandler(async (event) => {
   const { qq } = getQuery<Query>(event)
 
   if (!qq)
@@ -18,4 +15,6 @@ export default defineEventHandler(async (event) => {
   const nick = JSON.parse(data.match(/\(({.*?})\)/)![1])[qq]?.[6]
 
   return nick
+}, {
+  maxAge: 60 * 60,
 })

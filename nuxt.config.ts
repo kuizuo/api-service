@@ -30,8 +30,17 @@ export default defineNuxtConfig({
   ],
   nitro: {
     storage: {
-      redis: {
+      db: {
         driver: 'redis',
+      },
+      cache: {
+        driver: 'redis',
+      },
+    },
+    devStorage: {
+      db: {
+        driver: 'fs',
+        base: './data/db',
       },
     },
   },

@@ -1,14 +1,11 @@
 import { getIP } from '~~/utils'
 import { gbkDecode } from '~~/utils/encoding'
-import { TimeUnitMap } from '~~/utils/time'
 
 interface Query {
   ip: string
 }
 
-export default defineEventHandler(async (event) => {
-  event.context.cache = { ttl: TimeUnitMap.hour }
-
+export default defineCachedEventHandler(async (event) => {
   // eslint-disable-next-line prefer-const
   let { ip, type = 'text' } = getQuery<Query>(event)
 
@@ -22,5 +19,7 @@ export default defineEventHandler(async (event) => {
     return data.addr
   else
     return data
+}, {
+  maxAge: 10 * 60,
 })
 

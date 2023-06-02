@@ -8,7 +8,7 @@ export default defineEventHandler(async (event) => {
 
     if (id !== 'count') {
       const key = `redis:log:${id}`
-      let count = await useStorage().getItem(key)
+      let count = await useStorage().getItem(key) as unknown as number
 
       useStorage().setItem(key, ++count)
     }

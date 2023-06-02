@@ -1,8 +1,4 @@
-import { TimeUnitMap } from '~~/utils/time'
-
-export default defineEventHandler(async (event) => {
-  event.context.cache = { ttl: TimeUnitMap.minute }
-
+export default defineCachedEventHandler(async (event) => {
   const { id } = getQuery<{ id: string }>(event)
 
   if (id)
@@ -16,4 +12,6 @@ export default defineEventHandler(async (event) => {
     return { id, count }
   }))
   return result
+}, {
+  maxAge: 60,
 })

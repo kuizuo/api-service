@@ -1,13 +1,10 @@
 import { isPhone } from '~~/utils/is'
-import { TimeUnitMap } from '~~/utils/time'
 
 interface Query {
   phone: string
 }
 
-export default defineEventHandler(async (event) => {
-  event.context.cache = { ttl: TimeUnitMap.hour }
-
+export default defineCachedEventHandler(async (event) => {
   const { phone, type = 'text' } = getQuery<Query>(event)
 
   if (!phone)
@@ -21,4 +18,6 @@ export default defineEventHandler(async (event) => {
     return data.data.province + data.data.city + data.data.sp
   else
     return data.data
+}, {
+  maxAge: 60 * 60,
 })
