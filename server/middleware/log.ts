@@ -7,10 +7,10 @@ export default defineEventHandler(async (event) => {
     const id = getUrlId(req.url!)
 
     if (id !== 'count') {
-      const key = `redis:log:${id}`
-      let count = await useStorage().getItem(key) as unknown as number
+      const key = `log:${id}`
+      let count = await useStorage('db').getItem(key) as unknown as number
 
-      useStorage().setItem(key, ++count)
+      useStorage('db').setItem(key, ++count)
     }
   }
 })

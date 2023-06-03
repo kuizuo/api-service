@@ -5,3 +5,5 @@ dist
 .nuxt
 .env
 .vercel
+
+data

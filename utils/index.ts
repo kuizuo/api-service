@@ -1,4 +1,4 @@
-import type{ IncomingMessage } from 'h3'
+import type { NodeIncomingMessage } from 'h3'
 import imageType from 'image-type'
 
 export async function getImgMine(buffer: Buffer | Uint8Array) {
@@ -17,8 +17,8 @@ export async function getImgContentType(buffer: Buffer | Uint8Array) {
   return 'image/svg+xml;charset=utf-8'
 }
 
-export function getIP(req: IncomingMessage) {
-  return ((req.headers['x-forwarded-for'] as string) || req.socket?.remoteAddress as string).replace('::ffff:', '')
+export function getIP(req: NodeIncomingMessage) {
+  return ((req.headers['x-forwarded-for'] as string) || req.socket?.remoteAddress as string)?.replace('::ffff:', '')
 }
 
 export function getUrlId(url: string) {

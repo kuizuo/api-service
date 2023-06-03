@@ -8,7 +8,7 @@ export default defineEventHandler(async (event) => {
   const { type = 'img', region = 'zh-CN' } = getQuery<Query>(event)
 
   if (type === 'img') {
-    const cache = await useStorage().getItem('cache:bing-wallpaper')
+    const cache = await useStorage('cache').getItem('bing-wallpaper')
     if (cache)
       return await sendRedirect(event, cache, 302)
   }
@@ -18,7 +18,7 @@ export default defineEventHandler(async (event) => {
 
   if (type === 'img') {
     const url = `https://bing.com${data.data[0].url}`
-    useStorage().setItem('cache:bing-wallpaper', url, { ttl: getTodayRemainMillisecond() })
+    useStorage('cache').setItem('cache:bing-wallpaper', url, { ttl: getTodayRemainMillisecond() })
 
     return await sendRedirect(event, url, 302)
 

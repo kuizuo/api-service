@@ -1,5 +1,5 @@
 export default defineEventHandler(async (event) => {
-  const { res } = event
+  const { node: { res } } = event
 
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
