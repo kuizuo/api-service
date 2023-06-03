@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const { id, name, desc, index } = defineProps<{
+const props = defineProps<{
   id: string | number
   name: string
   desc: string
@@ -8,7 +8,7 @@ const { id, name, desc, index } = defineProps<{
 }>()
 
 const docPath = 'apidoc'
-const href = ref(`/${docPath}/${id}`)
+const href = ref(`/${docPath}/${props.id}`)
 
 const colors = [
   'cyan',
@@ -22,7 +22,7 @@ const colors = [
   'yellow',
 ]
 
-const color = computed(() => colors[index % colors.length])
+const color = computed(() => colors[props.index % colors.length])
 </script>
 
 <template>
@@ -38,7 +38,7 @@ const color = computed(() => colors[index % colors.length])
       </h3>
 
       <p class="text-[0.75rem] text-gray-4 ml-2 flex items-center">
-        <i i-carbon-attachment />
+        <i i-ri-link-m />
         <span mt-2px>{{ count }}</span>
       </p>
 

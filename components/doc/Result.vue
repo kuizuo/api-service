@@ -24,9 +24,20 @@ onUpdated(() => {
 
 <template>
   <div>
+    <div
+      class="relative flex items-center my-2 text-center truncate
+    before:(content-none top-50% w-50% translate-y-50% b-t-1 b-gray-2 dark:b-gray-7)
+    after:(content-none top-50% w-50% translate-y-50% b-t-1 b-gray-2 dark:b-gray-7)
+    "
+    >
+      <span px-2 text-gray-4 text-sm>响应结果</span>
+      <UTooltip text="刷新">
+        <UIcon name="i-mdi-refresh" cursor-pointer px-2 text-gray-4 text-sm @click="refresh" />
+      </UTooltip>
+    </div>
     <div h-auto w-full relative border-1 dark:border-gray-6 dark:bg-gray-8>
       <div v-if="pending">
-        Loading...
+        <USkeleton class="h-4 w-[250px]" />
       </div>
       <div class="thin-scrollbar group" relative overflow-x-auto>
         <div v-if="dataType === 'json'">

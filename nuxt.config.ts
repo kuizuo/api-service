@@ -3,8 +3,8 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@unocss/nuxt',
     '@pinia/nuxt',
-    '@nuxtjs/color-mode',
     '@nuxt/content',
+    '@nuxthq/ui',
   ],
   content: {
     documentDriven: false,

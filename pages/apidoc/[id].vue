@@ -16,7 +16,7 @@ const origin = location.value.origin ?? ''
 const { data } = await useAsyncData<Doc>(`content-${id.value}`, () => queryContent<Doc>('apidoc').where({ id: { $eq: id.value } }).findOne(), { server: true })
 const { data: count } = await useFetch(`/api/count?id=${id.value}`)
 const { name, desc, params, path, method, dataType, _path } = data.value!
-const url = origin + path
+const url = ref(origin + path)
 const urlExample = ref(`${origin}${path}?${params.filter(p => p.required).map(param => `${param.key}=${param.value}`).join('&')}`)
 
 const { data: pageInfo } = await useAsyncData<Doc[]>(
