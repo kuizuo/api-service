@@ -75,7 +75,7 @@ useHead({
       </div>
     </div>
   </div>
-  <DocPagination v-bind="{ prev, next }" />
+  <DocPagination v-bind="{ prev, next }" class="mt-2" />
 </template>
 
 <style scoped>

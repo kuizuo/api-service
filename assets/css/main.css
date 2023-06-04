@@ -1,3 +1,4 @@
+
 .page-fade-enter-active,
 .page-fade-leave-active {
   transition: opacity 0.3s ease;
@@ -6,4 +7,20 @@
 .page-fade-enter-from,
 .page-fade-leave-to {
   opacity: 0;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  background-size: cover;
+  background-attachment: fixed;
+  background-image: linear-gradient(to bottom, #dbf4ff, #fff1f1);
+  --tw-gradient-stops: var(--tw-gradient-from, #dbf4ff) 0%, var(--tw-gradient-to, #fff1f1) 100%;
+  --tw-gradient-from: #dbf4ff;
+  --tw-gradient-to: #fff1f1;
+}
+
+html.dark {
+  --tw-gradient-from: #433b8c;
+  --tw-gradient-to: #10243e;
 }

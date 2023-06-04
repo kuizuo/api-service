@@ -34,12 +34,23 @@ const columns = [{
 }]
 
 const data = props.params
+
+const toast = useToast()
+const { copy, copied } = useClipboard({ })
+
+function handleCopy() {
+  copy(props.url)
+  toast.add({
+    title: '复制成功',
+    timeout: 2000,
+  })
+}
 </script>
 
 <template>
-  <div py-1 flex="~ col" gap-3 text-sm font-sans>
-    <div inline-flex gap-2 items-center>
-      <span text-base>接口地址</span>
+  <div class="py-1 flex flex-col gap-3 text-sm font-sans">
+    <div class="inline-flex gap-2 items-center">
+      <span>接口地址</span>
 
       <UBadge :color="method === 'GET' ? 'green' : 'blue'" size="md">
         {{ method }}
@@ -47,16 +58,16 @@ const data = props.params
       <UBadge color="cyan" size="md">
         {{ url }}
       </UBadge>
-      <Copy :result="url" />
+      <UIcon :name="!copied ? 'i-carbon-copy-link' : 'i-carbon-checkmark'" class="cursor-pointer text-gray-500" @click="handleCopy" />
     </div>
-    <p inline-flex gap-2 items-center>
-      <span text-base>请求示例</span>
+    <p class="inline-flex gap-2 items-center">
+      <span>请求示例</span>
       <UBadge color="cyan" size="md">
         {{ urlExample }}
       </UBadge>
     </p>
-    <p inline-flex gap-2 items-center>
-      <span text-base>返回格式</span>
+    <p class="inline-flex gap-2 items-center">
+      <span>返回格式</span>
       <UBadge color="indigo" size="md">
         {{ dataTypeMap[dataType] }}
       </UBadge>
@@ -65,13 +76,13 @@ const data = props.params
   <div v-if="params.length > 0">
     <div
       class="relative flex items-center my-2 text-center truncate
-    before:(content-none top-50% w-50% translate-y-50% b-t-1 b-gray-2 dark:b-gray-7)
-    after:(content-none top-50% w-50% translate-y-50% b-t-1 b-gray-2 dark:b-gray-7)
+    before:content-[''] before:top-[50%] before:w-[50%] before:translate-y-[50%] before:border-t before:border-gray-200 dark:border-gray-700)
+    after:content-[''] after:top-[50%] after:w-[50%] after:translate-y-[50%] after:border-t after:border-gray-200 dark:border-gray-700)
     "
     >
-      <span px-2 text-gray-4 text-sm>请求参数</span>
+      <span class="px-2 text-gray-400 text-sm">请求参数</span>
     </div>
-    <div border dark:border-gray-6 border-collapse>
+    <div class="border rounded dark:border-gray-600 border-collapse">
       <UTable :columns="columns" :rows="data" />
     </div>
   </div>

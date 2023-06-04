@@ -6,5 +6,9 @@
   "files.associations": {
     "*.css": "postcss"
   },
-  "editor.formatOnSave": false
+  "emmet.includeLanguages": {
+    "postcss": "css"
+  },
+  "editor.formatOnSave": true,
+  "discord.enabled": true
 }

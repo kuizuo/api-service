@@ -25,21 +25,21 @@ onUpdated(() => {
 <template>
   <div>
     <div
-      class="relative flex items-center my-2 text-center truncate
-    before:(content-none top-50% w-50% translate-y-50% b-t-1 b-gray-2 dark:b-gray-7)
-    after:(content-none top-50% w-50% translate-y-50% b-t-1 b-gray-2 dark:b-gray-7)
+      class="relative flex items-center my-2 text-center text-gray-400 text-sm truncate
+    before:content-[''] before:top-[50%] before:w-[50%] before:translate-y-[50%] before:border-t before:border-gray-200 dark:border-gray-700)
+    after:content-[''] after:top-[50%] after:w-[50%] after:translate-y-[50%] after:border-t after:border-gray-200 dark:border-gray-700)
     "
     >
-      <span px-2 text-gray-4 text-sm>响应结果</span>
+      <span class="px-2">响应结果</span>
       <UTooltip text="刷新">
-        <UIcon name="i-mdi-refresh" cursor-pointer px-2 text-gray-4 text-sm @click="refresh" />
+        <UIcon name="i-mdi-refresh" @click="refresh" />
       </UTooltip>
     </div>
-    <div h-auto w-full relative border-1 dark:border-gray-6 dark:bg-gray-8>
+    <div class="h-auto w-full relative border dark:border-gray-600 dark:bg-gray-800">
       <div v-if="pending">
         <USkeleton class="h-4 w-[250px]" />
       </div>
-      <div class="thin-scrollbar group" relative overflow-x-auto>
+      <div class="group relative overflow-x-auto">
         <div v-if="dataType === 'json'">
           <div>
             <pre
@@ -51,11 +51,11 @@ onUpdated(() => {
           <img :src="urlExample">
         </div>
         <div v-else>
-          <div min-h-12 p-4 h-full font-sans text-base>
+          <div class="min-h-[12px] p-4 h-full font-sans text-base">
             {{ response }}
           </div>
         </div>
-        <div absolute top-3 right-3 transition opacity-0 group-hover:opacity-100>
+        <div class="absolute top-3 right-3 transition opacity-0 group-hover:opacity-100">
           <Copy :result="response" />
         </div>
       </div>

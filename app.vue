@@ -11,25 +11,9 @@ useHead({
 
 <template>
   <NuxtLayout>
-    <UContainer>
-      <NuxtPage />
-    </UContainer>
+    <NuxtPage />
 
     <UNotifications />
   </NuxtLayout>
 </template>
 
-<style>
-html {
-  margin: 0;
-  padding: 0;
-  background-size:cover;
-  background-attachment:fixed;
-  --at-apply: "bg-gradient-to-b from-[#dbf4ff] to-[#fff1f1] dark:(from-[#433b8c] to-[#10243e])";
-}
-
-html.dark {
-  background: #222;
-  color: white;
-}
-</style>

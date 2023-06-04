@@ -16,7 +16,7 @@ const { data } = await useAsyncData<IApi.Info[]>('api-list', async () => {
 </script>
 
 <template>
-  <ul grid="~ cols-1 gap-5" md:grid="~ cols-2" lg:grid="~ cols-3">
+  <ul class="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-5">
     <li v-for="(item, i) in apiStore.list" :key="item.id">
       <ApiItem v-bind="item" :index="i" />
     </li>

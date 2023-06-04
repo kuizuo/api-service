@@ -1,7 +1,6 @@
 export default defineNuxtConfig({
   modules: [
     '@vueuse/nuxt',
-    '@unocss/nuxt',
     '@pinia/nuxt',
     '@nuxt/content',
     '@nuxthq/ui',
@@ -19,8 +18,11 @@ export default defineNuxtConfig({
       },
     },
   },
-  unocss: {
-    preflight: true,
+  tailwindcss: {
+    exposeConfig: true,
+  },
+  ui: {
+    icons: ['mdi', 'carbon'],
   },
   colorMode: {
     classSuffix: '',

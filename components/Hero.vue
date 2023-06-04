@@ -14,9 +14,7 @@ useHead({
 </script>
 
 <template>
-  <div
-    py-10 px-8 flex="~ col" justify-center items-center text-center
-  >
+  <div class=" py-10 px-8 flex flex-col justify-center items-center text-center">
     <h1 class="text-5xl font-mono font-semibold animate-bounce-in text-transparent bg-clip-text bg-gradient-to-r from-[#007CF0] to-[#00DFD8]">
       {{ title }}
     </h1>
@@ -26,7 +24,6 @@ useHead({
     <p class="mt-2 text-sm text-transparent bg-clip-text bg-gradient-to-r from-[#FF4D4D] to-[#9eb3ff]">
       共收录了 <span class="text-pink">{{ apiStore.count }}</span> 个 API 接口
     </p>
-    <!-- <SearchApi /> -->
   </div>
 </template>
 
