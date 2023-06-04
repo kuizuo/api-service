@@ -23,4 +23,7 @@ html {
 html.dark {
   --tw-gradient-from: #433b8c;
   --tw-gradient-to: #10243e;
+
+  background: #222;
+  color: white;
 }

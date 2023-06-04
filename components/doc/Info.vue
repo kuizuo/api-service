@@ -50,7 +50,7 @@ function handleCopy() {
 <template>
   <div class="py-1 flex flex-col gap-3 text-sm font-sans">
     <div class="inline-flex gap-2 items-center">
-      <span>接口地址</span>
+      <span class="min-w-[4em]">接口地址</span>
 
       <UBadge :color="method === 'GET' ? 'green' : 'blue'" size="md">
         {{ method }}
@@ -61,13 +61,13 @@ function handleCopy() {
       <UIcon :name="!copied ? 'i-carbon-copy-link' : 'i-carbon-checkmark'" class="cursor-pointer text-gray-500" @click="handleCopy" />
     </div>
     <p class="inline-flex gap-2 items-center">
-      <span>请求示例</span>
+      <span class="min-w-[4em]">请求示例</span>
       <UBadge color="cyan" size="md">
         {{ urlExample }}
       </UBadge>
     </p>
     <p class="inline-flex gap-2 items-center">
-      <span>返回格式</span>
+      <span class="min-w-[4em]">返回格式</span>
       <UBadge color="indigo" size="md">
         {{ dataTypeMap[dataType] }}
       </UBadge>
