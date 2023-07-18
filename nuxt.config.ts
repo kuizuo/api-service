@@ -4,6 +4,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxt/content',
     '@nuxthq/ui',
+    '@nuxtjs/color-mode',
   ],
   content: {
     documentDriven: false,
@@ -26,10 +27,17 @@ export default defineNuxtConfig({
   },
   colorMode: {
     classSuffix: '',
+    dataValue: 'theme',
   },
   css: [
     '~/assets/css/main.css',
   ],
+  experimental: {
+    inlineSSRStyles: false,
+  },
+  typescript: {
+    includeWorkspace: true,
+  },
   nitro: {
     storage: {
       db: {

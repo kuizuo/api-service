@@ -2,7 +2,7 @@
   "name": "api-service",
   "version": "0.1.0",
   "packageManager": "pnpm@8.3.1",
-  "description": "基于 Nuxt 搭建的API接口服务网站",
+  "description": "基于 Nuxt 搭建的 API 接口服务网站",
   "author": {
     "url": "https://kuizuo.cn",
     "email": "hi@kuizuo.cn",
@@ -26,7 +26,8 @@
     "@iconify-json/carbon": "^1.1.18",
     "@iconify-json/mdi": "^1.1.50",
     "@nuxt/content": "^2.6.0",
-    "@nuxthq/ui": "npm:@nuxthq/ui-edge@latest",
+    "@nuxthq/ui": "^2.5.0",
+    "@nuxtjs/color-mode": "^3.3.0",
     "@pinia/nuxt": "^0.4.10",
     "@types/cheerio": "^0.22.31",
     "@types/lodash": "^4.14.194",
