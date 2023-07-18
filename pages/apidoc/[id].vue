@@ -8,17 +8,17 @@ interface Doc extends IApi.Doc {
 }
 
 const router = useRoute()
-const id = computed(() => router.params.id as string)
+const id = router.params.id
 
-const { data } = await useAsyncData<Doc>(`content-${id.value}`, () => queryContent<Doc>('apidoc').where({ id: { $eq: id.value } }).findOne(), { server: true })
-const { data: count } = await useFetch(`/api/count?id=${id.value}`)
+const { data } = await useAsyncData<Doc>(`content-${id}`, () => queryContent<Doc>('apidoc').where({ id: { $eq: id } }).findOne(), { server: true })
+const { data: count } = await useFetch(`/api/count?id=${id}`)
 const { name, desc, params, path, method, dataType, _path } = data.value!
 
 const url = ref(Url(path).href)
 const urlExample = ref(`${url.value}?${params.filter(p => p.required).map(param => `${param.key}=${param.value}`).join('&')}`)
 
 const { data: pageInfo } = await useAsyncData<Doc[]>(
-  `${id.value}-findSurround`,
+  `${id}-findSurround`,
   async () => {
     const [prev, next] = await queryContent<Doc>().findSurround(_path)
     return [prev, next]
