@@ -10,14 +10,12 @@ interface Doc extends IApi.Doc {
 const router = useRoute()
 const id = computed(() => router.params.id as string)
 
-const location = useBrowserLocation()
-const origin = location.value.origin ?? ''
-
 const { data } = await useAsyncData<Doc>(`content-${id.value}`, () => queryContent<Doc>('apidoc').where({ id: { $eq: id.value } }).findOne(), { server: true })
 const { data: count } = await useFetch(`/api/count?id=${id.value}`)
 const { name, desc, params, path, method, dataType, _path } = data.value!
-const url = ref(origin + path)
-const urlExample = ref(`${origin}${path}?${params.filter(p => p.required).map(param => `${param.key}=${param.value}`).join('&')}`)
+
+const url = ref(Url(path).href)
+const urlExample = ref(`${url.value}?${params.filter(p => p.required).map(param => `${param.key}=${param.value}`).join('&')}`)
 
 const { data: pageInfo } = await useAsyncData<Doc[]>(
   `${id.value}-findSurround`,
