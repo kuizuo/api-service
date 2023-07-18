@@ -1,10 +1,15 @@
 <script setup lang="ts">
+interface ICountData {
+  id: string
+  count: number
+}
+
 const apiStore = useApiStore()
 
 const { data } = await useAsyncData<IApi.Info[]>('api-list', async () => {
   const result = await queryContent<IApi.Info>('apidoc').find()
 
-  const apiCount = JSON.parse(await $fetch('/api/count'))
+  const apiCount: ICountData[] = JSON.parse(await $fetch('/api/count'))
 
   apiStore.apiList = result.map((r) => {
     const count = apiCount.find(c => c.id === r.id)?.count ?? 0

@@ -4,7 +4,7 @@
 <template>
   <nav class="inline-flex gap-2 items-center">
     <NuxtLink to="/about" class="text-base font-sans icon-btn">
-      关于
+      <UIcon name="i-carbon-undearth" />
     </NuxtLink>
   </nav>
 </template>

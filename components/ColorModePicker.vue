@@ -19,15 +19,15 @@ const onClick = () => {
     <ColorScheme>
       <UIcon
         v-if="colorMode.preference === 'dark'"
-        name="i-carbon-moon"
+        name="i-heroicons-moon"
       />
       <UIcon
         v-else-if="colorMode.preference === 'light'"
-        name="i-carbon-sun"
+        name="i-heroicons-sun"
       />
       <UIcon
         v-else
-        name="i-carbon-window-auto"
+        name="i-heroicons-computer-desktop"
       />
     </ColorScheme>
   </UButton>

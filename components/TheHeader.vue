@@ -5,7 +5,7 @@ import pkg from '~/package.json'
 <template>
   <header class="px-4 py-2 flex gap-2">
     <div class="flex gap-2 items-center w-full">
-      <NuxtLink to="/" class="inline-flex gap-2 items-center">
+      <NuxtLink to="/">
         <UIcon name="i-mdi-api" class="text-[#007CF0] text-xl inline-block cursor-pointer select-none transition duration-200 ease-in-out hover:animate-swing" />
       </NuxtLink>
 
@@ -13,7 +13,8 @@ import pkg from '~/package.json'
         <TheNavigation />
       </div>
 
-      <div class="flex justify-end">
+      <div class="flex gap-1 justify-end">
+        <Search />
         <ColorModePicker />
         <UButton
           :to="pkg.repository.url"
