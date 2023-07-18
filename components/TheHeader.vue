@@ -1,6 +1,6 @@
 <template>
   <header>
-    <BaseNav />
+    <TheNav />
     <slot />
   </header>
 </template>
