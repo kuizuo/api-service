@@ -1,5 +1,7 @@
+import type { Config } from 'tailwindcss'
 import typography from '@tailwindcss/typography'
 import defaultTheme from 'tailwindcss/defaultTheme'
+
 const colors = [
   'cyan',
   'green',
@@ -20,7 +22,7 @@ const safelist = [
   ...colors.map(v => `hover:text-${v}-500`),
 ]
 
-export default {
+export default <Partial<Config>>{
   safelist,
   theme: {
     fontFamily: {

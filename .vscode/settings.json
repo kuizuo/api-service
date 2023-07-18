@@ -6,6 +6,9 @@
   "files.associations": {
     "*.css": "postcss"
   },
+  "editor.quickSuggestions": {
+    "strings": true
+  },
   "emmet.includeLanguages": {
     "postcss": "css"
   },

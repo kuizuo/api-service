@@ -21,6 +21,11 @@ export default defineNuxtConfig({
   },
   tailwindcss: {
     exposeConfig: true,
+    config: {
+      content: [
+        'content/**/**.md',
+      ],
+    },
   },
   ui: {
     icons: ['mdi', 'carbon'],

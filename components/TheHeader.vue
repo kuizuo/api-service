@@ -6,7 +6,7 @@ import pkg from '~/package.json'
   <header class="px-4 py-2 flex gap-2">
     <div class="flex gap-2 items-center w-full">
       <NuxtLink to="/">
-        <UIcon name="i-mdi-api" class="text-[#007CF0] text-xl inline-block cursor-pointer select-none transition duration-200 ease-in-out hover:animate-swing" />
+        <UIcon name="i-mdi-api" class="text-blue-500 text-xl inline-block cursor-pointer select-none transition duration-200 ease-in-out hover:animate-swing" />
       </NuxtLink>
 
       <div class="flex flex-auto justify-end">
