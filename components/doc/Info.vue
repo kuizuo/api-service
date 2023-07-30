@@ -1,15 +1,16 @@
 <script lang='ts' setup>
-import Result from './Result.vue'
+import { Url } from '~/utils/url'
 
 const props = defineProps<{
-  url: string
-  path: string
-  method: string
-  dataType: 'img' | 'text' | 'json'
-  params: IApi.Param[]
+  info: IApi.Doc
 }>()
 
-const urlExample = ref(`${props.url}${props.params.length ? '?' : ''}${props.params.filter(p => p.required).map(param => `${param.key}=${param.value}`).join('&')}`)
+const { params, path, method, dataType } = props.info
+
+const url = ref(Url(path).href)
+
+const urlExample = ref(`${url.value}${params.length > 0 ? '?' : ''}${params.map(param => `${param.key}=${param.value}`).join('&')}`)
+
 const dataTypeMap = {
   img: '图片',
   text: '文本',
@@ -33,13 +34,13 @@ const columns = [{
   label: '描述',
 }]
 
-const data = props.params
+const data = params
 
 const toast = useToast()
-const { copy, copied } = useClipboard({ })
+const { copy, copied } = useClipboard()
 
 function handleCopy() {
-  copy(props.url)
+  copy(url.value)
   toast.add({
     title: '复制成功',
     timeout: 2000,
@@ -58,7 +59,7 @@ function handleCopy() {
       <UBadge color="cyan" size="md">
         {{ url }}
       </UBadge>
-      <UIcon :name="!copied ? 'i-carbon-copy-link' : 'i-carbon-checkmark'" class="cursor-pointer text-gray-500" @click="handleCopy" />
+      <UIcon :name="!copied ? 'i-carbon-copy-link' : 'i-carbon-checkmark'" class="cursor-pointer text-primary-500" @click="handleCopy" />
     </div>
     <p class="inline-flex gap-2 items-center">
       <span class="min-w-[4em]">请求示例</span>
@@ -86,5 +87,5 @@ function handleCopy() {
       <UTable :columns="columns" :rows="data" />
     </div>
   </div>
-  <Result v-bind="{ dataType, urlExample }" />
+  <DocResult :data-type="dataType" :url="urlExample" />
 </template>

@@ -1,4 +1,9 @@
 export default defineNuxtConfig({
+  app: {
+    public: {
+      apiUrl: process.env.NUXT_PUBLIC_API_URL,
+    },
+  },
   modules: [
     '@vueuse/nuxt',
     '@pinia/nuxt',

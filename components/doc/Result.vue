@@ -4,12 +4,22 @@ import json from 'highlight.js/lib/languages/json'
 
 import 'highlight.js/styles/atom-one-light.css'
 
-const { dataType, urlExample } = defineProps<{
+const { dataType, url } = defineProps<{
   dataType: string
-  urlExample: string
+  url: string
 }>()
 
-const { data: response, refresh, pending } = await useFetch<string>(urlExample, { server: false })
+const { data: response, refresh, pending } = await useFetch<string>(url, { server: false })
+
+const { copy, copied } = useClipboard()
+const toast = useToast()
+function handleCopy() {
+  copy(response.value!)
+  toast.add({
+    title: '复制成功',
+    timeout: 2000,
+  })
+}
 
 hljs.registerLanguage('json', json)
 
@@ -32,7 +42,7 @@ onUpdated(() => {
     >
       <span class="px-2">响应结果</span>
       <UTooltip text="刷新">
-        <UIcon name="i-mdi-refresh" @click="refresh" />
+        <UIcon class="cursor-pointer" name="i-mdi-refresh" @click="refresh" />
       </UTooltip>
     </div>
     <div class="h-auto w-full relative border dark:border-gray-600 dark:bg-gray-800">
@@ -40,24 +50,20 @@ onUpdated(() => {
         <USkeleton class="h-4 w-[250px]" />
       </div>
       <div class="group relative overflow-x-auto">
-        <div v-if="dataType === 'json'">
-          <div>
-            <pre
-              class="language-json min-h-10 text-sm h-full min-w-max"
-            ><code class="!bg-transparent">{{ response }}</code></pre>
-          </div>
-        </div>
-        <div v-else-if="dataType === 'img'">
-          <img :src="urlExample">
-        </div>
-        <div v-else>
-          <div class="min-h-[12px] p-4 h-full font-sans text-base">
+        <template v-if="dataType === 'json'">
+          <pre
+            class="language-json min-h-[10rem] max-h-[30rem] text-sm h-full"
+          ><code class="!bg-transparent w-full">{{ response }}</code></pre>
+        </template>
+        <template v-else-if="dataType === 'img'">
+          <img :src="url">
+        </template>
+        <template v-else>
+          <div class="min-h-[20px] p-4 h-full font-sans text-base">
             {{ response }}
           </div>
-        </div>
-        <div class="absolute top-3 right-3 transition opacity-0 group-hover:opacity-100">
-          <Copy :result="response" />
-        </div>
+        </template>
+        <UIcon :name="!copied ? 'i-heroicons-clipboard-document' : 'i-heroicons-clipboard-document-check'" class="absolute w-5 h-5 top-3 right-3 text-primary-500 transition cursor-pointer opacity-0 group-hover:opacity-100" @click="handleCopy" />
       </div>
     </div>
   </div>

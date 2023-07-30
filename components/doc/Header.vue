@@ -16,7 +16,7 @@ defineProps<{
         <UIcon name="i-heroicons-link" class="mr-[2px]" /> 共被调用 {{ count ?? 0 }} 次
       </p>
     </div>
-    <p class="mt-2 p-4 text-sm border-l-[5px] border-blue-500">
+    <p class="mt-2 p-4 text-sm border-l-[5px] border-primary-500">
       {{ desc }}
     </p>
   </div>

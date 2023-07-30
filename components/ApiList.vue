@@ -7,7 +7,7 @@ interface ICountData {
 const apiStore = useApiStore()
 
 const { data } = await useAsyncData<IApi.Info[]>('api-list', async () => {
-  const result = await queryContent<IApi.Info>('apidoc').find()
+  const result = await queryContent<IApi.Info>('docs').find()
 
   const apiCount: ICountData[] = JSON.parse(await $fetch('/api/count'))
 

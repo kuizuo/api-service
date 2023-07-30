@@ -7,7 +7,7 @@ const props = defineProps<{
   index: number
 }>()
 
-const docPath = 'apidoc'
+const docPath = 'docs'
 const href = ref(`/${docPath}/${props.id}`)
 
 const colors = [
