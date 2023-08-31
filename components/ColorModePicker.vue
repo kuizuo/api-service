@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const colorMode = useColorMode()
-const onClick = () => {
+function onClick() {
   const values = ['system', 'light', 'dark']
   const index = values.indexOf(colorMode.preference)
   const next = (index + 1) % values.length
@@ -32,4 +32,3 @@ const onClick = () => {
     </ColorScheme>
   </UButton>
 </template>
-

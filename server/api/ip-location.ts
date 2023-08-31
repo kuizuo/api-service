@@ -6,7 +6,6 @@ interface Query {
 }
 
 export default defineCachedEventHandler(async (event) => {
-  // eslint-disable-next-line prefer-const
   let { ip, type = 'text' } = getQuery<Query>(event)
 
   if (!ip)
@@ -22,4 +21,3 @@ export default defineCachedEventHandler(async (event) => {
 }, {
   maxAge: 10 * 60,
 })
-

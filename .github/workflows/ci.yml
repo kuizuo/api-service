@@ -34,16 +34,16 @@ jobs:
         uses: easingthemes/ssh-deploy@v2.2.11
         env:
           SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-          ARGS: '-avzr --delete'
-          SOURCE: '.output'
+          ARGS: -avzr --delete
+          SOURCE: .output
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-          REMOTE_USER: 'root'
-          TARGET: '/www/wwwroot/NodeProject/api'
-      
+          REMOTE_USER: root
+          TARGET: /www/wwwroot/NodeProject/api
+
       - name: SSH Commands
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.REMOTE_HOST }}
-          username: 'root'
+          username: root
           key: ${{ secrets.PRIVATE_KEY }}
           script: pm2 restart KZ_API

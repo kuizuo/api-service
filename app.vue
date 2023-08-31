@@ -17,4 +17,3 @@ useHead({
     <UNotifications />
   </NuxtLayout>
 </template>
-

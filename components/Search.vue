@@ -17,4 +17,3 @@ const { searchName: query } = toRefs(apiStore)
     </template>
   </UInput>
 </template>
-

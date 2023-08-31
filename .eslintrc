@@ -1,3 +1,7 @@
 {
-  "extends": "@antfu"
+  "extends": "@antfu",
+  "rules":{
+    "n/prefer-global/process": "off",
+    "n/prefer-global/buffer": "off"
+  }
 }

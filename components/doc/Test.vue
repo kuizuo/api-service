@@ -13,4 +13,3 @@ const url = ref('https://www.apifox.cn/apidoc/shared-2d5e3749-2d01-49fe-b889-6a3
     <iframe :src="url" class="w-full min-h-2xl" frameborder="0" />
   </div>
 </template>
-

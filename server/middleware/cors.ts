@@ -6,4 +6,3 @@ export default defineEventHandler(async (event) => {
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With')
   res.setHeader('Access-Control-Allow-Credentials', 'true')
 })
-

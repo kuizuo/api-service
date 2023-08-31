@@ -13,8 +13,7 @@ export const TimeUnitMap = {
   millisecond: 1,
 }
 
-export const getTodayRemainMillisecond = () => {
+export function getTodayRemainMillisecond() {
   const now = dayjs()
   return now.endOf('day').diff(now, 'millisecond')
 }
-
