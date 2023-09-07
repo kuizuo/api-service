@@ -22,13 +22,9 @@ const { data: pageInfo } = await useAsyncData<Doc[]>(
 const [prev, next] = pageInfo.value!
 
 useHead({
-  title: `${name} - API Service`,
+  title: name,
   meta: [
-    {
-      hid: 'description',
-      name: 'description',
-      content: desc,
-    },
+    { hid: 'description', name: 'description', content: desc, },
   ],
 })
 </script>

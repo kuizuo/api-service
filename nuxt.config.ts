@@ -9,7 +9,6 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxt/content',
     '@nuxt/ui',
-    '@nuxtjs/color-mode',
   ],
   content: {
     documentDriven: false,
