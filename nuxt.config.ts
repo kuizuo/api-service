@@ -11,10 +11,6 @@ export default defineNuxtConfig({
     '@nuxt/ui',
   ],
   content: {
-    documentDriven: false,
-    markdown: {
-      mdc: true,
-    },
     highlight: {
       theme: {
         default: 'github-light',
@@ -36,17 +32,10 @@ export default defineNuxtConfig({
   },
   colorMode: {
     classSuffix: '',
-    dataValue: 'theme',
   },
   css: [
     '~/assets/css/main.css',
   ],
-  experimental: {
-    inlineSSRStyles: false,
-  },
-  typescript: {
-    includeWorkspace: true,
-  },
   nitro: {
     storage: {
       db: {
@@ -63,4 +52,10 @@ export default defineNuxtConfig({
       },
     },
   },
+  experimental: {
+    inlineSSRStyles: false,
+    typedPages: true,
+    asyncContext: true,
+  },
+  devtools: { enabled: true },
 })
