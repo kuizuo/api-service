@@ -1,8 +1,7 @@
 import dayjs from 'dayjs'
 
 // 获取不同时间单位的毫秒时间
-
-export const TimeUnitMap = {
+export const TimeUnit = {
   year: 365 * 24 * 60 * 60 * 1000,
   month: 30 * 24 * 60 * 60 * 1000,
   week: 7 * 24 * 60 * 60 * 1000,
@@ -11,7 +10,7 @@ export const TimeUnitMap = {
   minute: 60 * 1000,
   second: 1000,
   millisecond: 1,
-}
+} as const
 
 export function getTodayRemainMillisecond() {
   const now = dayjs()

@@ -1,5 +1,4 @@
 import _ from 'lodash'
-import { getTodayRemainMillisecond } from '~~/utils/time'
 
 export default defineEventHandler(async (event) => {
   event.context.cache = { ttl: getTodayRemainMillisecond() }

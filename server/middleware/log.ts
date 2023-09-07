@@ -1,5 +1,3 @@
-import { getUrlId } from '~~/utils'
-
 export default defineEventHandler(async (event) => {
   const { req } = event
 

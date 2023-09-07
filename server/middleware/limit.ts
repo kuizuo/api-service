@@ -1,5 +1,4 @@
 import { RLWrapperBlackAndWhite, RateLimiterMemory } from 'rate-limiter-flexible'
-import { getIP, getUrlId } from '~~/utils'
 
 const whiteList = ['count']
 

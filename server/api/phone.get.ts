@@ -1,5 +1,3 @@
-import { isPhone } from '~~/utils/is'
-
 interface Query {
   phone: string
 }

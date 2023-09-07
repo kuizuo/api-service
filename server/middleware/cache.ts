@@ -1,13 +1,10 @@
 import { defaultContentType } from 'h3'
 import type { NodeServerResponse } from 'h3'
-
 import LRU from 'lru-cache'
-import { getImgMine } from '~~/utils'
-import { TimeUnitMap } from '~~/utils/time'
 
 const options = {
   max: 500,
-  ttl: TimeUnitMap.minute * 3, // 缓存3min
+  ttl: TimeUnit.minute * 3, // 缓存3min
   allowStale: false,
   updateAgeOnGet: false,
   updateAgeOnHas: false,

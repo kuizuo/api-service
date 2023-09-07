@@ -1,11 +1,9 @@
-import { TimeUnitMap } from '~~/utils/time'
-
 interface Query {
   qq: string
 }
 
 export default defineEventHandler(async (event) => {
-  event.context.cache = { ttl: TimeUnitMap.second * 5 }
+  event.context.cache = { ttl: TimeUnit.second * 5 }
 
   const { qq } = getQuery<Query>(event)
 

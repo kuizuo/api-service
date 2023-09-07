@@ -1,13 +1,10 @@
-import { TimeUnitMap } from '~~/utils/time'
-
 export default defineEventHandler(async (event) => {
-  event.context.cache = { ttl: TimeUnitMap.day }
-  let { id } = event.context.params
+  event.context.cache = { ttl: TimeUnit.day }
+  const id = event.context.params!.id as string
 
-  if (!id.includes('.'))
-    id = `${id}.svg`
+  const icon = id.includes('.') ? id : `${id}.svg`
 
-  const response = await fetch(`https://api.iconify.design/${id}`)
+  const response = await fetch(`https://api.iconify.design/${icon}`)
 
   if (!response.ok)
     throw createError({ statusCode: 404, message: 'Icon Not Found' })

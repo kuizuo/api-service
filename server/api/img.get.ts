@@ -1,7 +1,5 @@
-import { TimeUnitMap } from '~~/utils/time'
-
 export default defineEventHandler(async (event) => {
-  event.context.cache = { ttl: TimeUnitMap.second * 5 }
+  event.context.cache = { ttl: TimeUnit.second * 5 }
 
   const { width = 200, height = 200 } = getQuery(event)
 

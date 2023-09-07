@@ -1,5 +1,3 @@
-import { TimeUnitMap, getTodayRemainMillisecond } from '~~/utils/time'
-
 interface Query {
   region?: 'zh-CN' | 'en-US' | 'ja-JP' | 'en-AU' | 'en-UK' | 'de-DE' | 'en-NZ' | 'en-CA'
 }
@@ -8,7 +6,7 @@ export default defineEventHandler(async (event) => {
   const { type = 'img', region = 'zh-CN' } = getQuery<Query>(event)
 
   if (type === 'img') {
-    const cache = await useStorage('cache').getItem('bing-wallpaper')
+    const cache = await useStorage('cache').getItem('bing-wallpaper') as any
     if (cache)
       return await sendRedirect(event, cache, 302)
   }
@@ -26,7 +24,7 @@ export default defineEventHandler(async (event) => {
     // return Buffer.from(await (await fetch(url)).arrayBuffer())
   }
   else {
-    event.context.cache = { ttl: TimeUnitMap.hour }
+    event.context.cache = { ttl: TimeUnit.hour }
     return data
   }
 })

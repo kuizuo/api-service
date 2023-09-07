@@ -1,5 +1,3 @@
-import { gbkDecode } from '~~/utils/encoding'
-
 interface Query {
   qq: string
 }

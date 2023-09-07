@@ -1,6 +1,3 @@
-import { getIP } from '~~/utils'
-import { gbkDecode } from '~~/utils/encoding'
-
 interface Query {
   ip: string
 }

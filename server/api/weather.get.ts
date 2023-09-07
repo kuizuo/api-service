@@ -1,5 +1,3 @@
-import { getCityCode } from '~~/utils/city'
-
 interface Query {
   city: string
 }
