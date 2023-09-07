@@ -59,7 +59,8 @@ function handleCopy() {
       <UBadge color="cyan" size="md">
         {{ url }}
       </UBadge>
-      <UIcon :name="!copied ? 'i-carbon-copy-link' : 'i-carbon-checkmark'" class="cursor-pointer text-primary-500" @click="handleCopy" />
+      <UIcon :name="!copied ? 'i-carbon-copy-link' : 'i-carbon-checkmark'" class="cursor-pointer text-primary-500"
+        @click="handleCopy" />
     </div>
     <p class="inline-flex gap-2 items-center">
       <span class="min-w-[4em]">请求示例</span>
@@ -75,13 +76,13 @@ function handleCopy() {
     </p>
   </div>
   <div v-if="params.length > 0">
-    <div
-      class="relative flex items-center my-2 text-center truncate
-    before:content-[''] before:top-[50%] before:w-[50%] before:translate-y-[50%] before:border-t before:border-gray-200 dark:border-gray-700)
-    after:content-[''] after:top-[50%] after:w-[50%] after:translate-y-[50%] after:border-t after:border-gray-200 dark:border-gray-700)
-    "
-    >
-      <span class="px-2 text-gray-400 text-sm">请求参数</span>
+    <div class="relative flex items-center my-2 text-center text-gray-400 text-sm truncate
+    before:content-[''] before:top-[50%] before:w-[50%] before:translate-y-[50%] before:border-t before:border-dashed before:border-gray-300 dark:border-gray-800)
+    after:content-[''] after:top-[50%] after:w-[50%] after:translate-y-[50%] after:border-t after:border-dashed after:border-gray-300 dark:border-gray-800)
+    ">
+      <div class="inline-flex justify-center items-center gap-1 mx-3 text-base">
+        <span>请求参数</span>
+      </div>
     </div>
     <div class="border rounded dark:border-gray-600 border-collapse">
       <UTable :columns="columns" :rows="data" />

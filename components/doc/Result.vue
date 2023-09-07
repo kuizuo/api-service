@@ -34,26 +34,25 @@ onUpdated(() => {
 
 <template>
   <div>
-    <div
-      class="relative flex items-center my-2 text-center text-gray-400 text-sm truncate
-    before:content-[''] before:top-[50%] before:w-[50%] before:translate-y-[50%] before:border-t before:border-gray-200 dark:border-gray-700)
-    after:content-[''] after:top-[50%] after:w-[50%] after:translate-y-[50%] after:border-t after:border-gray-200 dark:border-gray-700)
-    "
-    >
-      <span class="px-2">响应结果</span>
-      <UTooltip text="刷新">
-        <UIcon class="cursor-pointer" name="i-mdi-refresh" @click="refresh" />
-      </UTooltip>
-    </div>
-    <div class="h-auto w-full relative border dark:border-gray-600 dark:bg-gray-800">
-      <div v-if="pending">
-        <USkeleton class="h-4 w-[250px]" />
+    <div class="relative flex items-center my-2 text-center text-gray-400 text-sm truncate
+    before:content-[''] before:top-[50%] before:w-[50%] before:translate-y-[50%] before:border-t before:border-dashed before:border-gray-300 dark:border-gray-800)
+    after:content-[''] after:top-[50%] after:w-[50%] after:translate-y-[50%] after:border-t after:border-dashed after:border-gray-300 dark:border-gray-800)
+    ">
+      <div class="inline-flex justify-center items-center gap-1 mx-3 text-base">
+        <span>响应结果</span>
+        <UTooltip text="刷新">
+          <UIcon class="cursor-pointer" name="i-mdi-refresh" @click="refresh" />
+        </UTooltip>
       </div>
-      <div class="group relative overflow-x-auto">
+    </div>
+    <div class="h-auto min-h-[48px] w-full relative border dark:border-gray-600">
+      <div v-if="pending" class="p-2">
+        <USkeleton class="h-12 w-full" />
+      </div>
+      <div v-else class="group relative overflow-x-auto">
         <template v-if="dataType === 'json'">
           <pre
-            class="language-json min-h-[10rem] max-h-[30rem] text-sm h-full"
-          ><code class="!bg-transparent w-full">{{ response }}</code></pre>
+            class="language-json min-h-[10rem] max-h-[30rem] text-sm h-full"><code class="!bg-transparent w-full">{{ response }}</code></pre>
         </template>
         <template v-else-if="dataType === 'img'">
           <img :src="url">
@@ -63,7 +62,9 @@ onUpdated(() => {
             {{ response }}
           </div>
         </template>
-        <UIcon :name="!copied ? 'i-heroicons-clipboard-document' : 'i-heroicons-clipboard-document-check'" class="absolute w-5 h-5 top-3 right-3 text-primary-500 transition cursor-pointer opacity-0 group-hover:opacity-100" @click="handleCopy" />
+        <UIcon :name="!copied ? 'i-heroicons-clipboard-document' : 'i-heroicons-clipboard-document-check'"
+          class="absolute w-5 h-5 top-3 right-3 text-primary-500 transition cursor-pointer opacity-0 group-hover:opacity-100"
+          @click="handleCopy" />
       </div>
     </div>
   </div>
