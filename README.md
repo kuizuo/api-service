@@ -24,7 +24,7 @@
 
 ## Preview
 
-![KZ API](https://img.kuizuo.cn/KZ%20API.png)
+![API-Service](https://img.kuizuo.cn/KZ%20API.png)
 
 ## Features
 
@@ -55,24 +55,22 @@ pnpm dev
 pnpm build
 ```
 
-
 ## Develop
 
 ### Server
 
-这里使用 pm2 进行部署，在 `.output` 同级目录下创建 `ecosystem.config.js` 文件：
+这里使用 pm2 进行部署，配置文件 `ecosystem.config.js` 如下：
 
 ```js
 module.exports = {
   apps: [
     {
-      name: 'KZ_API',
+      name: 'API-Service',
       exec_mode: 'cluster',
       instances: '1',
+      PORT: 8040,
       env: {
-        NITRO_PORT: 8040,
-        NITRO_HOST: '127.0.0.1',
-        NODE_ENV: 'production',
+        NUXT_PUBLIC_API_URL: 'https://api.kuizuo.cn',
       },
       script: './.output/server/index.mjs',
     },
@@ -80,7 +78,7 @@ module.exports = {
 }
 ```
 
-接着执行 `pm2 start ecosystem.config.js` 即可。
+执行 `pm2 start ecosystem.config.js` 启动服务。
 
 ### Vercel
 

@@ -1,13 +1,12 @@
 module.exports = {
   apps: [
     {
-      name: 'KZ_API',
+      name: 'API-Service',
       exec_mode: 'cluster',
       instances: '1',
+      PORT: 8040,
       env: {
-        NITRO_PORT: 8040,
-        NITRO_HOST: '127.0.0.1',
-        NODE_ENV: 'production',
+        NUXT_PUBLIC_API_URL: 'https://api.kuizuo.cn',
       },
       script: './.output/server/index.mjs',
     },

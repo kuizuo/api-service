@@ -2,7 +2,6 @@
   "name": "api-service",
   "version": "0.1.0",
   "packageManager": "pnpm@8.7.4",
-  "description": "基于 Nuxt 搭建的 API 接口服务网站",
   "author": {
     "url": "https://kuizuo.cn",
     "email": "hi@kuizuo.cn",
