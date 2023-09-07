@@ -1,11 +1,13 @@
 <script lang="ts" setup>
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   id: string | number
   name: string
   desc: string
   count: number
   index: number
-}>()
+}>(), {
+  count: 0,
+})
 
 const docPath = 'docs'
 const href = ref(`/${docPath}/${props.id}`)
