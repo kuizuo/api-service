@@ -1,7 +1,7 @@
 {
   "name": "api-service",
   "version": "0.1.0",
-  "packageManager": "pnpm@8.7.0",
+  "packageManager": "pnpm@8.7.4",
   "description": "基于 Nuxt 搭建的 API 接口服务网站",
   "author": {
     "url": "https://kuizuo.cn",
@@ -22,15 +22,15 @@
     "lint": "eslint ."
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.40.3",
-    "@iconify-json/carbon": "^1.1.20",
+    "@antfu/eslint-config": "^0.41.0",
+    "@iconify-json/carbon": "^1.1.21",
     "@iconify-json/mdi": "^1.1.54",
-    "@nuxt/content": "^2.8.1",
-    "@nuxthq/ui": "^2.7.0",
+    "@nuxt/content": "^2.8.2",
+    "@nuxt/ui": "^2.8.0",
     "@nuxtjs/color-mode": "^3.3.0",
     "@pinia/nuxt": "^0.4.11",
-    "@types/cheerio": "^0.22.31",
-    "@types/lodash": "^4.14.197",
+    "@types/cheerio": "^0.22.32",
+    "@types/lodash": "^4.14.198",
     "@types/qrcode": "^1.5.2",
     "@vueuse/nuxt": "^9.13.0",
     "cheerio": "^0.22.0",
@@ -39,10 +39,10 @@
     "highlight.js": "^11.8.0",
     "image-type": "^5.2.0",
     "lru-cache": "^7.18.3",
-    "nuxt": "^3.7.0",
+    "nuxt": "^3.7.1",
     "pinia": "^2.1.6",
     "qrcode": "^1.5.3",
     "rate-limiter-flexible": "^3.0.0",
-    "typescript": "^4.9.5"
+    "typescript": "^5.2.2"
   }
 }
