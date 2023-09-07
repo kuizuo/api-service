@@ -1,10 +1,11 @@
-import { acceptHMRUpdate, defineStore } from 'pinia'
+import { defineStore } from 'pinia'
 
 export const useApiStore = defineStore('api', () => {
   const router = useRouter()
 
   const apiList = ref<IApi.Info[]>([])
   const searchName = ref('')
+
   const list = computed(() => { return apiList.value?.filter(data => data.name.match(new RegExp(searchName.value, 'i'))) ?? [] })
   const count = computed(() => { return apiList.value.length })
 

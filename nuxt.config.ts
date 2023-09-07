@@ -45,12 +45,6 @@ export default defineNuxtConfig({
         driver: 'redis',
       },
     },
-    devStorage: {
-      db: {
-        driver: 'fs',
-        base: './data/db',
-      },
-    },
   },
   experimental: {
     inlineSSRStyles: false,
