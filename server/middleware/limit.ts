@@ -10,7 +10,7 @@ const rateLimiter = new RLWrapperBlackAndWhite({
 })
 
 export default defineEventHandler(async (event) => {
-  const { req, res } = event
+  const { node: { req, res } } = event
 
   if (whiteList.includes(getUrlId(req.url!))) {
     // Skip

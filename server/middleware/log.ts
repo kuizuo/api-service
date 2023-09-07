@@ -1,5 +1,5 @@
 export default defineEventHandler(async (event) => {
-  const { req } = event
+  const { node: { req } } = event
 
   if (/^\/api\/[A-Za-z0-9].*/.test(req.url || '')) {
     const id = getUrlId(req.url!)
