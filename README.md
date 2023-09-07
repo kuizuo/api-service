@@ -80,6 +80,12 @@ module.exports = {
 
 执行 `pm2 start ecosystem.config.js` 启动服务。
 
+### Docker
+
+```shell
+docker buildx build . -t api-service:latest
+```
+
 ### Vercel
 
 转到 [Vercel](https://vercel.com/new) 并选择你的项目，点击  "Deploy"，您的应用程序将在一分钟内上线。
