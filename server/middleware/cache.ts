@@ -1,6 +1,6 @@
 import { defaultContentType } from 'h3'
 import type { NodeServerResponse } from 'h3'
-import LRU from 'lru-cache'
+import { LRUCache } from 'lru-cache'
 
 const options = {
   max: 500,
@@ -12,7 +12,7 @@ const options = {
   //   freeFromMemoryOrWhatever(value)
   // },
 }
-const cache = new LRU(options)
+const cache = new LRUCache(options)
 
 export default defineEventHandler(async (event) => {
   defaultContentType(event, 'text/plain; charset=utf-8')
