@@ -16,18 +16,18 @@ function onClick() {
     variant="ghost"
     @click="onClick"
   >
-    <ColorScheme>
+    <ColorScheme tag="span">
       <UIcon
         v-if="colorMode.preference === 'dark'"
-        name="i-heroicons-moon"
+        name="i-heroicons-moon-20-solid"
       />
       <UIcon
         v-else-if="colorMode.preference === 'light'"
-        name="i-heroicons-sun"
+        name="i-heroicons-sun-20-solid"
       />
       <UIcon
         v-else
-        name="i-heroicons-computer-desktop"
+        name="i-heroicons-computer-desktop-20-solid"
       />
     </ColorScheme>
   </UButton>
