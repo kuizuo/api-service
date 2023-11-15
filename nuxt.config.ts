@@ -1,5 +1,5 @@
 export default defineNuxtConfig({
-  app: {
+  runtimeConfig: {
     public: {
       apiUrl: process.env.NUXT_PUBLIC_API_URL,
     },
@@ -40,9 +40,9 @@ export default defineNuxtConfig({
     storage: {
       db: {
         driver: 'redis',
-      },
-      cache: {
-        driver: 'redis',
+        host: process.env.REDIS_HOST,
+        user: process.env.REDIS_USER,
+        password: process.env.REDIS_PASSWORD
       },
     },
   },

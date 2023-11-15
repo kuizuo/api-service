@@ -2,6 +2,7 @@
   "name": "api-service",
   "version": "1.0.0",
   "packageManager": "pnpm@8.9.2",
+  "type": "module",
   "author": {
     "url": "https://kuizuo.cn",
     "email": "hi@kuizuo.cn",
@@ -16,7 +17,7 @@
     "build": "nuxi build",
     "dev": "nuxi dev",
     "start": "node .output/server/index.mjs",
-    "start:pm2": "pm2 start ecosystem.config.js --env production",
+    "start:pm2": "pm2 start ecosystem.config.js",
     "preview": "nuxi preview",
     "lint": "eslint ."
   },
