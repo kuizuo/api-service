@@ -1,14 +1,16 @@
 {
   "name": "api-service",
-  "version": "1.0.0",
-  "packageManager": "pnpm@8.9.2",
   "type": "module",
-  "author": {
-    "url": "https://kuizuo.cn",
-    "email": "hi@kuizuo.cn",
-    "name": "Kuizuo"
-  },
+  "version": "1.0.0",
+  "packageManager": "pnpm@8.15.1",
+  "description": "A website for public api service, build with nuxt",
+  "author": "Kuizuo <hi@kuizuo.cn> (https://kuizuo.cn)",
   "license": "MIT",
+  "keywords": [
+    "nuxt",
+    "api",
+    "service"
+  ],
   "repository": {
     "url": "https://github.com/kuizuo/api-service",
     "type": "git"
@@ -22,27 +24,27 @@
     "lint": "eslint ."
   },
   "devDependencies": {
-    "@antfu/eslint-config": "1.0.0-beta.27",
-    "@iconify-json/carbon": "^1.1.21",
-    "@iconify-json/mdi": "^1.1.54",
-    "@nuxt/content": "^2.8.5",
-    "@nuxt/ui": "^2.9.0",
-    "@nuxtjs/color-mode": "^3.3.0",
+    "@antfu/eslint-config": "^2.6.3",
+    "@iconify-json/carbon": "^1.1.28",
+    "@iconify-json/mdi": "^1.1.64",
+    "@nuxt/content": "^2.11.0",
+    "@nuxt/ui": "^2.13.0",
+    "@nuxtjs/color-mode": "^3.3.2",
     "@pinia/nuxt": "^0.5.1",
-    "@types/cheerio": "^0.22.33",
-    "@types/lodash": "^4.14.200",
-    "@types/qrcode": "^1.5.4",
-    "@vueuse/nuxt": "^10.5.0",
+    "@types/cheerio": "^0.22.35",
+    "@types/lodash": "^4.14.202",
+    "@types/qrcode": "^1.5.5",
+    "@vueuse/nuxt": "^10.7.2",
     "cheerio": "^0.22.0",
     "dayjs": "^1.11.10",
-    "eslint": "^8.51.0",
+    "eslint": "^8.56.0",
     "highlight.js": "^11.9.0",
     "image-type": "^5.2.0",
-    "lru-cache": "^10.0.1",
-    "nuxt": "^3.8.0",
+    "lru-cache": "^10.2.0",
+    "nuxt": "^3.10.0",
     "pinia": "^2.1.7",
     "qrcode": "^1.5.3",
-    "rate-limiter-flexible": "^3.0.2",
-    "typescript": "^5.2.2"
+    "rate-limiter-flexible": "^3.0.6",
+    "typescript": "^5.3.3"
   }
 }
