@@ -2,7 +2,7 @@
   <img src="https://api.iconify.design/carbon:api-1.svg" width="50" height="50" />
 </p>
 <p align="center">
-  <i>Artwork from <a href="https://v3.nuxtjs.org/">Nuxt3</a></i>
+  <i>Artwork from <a href="https://nuxt.com/">Nuxt</a></i>
 </p>
 <pre align="center">
 🧪 整理稳定、快速、好用的 API 接口

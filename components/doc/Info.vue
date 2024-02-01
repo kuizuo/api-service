@@ -37,7 +37,7 @@ const columns = [{
 const data = params
 
 const toast = useToast()
-const { copy, copied } = useClipboard()
+const { copy } = useClipboard()
 
 function handleCopy() {
   copy(url.value)
@@ -50,25 +50,22 @@ function handleCopy() {
 
 <template>
   <div class="py-1 flex flex-col gap-3 text-sm font-sans">
-    <div class="inline-flex gap-2 items-center">
+    <div class=" gap-2 flex items-center">
       <span class="min-w-[4em]">接口地址</span>
-
       <UBadge :color="method === 'GET' ? 'green' : 'blue'" size="md">
         {{ method }}
       </UBadge>
-      <UBadge color="cyan" size="md">
+      <UBadge color="cyan" size="md" class="cursor-pointer" @click="handleCopy">
         {{ url }}
       </UBadge>
-      <UIcon :name="!copied ? 'i-carbon-copy-link' : 'i-carbon-checkmark'" class="cursor-pointer text-primary-500"
-        @click="handleCopy" />
     </div>
-    <p class="inline-flex gap-2 items-center">
+    <p class="gap-2 flex items-center">
       <span class="min-w-[4em]">请求示例</span>
       <UBadge color="cyan" size="md">
         {{ urlExample }}
       </UBadge>
     </p>
-    <p class="inline-flex gap-2 items-center">
+    <p class="gap-2 flex items-center">
       <span class="min-w-[4em]">返回格式</span>
       <UBadge color="indigo" size="md">
         {{ dataTypeMap[dataType] }}
@@ -76,11 +73,13 @@ function handleCopy() {
     </p>
   </div>
   <div v-if="params.length > 0">
-    <div class="relative flex items-center my-2 text-center text-gray-400 text-sm truncate
+    <div
+      class="relative flex items-center my-2 text-center text-gray-400 text-sm truncate
     before:content-[''] before:top-[50%] before:w-[50%] before:translate-y-[50%] before:border-t before:border-dashed before:border-gray-300 dark:border-gray-800)
     after:content-[''] after:top-[50%] after:w-[50%] after:translate-y-[50%] after:border-t after:border-dashed after:border-gray-300 dark:border-gray-800)
-    ">
-      <div class="inline-flex justify-center items-center gap-1 mx-3 text-base">
+    "
+    >
+      <div class="flex justify-center items-center gap-1 mx-3 text-base">
         <span>请求参数</span>
       </div>
     </div>

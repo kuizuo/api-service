@@ -5,7 +5,7 @@ interface Cache {
 }
 
 declare module 'h3' {
-  export interface H3EventContext  {
+  export interface H3EventContext {
     cache: Cache
   }
 }

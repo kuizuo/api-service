@@ -9,9 +9,9 @@ module.exports = {
       env: {
         NODE_ENV: 'production',
         NUXT_PUBLIC_API_URL: 'https://api.kuizuo.cn',
-        REDIS_HOST: '124.221.59.33',
-        REDIS_USER: 'default',
-        REDIS_PASSWORD: 'Aa123456',
+        REDIS_HOST: '',
+        REDIS_USER: '',
+        REDIS_PASSWORD: '',
       },
     },
   ],

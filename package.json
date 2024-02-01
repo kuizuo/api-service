@@ -6,22 +6,23 @@
   "description": "A website for public api service, build with nuxt",
   "author": "Kuizuo <hi@kuizuo.cn> (https://kuizuo.cn)",
   "license": "MIT",
+  "repository": {
+    "url": "https://github.com/kuizuo/api-service",
+    "type": "git"
+  },
   "keywords": [
     "nuxt",
     "api",
     "service"
   ],
-  "repository": {
-    "url": "https://github.com/kuizuo/api-service",
-    "type": "git"
-  },
   "scripts": {
     "build": "nuxi build",
     "dev": "nuxi dev",
     "start": "node .output/server/index.mjs",
     "start:pm2": "pm2 start ecosystem.config.js",
     "preview": "nuxi preview",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.6.3",

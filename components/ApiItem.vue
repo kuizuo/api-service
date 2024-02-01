@@ -30,7 +30,8 @@ const color = computed(() => colors[props.index % colors.length])
 <template>
   <div
     :class="`group py-3 px-4 h-30 border rounded-lg border-transparent
-    flex flex-col transition duration-200 shadow-md shadow-${color}-500/20 ring-${color}-500 hover:ring-2 hover:bg-${color}-500 hover:bg-opacity-10`"
+    flex flex-col transition duration-200 shadow-md shadow-${color}-500/20 ring-${color}-500
+    hover:ring-2 hover:bg-${color}-500 hover:bg-opacity-10`"
   >
     <div class="flex flex-row justify-between items-center">
       <h3 class="text-xl text-left">

@@ -42,12 +42,11 @@ export default defineNuxtConfig({
         driver: 'redis',
         host: process.env.REDIS_HOST,
         user: process.env.REDIS_USER,
-        password: process.env.REDIS_PASSWORD
+        password: process.env.REDIS_PASSWORD,
       },
     },
   },
   experimental: {
-    inlineSSRStyles: false,
     typedPages: true,
     asyncContext: true,
   },

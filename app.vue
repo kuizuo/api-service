@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const { title, description} = useAppConfig()
+const { title, description } = useAppConfig()
 useHead({
   titleTemplate: (titleChunk?: string) => {
     return titleChunk ? `${titleChunk} | API Service` : 'API Service'

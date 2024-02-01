@@ -1,9 +1,9 @@
 declare namespace IApi {
-  type DataType = 'text' | 'json' | 'img';
+  type DataType = 'text' | 'json' | 'img'
   type Method = 'GET' | 'POST' | 'PUT' | 'DELETE'
 
   interface Param {
-    id?: number;
+    id?: number
     key: string
     value: string
     type?: string
@@ -21,11 +21,10 @@ declare namespace IApi {
     params: Param[]
     dataType: DataType
     example: string
-    count: number 
+    count: number
   }
 
-  interface Info extends Pick<Doc, 'id' | 'name' | 'desc'| 'count'> { }
+  interface Info extends Pick<Doc, 'id' | 'name' | 'desc' | 'count'> { }
 }
-
 
 declare function getQuery<T extends Record<string, any>>(event: CompatibilityEvent): T & { type: IApi.DataType }
