@@ -1,5 +1,8 @@
 name: CI
 
+env:
+  REMOTE_SERVER_PATH: /opt/1panel/apps/openresty/openresty/www/sites/api.kuizuo.cn/server
+
 on:
   push:
     branches:
@@ -41,7 +44,7 @@ jobs:
           SOURCE: .output
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: root
-          TARGET: /opt/1panel/runtime/api-service
+          TARGET: ${{ env.REMOTE_SERVER_PATH }}
 
       - name: SSH Commands
         uses: appleboy/ssh-action@master
@@ -49,4 +52,4 @@ jobs:
           host: ${{ secrets.REMOTE_HOST }}
           username: root
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: pm2 restart API-Service
+          script: cd ${{ env.REMOTE_SERVER_PATH }} && pm2 reload ecosystem.config.js --update-env
