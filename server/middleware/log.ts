@@ -1,14 +1,14 @@
 export default defineEventHandler(async (event) => {
-  const { node: { req } } = event
+  const path = getRequestURL(event).pathname
 
-  if (/^\/api\/[A-Za-z0-9].*/.test(req.url || '')) {
-    const id = getUrlId(req.url!)
+  if (/^\/api\/[A-Za-z0-9].*/.test(path)) {
+    const id = getUrlId(path)
 
     if (id !== 'count') {
       const key = `log:${id}`
-      let count = await useStorage('db').getItem(key) as unknown as number
+      const count = Number(await useStorage('db').getItem(key) ?? 0)
 
-      useStorage('db').setItem(key, ++count)
+      await useStorage('db').setItem(key, count + 1)
     }
   }
 })

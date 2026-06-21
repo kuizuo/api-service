@@ -8,7 +8,7 @@ module.exports = {
       port: 8040,
       env: {
         NODE_ENV: 'production',
-        NUXT_PUBLIC_API_URL: 'https://api.kuizuo.cn',
+        NUXT_PUBLIC_API_URL: 'https://api.kuizuo.me',
         REDIS_HOST: '',
         REDIS_USER: '',
         REDIS_PASSWORD: '',

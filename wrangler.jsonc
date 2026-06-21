@@ -1,0 +1,31 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "api-service",
+  "compatibility_date": "2026-06-21",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "observability": {
+    "enabled": true
+  },
+  "main": "./.output/server/index.mjs",
+  "assets": {
+    "binding": "ASSETS",
+    "directory": "./.output/public"
+  },
+  "vars": {
+    "NUXT_PUBLIC_API_URL": "https://api.kuizuo.me"
+  },
+  "kv_namespaces": [
+    {
+      "binding": "API_SERVICE_KV",
+      "id": "dafd4353dc304fbf8108c937dace12db"
+    }
+  ],
+  "routes": [
+    {
+      "pattern": "api.kuizuo.me",
+      "custom_domain": true
+    }
+  ]
+}

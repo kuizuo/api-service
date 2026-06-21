@@ -16,7 +16,7 @@ WORKDIR /app
 COPY --from=build-stage /app/.output /app/.output
 
 ENV PORT=8040
-ENV NUXT_PUBLIC_API_URL=https://api.kuizuo.cn
+ENV NUXT_PUBLIC_API_URL=https://api.kuizuo.me
 
 EXPOSE 8040
 

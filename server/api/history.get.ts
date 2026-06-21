@@ -1,8 +1,6 @@
 import _ from 'lodash'
 
-export default defineEventHandler(async (event) => {
-  event.context.cache = { ttl: getTodayRemainMillisecond() }
-
+export default defineCachedEventHandler(async (event) => {
   const tMonth = String(new Date().getMonth() + 1)
   const tDay = String(new Date().getDate())
 
@@ -23,4 +21,6 @@ export default defineEventHandler(async (event) => {
       desc: h.desc.replace(/<\/?.+?>/g, ''),
     }
   ))
+}, {
+  maxAge: TimeUnit.day / 1000,
 })

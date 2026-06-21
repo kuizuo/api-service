@@ -4,6 +4,9 @@ dist
 .output
 .nuxt
 .env
+.env.local
+.dev.vars
+.wrangler
 .vercel
 
 data

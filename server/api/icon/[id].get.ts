@@ -1,5 +1,4 @@
-export default defineEventHandler(async (event) => {
-  event.context.cache = { ttl: TimeUnit.day }
+export default defineCachedEventHandler(async (event) => {
   const id = event.context.params!.id as string
 
   const icon = id.includes('.') ? id : `${id}.svg`
@@ -9,7 +8,8 @@ export default defineEventHandler(async (event) => {
   if (!response.ok)
     throw createError({ statusCode: 404, message: 'Icon Not Found' })
 
-  const arrayBuffer = await response.arrayBuffer()
-  event.node.res.setHeader('Content-Type', 'image/svg+xml;charset=utf-8')
-  return Buffer.from(arrayBuffer)
+  setResponseHeader(event, 'Content-Type', 'image/svg+xml;charset=utf-8')
+  return response.text()
+}, {
+  maxAge: TimeUnit.day / 1000,
 })

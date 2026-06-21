@@ -1,24 +1,24 @@
-import * as QRcode from 'qrcode'
+import { create } from 'qrcode/lib/core/qrcode.js'
+import { render } from 'qrcode/lib/renderer/svg-tag.js'
 
 interface Query {
   text: string
 }
 
-export default defineEventHandler(async (event) => {
-  event.context.cache = { ttl: TimeUnit.hour }
-
+export default defineCachedEventHandler(async (event) => {
   const { text, type = 'img' } = getQuery<Query>(event)
 
   if (!text)
     throw createError({ statusCode: 400, message: '文本不能为空' })
 
+  const svg = render(create(text))
+
   if (type === 'img') {
-    const buffer = await QRcode.toBuffer(text)
-    event.node.res.setHeader('Content-Type', 'image;charset=utf-8')
-    return buffer
+    setResponseHeader(event, 'Content-Type', 'image/svg+xml;charset=utf-8')
+    return svg
   }
-  else {
-    const imgBase64 = await QRcode.toDataURL(text)
-    return imgBase64
-  }
+
+  return `data:image/svg+xml;base64,${btoa(svg)}`
+}, {
+  maxAge: TimeUnit.hour / 1000,
 })

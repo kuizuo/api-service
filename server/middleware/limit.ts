@@ -10,20 +10,19 @@ const rateLimiter = new RLWrapperBlackAndWhite({
 })
 
 export default defineEventHandler(async (event) => {
-  const { node: { req, res } } = event
+  const path = getRequestURL(event).pathname
 
-  if (whiteList.includes(getUrlId(req.url!))) {
+  if (whiteList.includes(getUrlId(path))) {
     // Skip
   }
-  else if (/^\/api\/[A-Za-z0-9].*/.test(req.url || '')) {
-    const ip = getIP(req)
+  else if (/^\/api\/[A-Za-z0-9].*/.test(path)) {
+    const ip = getIP(event)
 
     try {
       await rateLimiter.consume(ip)
     }
-    catch (error) {
-      res.statusCode = 429
-      return { statusCode: 429, statusMessage: '请求太快了,请稍后再试' }
+    catch {
+      throw createError({ statusCode: 429, statusMessage: '请求太快了,请稍后再试' })
     }
   }
 })

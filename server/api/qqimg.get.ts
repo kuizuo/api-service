@@ -3,8 +3,6 @@ interface Query {
 }
 
 export default defineEventHandler(async (event) => {
-  event.context.cache = { ttl: TimeUnit.second * 5 }
-
   const { qq } = getQuery<Query>(event)
 
   if (!qq)
@@ -12,6 +10,7 @@ export default defineEventHandler(async (event) => {
 
   const arrayBuffer = await (await fetch(`https://q4.qlogo.cn/g?b=qq&nk=${qq}&s=100`)).arrayBuffer()
 
-  event.node.res.setHeader('Content-Type', 'image;charset=utf-8')
-  return Buffer.from(arrayBuffer)
+  setResponseHeader(event, 'Content-Type', 'image;charset=utf-8')
+  setResponseHeader(event, 'Cache-Control', 'public, max-age=5')
+  return new Uint8Array(arrayBuffer)
 })

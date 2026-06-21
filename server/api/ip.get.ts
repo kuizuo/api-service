@@ -1,5 +1,5 @@
 export default defineEventHandler(async (event) => {
-  const ip = getIP(event.node.req)
+  const ip = getIP(event)
 
   return ip
 })
